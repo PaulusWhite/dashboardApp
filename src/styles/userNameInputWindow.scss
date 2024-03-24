@@ -1,0 +1,40 @@
+.username-input-window{
+  @include defaultBg;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .5s;
+
+  .username-input-window__field{
+    display: flex;
+
+    #username-input{
+      max-width: 50rem;
+      width: 100%;
+      padding: 1rem 1.5rem .2rem 1.5rem;
+      border: none;
+      border-bottom: solid black .1rem;
+      background: none;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 3rem;
+  
+      &::placeholder{
+        font-size: 2.5rem;
+      }
+    }
+  
+    .username-input-window__okBtn{
+      @include defaultBtn;
+      margin-left: 3rem;
+      padding: 0 3rem;
+      font-size: 2.5rem;
+    }
+  }
+}
