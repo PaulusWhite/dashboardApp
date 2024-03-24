@@ -21,8 +21,6 @@ const setGreeting = (): void => {
 
   const secTillNextMin: number = SEC_PER_MIN - +seconds;
 
-  console.log(secTillNextMin)
-
   setTimeout( () => {
     setGreeting();
   }, +`${secTillNextMin}000`);
