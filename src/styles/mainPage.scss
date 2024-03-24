@@ -3,10 +3,34 @@
 .main{
   @include defaultBg;
 
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100vh;
 
+  .forecast{
+    height: 15rem;
+  }
+
   .wrapper{
+    flex-grow: 1;
     display: flex;
+
+    .greeting{
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      .greeting__time{
+        margin: 2rem 0 .3rem 0;
+        font-size: 7rem;
+      }
+
+      .greeting__name{
+        font-size: 1.5rem;
+      }
+    }
   }
 }

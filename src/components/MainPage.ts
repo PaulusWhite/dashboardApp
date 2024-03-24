@@ -1,7 +1,7 @@
 const MainPage = (): string => {
   const view = `
     <main class="main">
-      <div section="forecast"></div>
+      <section class="forecast"></section>
 
       <div class="wrapper">
 
