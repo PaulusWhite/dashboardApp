@@ -1,4 +1,6 @@
-$hoverHolor: #9E77DD;
+$hoverColor: #9E77DD;
+$whiteColor: #ffffff;
+$iconBGColor: #8b2960;
 
 @mixin defaultBg{
   background: #FFCAF4;
@@ -15,7 +17,7 @@ $hoverHolor: #9E77DD;
   position: relative;
   border: solid black .1rem;
   border-radius: .3rem;
-  box-shadow: 0 0 0 $hoverHolor;
+  box-shadow: 0 0 0 $hoverColor;
   transition: .2s;
 
   &::after{
@@ -33,7 +35,7 @@ $hoverHolor: #9E77DD;
 
   &:hover{
     background: none;
-    box-shadow: 0 0 .5rem $hoverHolor;
+    box-shadow: 0 0 .5rem $hoverColor;
 
     &::after{
       opacity: 1;

@@ -14,11 +14,19 @@
 
   .forecast{
     grid-area: forecast;
-    height: 15rem;
   }
 
   .toolbar{
     grid-area: toolbar;
+
+    .toolbar-icon{
+      width: 100%;
+      max-width: 6rem;
+      padding: 1rem;
+      margin: 0;
+      background-color: rgba($color: $iconBGColor, $alpha: .6);
+      cursor: pointer;
+    }
   }
 
   .wrapper{

@@ -1,9 +1,12 @@
+//Components
+import Toolbar from "./Toolbar";
+
 const MainPage = (): string => {
   const view = `
     <main class="main">
       <section class="forecast"></section>
 
-      <div class="toolbar"></div>
+      ${Toolbar()}
 
       <div class="wrapper">
 
