@@ -3,6 +3,8 @@ const MainPage = (): string => {
     <main class="main">
       <section class="forecast"></section>
 
+      <div class="toolbar"></div>
+
       <div class="wrapper">
 
         <div class="greeting">
@@ -12,6 +14,8 @@ const MainPage = (): string => {
 
         <div class="feauters-panel"></div>
       </div>
+
+      <div class="empty"></div>
 
     </main>
   `
