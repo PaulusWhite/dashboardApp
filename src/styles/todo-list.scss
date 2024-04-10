@@ -1,0 +1,36 @@
+@import "./common.scss";
+
+.todo-list{
+  @include defaultBg;
+  @include entireWindowPosition;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem;
+
+  h1{
+    text-align: center;
+  }
+
+  .tasks{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 65rem;
+  }
+
+  .tasks__tasks-group{
+    width: 100%;
+    h2{
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  .todo-list__input-field{
+    display: flex;
+  }
+}

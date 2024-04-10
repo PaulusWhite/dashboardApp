@@ -12,6 +12,14 @@ $iconBGColor: #8b2960;
   background: linear-gradient(315deg, #9E77DD, #8FE1FF);
 }
 
+@mixin entireWindowPosition{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
 @mixin defaultBtn{
   @include defaultBg;
   position: relative;
