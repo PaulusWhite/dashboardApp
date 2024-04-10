@@ -1,6 +1,7 @@
 $hoverColor: #9E77DD;
 $whiteColor: #ffffff;
 $iconBGColor: #8b2960;
+$darkColor: #141313;
 
 @mixin defaultBg{
   background: #FFCAF4;
@@ -48,6 +49,25 @@ $iconBGColor: #8b2960;
     &::after{
       opacity: 1;
     }
+  }
+}
+
+@mixin secondBtn{
+  background-color: $darkColor;
+  color: $whiteColor;
+  transition: .2s;
+
+  &:hover{
+    background-color: #000000;
+  }
+}
+
+@mixin input {
+  border: solid rgba($color: $darkColor, $alpha: 0) .2rem;
+  transition: .2s;
+
+  &:focus{
+    border: solid $darkColor .2rem;
   }
 }
 

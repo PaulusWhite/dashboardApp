@@ -19,7 +19,7 @@ const TodoList = (): string => {
 
       <div class="todo-list__input-field">
         <input id="todo-list__input" type="text" placeholder="What do you need to do?">
-        <button class="todo-list__add-btn">Add</button>
+        <button class="todo-list__add-btn">+ Add</button>
       </div>
     </div>
   `

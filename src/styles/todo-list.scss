@@ -1,5 +1,10 @@
 @import "./common.scss";
 
+@mixin blockWidth{
+  width: 100%;
+  max-width: 65rem;
+}
+
 .todo-list{
   @include defaultBg;
   @include entireWindowPosition;
@@ -13,13 +18,12 @@
   }
 
   .tasks{
+    @include blockWidth;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
-    max-width: 65rem;
   }
 
   .tasks__tasks-group{
@@ -31,6 +35,22 @@
   }
 
   .todo-list__input-field{
+    @include blockWidth;
     display: flex;
+    width: 100%;
+    font-size: 1.5rem;
+
+    #todo-list__input{
+      @include input;
+      flex-grow: 1;
+      padding: .7rem;
+    }
+
+    .todo-list__add-btn{
+      @include secondBtn;
+      padding: .5rem 1.5rem;
+      border-top-right-radius: .3rem;
+      border-bottom-right-radius: .3rem;
+    }
   }
 }
