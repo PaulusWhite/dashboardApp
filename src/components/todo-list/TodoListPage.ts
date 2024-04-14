@@ -1,7 +1,10 @@
+//Icons
+import CheckIcon from "../../assets/icons/CheckIcon";
+
 const TodoList = (): string => {
   const view = `
     <div class="todo-list">
-      <h1>Todo Lists</h1>
+      <h1> ${CheckIcon()} Todo Lists</h1>
 
       <div class="tasks">
 
