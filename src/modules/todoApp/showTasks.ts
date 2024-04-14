@@ -7,38 +7,31 @@ import { ITodoList, ITask } from "../../interfaces/ITodoList";
 //Components
 import Task from "../../components/todo-list/Task";
 
+//Modules
+import displayImportantTasksList from "./displayImportantTasksList";
+
 const showAllTasks = (allTasks: ITask[]): void => {
   const allTasksList: HTMLDivElement = document.querySelector("#tasks-list-all") as HTMLDivElement;
-  allTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
-
-  allTasks.forEach((task: ITask) => {
-    allTasksList.innerHTML += Task(task);
-  });
-};
-
-const showImportantTasks = (importantTasks: ITask[]): void => {
   const importantTasksList: HTMLDivElement = document.querySelector("#tasks-list-important") as HTMLDivElement;
+
+  allTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
   importantTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
 
-  if (!importantTasks.length) {
-    importantTasksList.classList.add("none");
+  allTasks.forEach((task: ITask) => {
+    const isTaskImportant: boolean = task.isImportant;
 
-    return;
-  }
-
-  importantTasksList.classList.remove("none");
-
-  importantTasks.forEach((importantTask: ITask) => {
-    importantTasksList.innerHTML += Task(importantTask);
+    isTaskImportant ? (importantTasksList.innerHTML += Task(task)) : (allTasksList.innerHTML += Task(task));
   });
+
+  displayImportantTasksList();
 };
 
 const showTasks = (): void => {
   const todoList: ITodoList = getTodoList();
-  const { allTasks, importantTasks } = todoList;
+  const { allTasks } = todoList;
   const noTasksMessage: HTMLHeadingElement = document.querySelector(".tasks__no-tasks") as HTMLHeadingElement;
 
-  if (!allTasks.length && !importantTasks.length) {
+  if (!allTasks.length) {
     noTasksMessage.classList.remove("none");
 
     return;
@@ -47,7 +40,6 @@ const showTasks = (): void => {
   noTasksMessage.classList.add("none");
 
   showAllTasks(allTasks);
-  showImportantTasks(importantTasks);
 };
 
 export default showTasks;

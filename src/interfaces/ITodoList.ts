@@ -7,7 +7,12 @@ interface ITask {
 
 interface ITodoList {
   allTasks: ITask[];
-  importantTasks: ITask[];
 }
 
-export { ITask, ITodoList };
+interface IUpdatedTaskData {
+  isCompleted?: boolean;
+  isImportant?: boolean;
+  text?: string;
+}
+
+export { ITask, ITodoList, IUpdatedTaskData };

@@ -11,7 +11,7 @@ import { ITask } from "../../interfaces/ITodoList";
 
 const Task = (data: ITask): string => {
   const view = `
-    <div class="task" id="${data.id}">
+    <div class="task ${data.isCompleted && "task__completed"} ${data.isImportant && "task__important"}" id="${data.id}">
       <button class="task__complete-btn">
         ${CheckIcon()}
         ${PopupLabel("Mark as completed")}

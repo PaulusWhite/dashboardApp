@@ -11,6 +11,7 @@ import setGreeting from "../modules/mainPage/setGreeting";
 import addTask from "../modules/todoApp/addTask";
 import showTasks from "../modules/todoApp/showTasks";
 import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
+import updateTask from "../modules/todoApp/updateTask";
 
 const runRouterFunctional = (path: TPath): void => {
   if (path === "/") {
@@ -20,6 +21,7 @@ const runRouterFunctional = (path: TPath): void => {
   if (path === "/todo") {
     showTasks();
     addTask();
+    updateTask();
     displayTaskOptionsMenu();
   }
 };

@@ -27,7 +27,6 @@ const addTaskAction = () => {
 
   const newTodoList: ITodoList = {
     allTasks: [...currentTodoList.allTasks, newTask],
-    importantTasks: [...currentTodoList.importantTasks],
   };
   input.value = "";
 

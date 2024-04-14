@@ -4,7 +4,6 @@ import { ITodoList } from "../interfaces/ITodoList";
 const TODO_LIST_KEY: string = "todo-list";
 const INITIAL_TODO_LIST_DATA: ITodoList = {
   allTasks: [],
-  importantTasks: [],
 };
 
 const getTodoList = (): ITodoList => {

@@ -5,6 +5,18 @@
   max-width: 65rem;
 }
 
+@mixin completedCheck {
+  fill: $darkColor;
+
+  path {
+    stroke: $whiteColor;
+  }
+}
+
+@mixin importantStar {
+  fill: $yellowColor;
+}
+
 .todo-list {
   @include defaultBg;
   display: flex;
@@ -22,13 +34,10 @@
     text-align: center;
 
     svg {
+      @include completedCheck;
       width: 3rem;
       height: 3rem;
       fill: $darkColor;
-
-      path {
-        stroke: $whiteColor;
-      }
     }
   }
 
@@ -93,8 +102,8 @@
   background-color: rgba($whiteColor, 0.5);
   transition: 0.2s;
 
-  &:hover {
-    background-color: rgba($hoverColor, 0.5);
+  &:hover:not(.task__completed) {
+    background-color: rgba($hoverColor, 0.2);
   }
 
   .task__complete-btn,
@@ -105,11 +114,27 @@
     height: 1.7rem;
     border-radius: 0.2rem;
 
+    svg {
+      transition: 0.2s;
+    }
+
     &:hover {
       .popup-label {
         opacity: 1;
         pointer-events: initial;
       }
+    }
+  }
+
+  .task__complete-btn:hover {
+    svg {
+      @include completedCheck;
+    }
+  }
+
+  .task__important-btn:hover {
+    svg {
+      @include importantStar;
     }
   }
 
@@ -130,12 +155,42 @@
       justify-content: center;
       gap: 0.2rem;
 
+      &:hover {
+        .task__options-circle {
+          background-color: rgba($darkColor, 1);
+        }
+      }
+
       .task__options-circle {
         width: 0.3rem;
         height: 0.3rem;
         border-radius: 100%;
-        background-color: $darkColor;
+        background-color: rgba($darkColor, 0.7);
+        transition: 0.2s;
       }
+    }
+  }
+}
+//css-mods for task
+.task__completed {
+  background-color: rgba($darkColor, 0.15);
+
+  .task__complete-btn {
+    svg {
+      @include completedCheck;
+    }
+  }
+
+  .task__text {
+    text-decoration: line-through;
+    color: rgba($darkColor, 0.7);
+  }
+}
+
+.task__important {
+  .task__important-btn {
+    svg {
+      @include importantStar;
     }
   }
 }
