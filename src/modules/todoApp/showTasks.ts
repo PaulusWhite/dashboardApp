@@ -8,7 +8,8 @@ import { ITodoList, ITask } from "../../interfaces/ITodoList";
 import Task from "../../components/todo-list/Task";
 
 const showAllTasks = (allTasks: ITask[]): void => {
-  const allTasksList: HTMLDivElement = document.querySelector(".tasks__all-tasks") as HTMLDivElement;
+  const allTasksList: HTMLDivElement = document.querySelector("#tasks-list-all") as HTMLDivElement;
+  allTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
 
   allTasks.forEach((task: ITask) => {
     allTasksList.innerHTML += Task(task);
@@ -16,7 +17,8 @@ const showAllTasks = (allTasks: ITask[]): void => {
 };
 
 const showImportantTasks = (importantTasks: ITask[]): void => {
-  const importantTasksList: HTMLDivElement = document.querySelector(".tasks__important-tasks") as HTMLDivElement;
+  const importantTasksList: HTMLDivElement = document.querySelector("#tasks-list-important") as HTMLDivElement;
+  importantTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
 
   if (!importantTasks.length) {
     importantTasksList.classList.add("none");
