@@ -1,5 +1,6 @@
 //Components
 import PopupLabel from "./PopupLabel";
+import PopupOptions from "./PopupOptions";
 
 //Icons Compoents
 import CheckIcon from "../../assets/icons/CheckIcon";
@@ -26,7 +27,8 @@ const Task = (id: number): string => {
           ${PopupLabel("More options")}
         </button>
       </div>
-      
+
+      ${PopupOptions()}
     </div>
   `;
 

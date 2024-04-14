@@ -1,7 +1,7 @@
 const TodoIcon = (): string => {
   const view = `
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-      width="auto" height="auto" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+    <svg version="1.1" id="Layer_1"" 
+      width="100%" height="100%" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
       <line fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="16" y1="24" x2="38" y2="24"/>
       <line fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="16" y1="34" x2="38" y2="34"/>
       <line fill="none" stroke="#ffffff" stroke-width="2" stroke-miterlimit="10" x1="16" y1="44" x2="38" y2="44"/>
