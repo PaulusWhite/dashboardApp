@@ -46,7 +46,6 @@ const setEditModeAction = (taskElement: HTMLDivElement, taskID: string) => {
   editInput.focus();
 
   taskElement.addEventListener("keydown", (event: KeyboardEvent) => {
-    console.log("fasafs");
     if (event.code === "Enter" || event.code === "NumpadEnter") {
       editTaskTextAction(taskElement, taskID);
     }
@@ -56,7 +55,7 @@ const setEditModeAction = (taskElement: HTMLDivElement, taskID: string) => {
 const editTaskTextAction = (taskElement: HTMLDivElement, taskID: string) => {
   const { editInput } = getEditModeElements(taskElement); //mutable func
 
-  const newTaskText: string = editInput.value.trim();
+  const newTaskText: string = editInput.value.replace(/\s{2,}/g, " ").trim();
 
   const updatedTaskData: IUpdatedTaskData = {
     text: newTaskText,

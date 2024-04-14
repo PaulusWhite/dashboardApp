@@ -12,7 +12,7 @@ import showTasks from "./showTasks";
 
 const addTaskAction = () => {
   const input: HTMLInputElement = document.querySelector("#todo-list__input") as HTMLInputElement;
-  const inputValue: string = input.value.trim();
+  const inputValue: string = input.value.replace(/\s{2,}/g, " ").trim();
 
   if (!inputValue) return;
 
