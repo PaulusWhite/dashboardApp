@@ -98,11 +98,12 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  border: solid rgba($darkColor, 0) 0.15rem;
   border-radius: 5px;
   background-color: rgba($whiteColor, 0.5);
   transition: 0.2s;
 
-  &:hover:not(.task__completed) {
+  &:hover:not(.task__completed, .task__edit-mode) {
     background-color: rgba($hoverColor, 0.2);
   }
 
@@ -141,6 +142,37 @@
   .task__text {
     margin: 0;
     font-size: 1.1rem;
+  }
+
+  .task__edit-mode-field {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+
+    .task__edit-input {
+      width: 100%;
+      border: none;
+      padding: 0 0.1rem 0 0;
+      background: none;
+      font-size: 1.1rem;
+    }
+
+    .task__edit-btn {
+      width: 1.7rem;
+      height: 1.7rem;
+
+      svg {
+        transition: 0.2s;
+      }
+
+      &:hover {
+        svg {
+          path {
+            stroke: $greenColor;
+          }
+        }
+      }
+    }
   }
 
   .task__tools {
@@ -185,6 +217,10 @@
     text-decoration: line-through;
     color: rgba($darkColor, 0.7);
   }
+}
+
+.task__edit-mode {
+  border: solid rgba($darkColor, 1) 0.15rem;
 }
 
 .task__important {
