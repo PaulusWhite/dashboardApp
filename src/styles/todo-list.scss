@@ -1,11 +1,11 @@
 @import "./common.scss";
 
-@mixin blockWidth{
+@mixin blockWidth {
   width: 100%;
   max-width: 65rem;
 }
 
-.todo-list{
+.todo-list {
   @include defaultBg;
   @include entireWindowPosition;
   display: flex;
@@ -13,11 +13,11 @@
   align-items: center;
   padding: 2.5rem;
 
-  h1{
+  h1 {
     text-align: center;
   }
 
-  .tasks{
+  .tasks {
     @include blockWidth;
     flex-grow: 1;
     display: flex;
@@ -26,88 +26,83 @@
     align-items: center;
   }
 
-  .tasks__tasks-group{
+  .tasks__tasks-group {
     width: 100%;
 
-    h2{
+    h2 {
       width: 100%;
       text-align: left;
     }
   }
 
-  .todo-list__input-field{
+  .todo-list__input-field {
     @include blockWidth;
     display: flex;
     width: 100%;
     font-size: 1.5rem;
 
-    #todo-list__input{
+    #todo-list__input {
       @include input;
       flex-grow: 1;
-      padding: .7rem;
+      padding: 0.7rem;
     }
 
-    .todo-list__add-btn{
+    .todo-list__add-btn {
       @include secondBtn;
-      padding: .5rem 1.5rem;
-      border-top-right-radius: .3rem;
-      border-bottom-right-radius: .3rem;
+      padding: 0.5rem 1.5rem;
+      border-top-right-radius: 0.3rem;
+      border-bottom-right-radius: 0.3rem;
     }
   }
 }
 
 //Task component
-.task{
+.task {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
   border-radius: 5px;
-  background-color: rgba($whiteColor, .5);
+  background-color: rgba($whiteColor, 0.5);
 
-  .task__complete-btn, 
+  .task__complete-btn,
   .task__important-btn,
-  .task__options{
+  .task__options {
     position: relative;
     width: 1.7rem;
     height: 1.7rem;
-    border-radius: .2rem;
+    border-radius: 0.2rem;
 
-    img{
-      width: 1.7rem;
-      height: 1.7rem;
-    }
+    &:hover {
+      background-color: rgba($iconBGColor, 0.1);
 
-    &:hover{
-      background-color: rgba($iconBGColor, .1);
-
-      .popup-label{
+      .popup-label {
         opacity: 1;
         pointer-events: initial;
       }
     }
   }
 
-  .task__text{
+  .task__text {
     margin: 0;
     font-size: 1.1rem;
   }
 
-  .task__tools{
+  .task__tools {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-left: auto;
 
-    .task__options{
+    .task__options {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: .2rem;
+      gap: 0.2rem;
 
-      .task__options-circle{
-        width: .3rem;
-        height: .3rem;
+      .task__options-circle {
+        width: 0.3rem;
+        height: 0.3rem;
         border-radius: 100%;
         background-color: $darkColor;
       }
@@ -116,18 +111,18 @@
 }
 
 //PopupLabel component
-.popup-label{
+.popup-label {
   position: absolute;
   left: 50%;
   top: 130%;
   transform: translateX(-50%);
   width: 10rem;
-  padding: .3rem;
+  padding: 0.3rem;
   border-radius: 5px;
   color: $whiteColor;
   background-color: $darkColor;
   font-size: 1.1rem;
   pointer-events: none;
   opacity: 0;
-  transition: .2s;
+  transition: 0.2s;
 }

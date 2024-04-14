@@ -1,6 +1,6 @@
 const convertTimeData = (value: number): string => {
   return `${value}`.length === 1 ? `0${value}` : `${value}`;
-}
+};
 
 const getCurrentTime = (): [string, string, string] => {
   const date = new Date();
@@ -14,6 +14,6 @@ const getCurrentTime = (): [string, string, string] => {
   seconds = convertTimeData(seconds);
 
   return [hours, minutes, seconds];
-}
+};
 
 export default getCurrentTime;

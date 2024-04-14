@@ -1,18 +1,17 @@
 const displayComponent = (element: HTMLElement, flag: boolean, transition: number): void => {
-  if(flag){
+  if (flag) {
     element.classList.remove("none");
-    
-    setTimeout( () => {
+
+    setTimeout(() => {
       element.classList.remove("hide");
     }, transition);
-
-  }else{
+  } else {
     element.classList.add("hide");
 
-    setTimeout( () => {
+    setTimeout(() => {
       element.classList.add("none");
     }, transition);
   }
-}
+};
 
 export default displayComponent;

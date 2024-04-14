@@ -21,9 +21,9 @@ const setGreeting = (): void => {
 
   const secTillNextMin: number = SEC_PER_MIN - +seconds;
 
-  setTimeout( () => {
+  setTimeout(() => {
     setGreeting();
   }, +`${secTillNextMin}000`);
-}
+};
 
 export default setGreeting;

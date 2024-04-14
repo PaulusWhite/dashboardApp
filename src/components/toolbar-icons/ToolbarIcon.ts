@@ -1,11 +1,11 @@
-const ToolbarIcon = (iconPath: string, altText: string): string => {
+const ToolbarIcon = (iconPath: string, iconID: string): string => {
   const view = `
-    <figure class="toolbar-icon">
-      <img src="${iconPath}" alt="${altText}" width="100%">
+    <figure class="toolbar-icon" id="${iconID}">
+      ${iconPath}
     </figure>
-  `
+  `;
 
   return view;
-}
+};
 
 export default ToolbarIcon;

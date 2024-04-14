@@ -5,9 +5,7 @@ import { IRoute } from "./../interfaces/IRouter";
 import runRouterFunctional from "./runRouteFunctional";
 
 const router = (): void => {
-  const routers: IRoute[] = [
-    { path: "/",},
-  ];
+  const routers: IRoute[] = [{ path: "/" }];
 
   const currentPath: string = window.location.pathname;
   let isMatch = false;

@@ -1,4 +1,4 @@
-.username-input-window{
+.username-input-window {
   @include defaultBg;
   position: fixed;
   top: 0;
@@ -9,28 +9,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: .5s;
+  transition: 0.5s;
 
-  .username-input-window__field{
+  .username-input-window__field {
     display: flex;
 
-    #username-input{
+    #username-input {
       max-width: 50rem;
       width: 100%;
-      padding: 1rem 1.5rem .2rem 1.5rem;
+      padding: 1rem 1.5rem 0.2rem 1.5rem;
       border: none;
-      border-bottom: solid black .1rem;
+      border-bottom: solid black 0.1rem;
       background: none;
       text-align: center;
       text-transform: uppercase;
       font-size: 3rem;
-  
-      &::placeholder{
+
+      &::placeholder {
         font-size: 2.5rem;
       }
     }
-  
-    .username-input-window__okBtn{
+
+    .username-input-window__okBtn {
       @include defaultBtn;
       margin-left: 3rem;
       padding: 0 3rem;

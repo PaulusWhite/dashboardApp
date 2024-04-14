@@ -5,9 +5,9 @@ import { TPath } from "../interfaces/IRouter";
 import setGreeting from "../modules/mainPage/setGreeting";
 
 const runRouterFunctional = (path: TPath): void => {
-  if(path === "/"){
+  if (path === "/") {
     setGreeting();
   }
-}
+};
 
 export default runRouterFunctional;

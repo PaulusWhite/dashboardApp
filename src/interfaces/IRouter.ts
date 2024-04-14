@@ -1,8 +1,7 @@
 type TPath = "/";
 
 interface IRoute {
-  path: TPath,
+  path: TPath;
 }
 
 export { TPath, IRoute };
-

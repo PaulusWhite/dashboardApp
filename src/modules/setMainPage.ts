@@ -10,6 +10,6 @@ const setMainPage = (): void => {
   body.innerHTML += MainPage();
   body.innerHTML += UserNameInputWindow();
   body.innerHTML += TodoList();
-}
+};
 
 export default setMainPage;

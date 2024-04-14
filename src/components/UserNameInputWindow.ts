@@ -8,9 +8,9 @@ const UserNameInputWindow = (): string => {
       </div>
 
     </section>
-  `
+  `;
 
   return view;
-}
+};
 
 export default UserNameInputWindow;

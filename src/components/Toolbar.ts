@@ -2,16 +2,16 @@
 import ToolbarIcon from "./toolbar-icons/ToolbarIcon";
 
 //Icons
-import todoIcon from "./../assets/icons/todo.svg";
+import TodoIcon from "../assets/icons/TodoIcon";
 
 const Toolbar = (): string => {
   const view = `
     <div class="toolbar">
-    ${ToolbarIcon(todoIcon, "todo-list-icon")}
+    ${ToolbarIcon(TodoIcon(), "todo-list-icon")}
     </div>
-  `
+  `;
 
   return view;
-}
+};
 
 export default Toolbar;

@@ -1,58 +1,59 @@
 @import "./common.scss";
 
-.main{
+.main {
   @include defaultBg;
 
   display: grid;
-  grid-template: "toolbar forecast forecast"
-                 "toolbar wrapper empty";
-  grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+  grid-template:
+    "toolbar forecast forecast"
+    "toolbar wrapper empty";
+  grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);
   grid-template-rows: 14rem auto;
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
 
-  .forecast{
+  .forecast {
     grid-area: forecast;
   }
 
-  .toolbar{
+  .toolbar {
     grid-area: toolbar;
 
-    .toolbar-icon{
+    .toolbar-icon {
       width: 100%;
       max-width: 6rem;
       padding: 1rem;
       margin: 0;
-      background-color: rgba($color: $iconBGColor, $alpha: .6);
+      background-color: rgba($color: $iconBGColor, $alpha: 0.6);
       cursor: pointer;
     }
   }
 
-  .wrapper{
+  .wrapper {
     grid-area: wrapper;
     flex-grow: 1;
     display: flex;
 
-    .greeting{
+    .greeting {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
 
-      .greeting__time{
-        margin: 2rem 0 .3rem 0;
+      .greeting__time {
+        margin: 2rem 0 0.3rem 0;
         font-size: 7rem;
       }
 
-      .greeting__name{
+      .greeting__name {
         font-size: 1.5rem;
       }
     }
   }
 
-  .empty{
+  .empty {
     grid-area: empty;
   }
 }

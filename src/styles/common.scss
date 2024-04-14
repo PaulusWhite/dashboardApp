@@ -1,19 +1,19 @@
-$hoverColor: #9E77DD;
+$hoverColor: #9e77dd;
 $whiteColor: #ffffff;
 $iconBGColor: #8b2960;
 $darkColor: #141313;
 
-@mixin defaultBg{
-  background: #FFCAF4;
-  background: radial-gradient(at left top, #FFCAF4, #CCF0FF);
+@mixin defaultBg {
+  background: #ffcaf4;
+  background: radial-gradient(at left top, #ffcaf4, #ccf0ff);
 }
 
-@mixin defaultHoverBg{
-  background: #9E77DD;
-  background: linear-gradient(315deg, #9E77DD, #8FE1FF);
+@mixin defaultHoverBg {
+  background: #9e77dd;
+  background: linear-gradient(315deg, #9e77dd, #8fe1ff);
 }
 
-@mixin entireWindowPosition{
+@mixin entireWindowPosition {
   position: fixed;
   top: 0;
   left: 0;
@@ -21,15 +21,15 @@ $darkColor: #141313;
   min-height: 100vh;
 }
 
-@mixin defaultBtn{
+@mixin defaultBtn {
   @include defaultBg;
   position: relative;
-  border: solid black .1rem;
-  border-radius: .3rem;
+  border: solid black 0.1rem;
+  border-radius: 0.3rem;
   box-shadow: 0 0 0 $hoverColor;
-  transition: .2s;
+  transition: 0.2s;
 
-  &::after{
+  &::after {
     @include defaultHoverBg;
     content: "";
     position: absolute;
@@ -39,40 +39,40 @@ $darkColor: #141313;
     right: 0;
     z-index: -1;
     opacity: 0;
-    transition: .2s;
+    transition: 0.2s;
   }
 
-  &:hover{
+  &:hover {
     background: none;
-    box-shadow: 0 0 .5rem $hoverColor;
+    box-shadow: 0 0 0.5rem $hoverColor;
 
-    &::after{
+    &::after {
       opacity: 1;
     }
   }
 }
 
-@mixin secondBtn{
+@mixin secondBtn {
   background-color: $darkColor;
   color: $whiteColor;
-  transition: .2s;
+  transition: 0.2s;
 
-  &:hover{
+  &:hover {
     background-color: #000000;
   }
 }
 
 @mixin input {
-  border: solid rgba($color: $darkColor, $alpha: 0) .2rem;
-  transition: .2s;
+  border: solid rgba($color: $darkColor, $alpha: 0) 0.2rem;
+  transition: 0.2s;
 
-  &:focus{
-    border: solid $darkColor .2rem;
+  &:focus {
+    border: solid $darkColor 0.2rem;
   }
 }
 
 //common css-mods
-.none{
+.none {
   display: none !important;
 }
 

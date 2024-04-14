@@ -21,9 +21,9 @@ const MainPage = (): string => {
       <div class="empty"></div>
 
     </main>
-  `
+  `;
 
   return view;
-}
+};
 
 export default MainPage;

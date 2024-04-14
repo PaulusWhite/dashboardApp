@@ -11,7 +11,7 @@ const TodoList = (): string => {
         <div class="tasks__all-tasks tasks__tasks-group">
           <h2>Tasks</h2>
           <div class="tasks__tasks-list" id="tasks-list-all">
-          ${Task()}
+          ${Task(1)}
           </div>
         </div>
 
@@ -28,9 +28,9 @@ const TodoList = (): string => {
       </div>
       
     </div>
-  `
+  `;
 
   return view;
-}
+};
 
 export default TodoList;
