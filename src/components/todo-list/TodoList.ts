@@ -1,3 +1,6 @@
+//Components
+import Task from "./Task";
+
 const TodoList = (): string => {
   const view = `
     <div class="todo-list">
@@ -7,12 +10,14 @@ const TodoList = (): string => {
 
         <div class="tasks__all-tasks tasks__tasks-group">
           <h2>Tasks</h2>
-          <div class="tasks__tasks-list"></div>
+          <div class="tasks__tasks-list" id="tasks-list-all">
+          ${Task()}
+          </div>
         </div>
 
         <div class="tasks__important-tasks tasks__tasks-group">
           <h2>Important</h2>
-          <div class="tasks__tasks-list"></div>
+          <div class="tasks__tasks-list" id="tasks-list-important"></div>
         </div>
 
       </div>
@@ -21,6 +26,7 @@ const TodoList = (): string => {
         <input id="todo-list__input" type="text" placeholder="What do you need to do?">
         <button class="todo-list__add-btn">+ Add</button>
       </div>
+      
     </div>
   `
 

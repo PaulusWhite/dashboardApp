@@ -28,6 +28,7 @@
 
   .tasks__tasks-group{
     width: 100%;
+
     h2{
       width: 100%;
       text-align: left;
@@ -51,6 +52,51 @@
       padding: .5rem 1.5rem;
       border-top-right-radius: .3rem;
       border-bottom-right-radius: .3rem;
+    }
+  }
+}
+
+//Task component
+.task{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: rgba($whiteColor, .5);
+
+  .task__complete-btn, 
+  .task__important-btn{
+    width: 1.7rem;
+    height: 1.7rem;
+
+    img{
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+  }
+
+  .task__text{
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .task__tools{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+
+    .task__options{
+      display: flex;
+      gap: .2rem;
+
+      .task__options-circle{
+        width: .3rem;
+        height: .3rem;
+        border-radius: 100%;
+        background-color: $darkColor;
+      }
     }
   }
 }
