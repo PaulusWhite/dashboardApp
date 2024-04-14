@@ -9,6 +9,7 @@ import TodoListPage from "../components/todo-list/TodoListPage";
 import MainPage from "../components/MainPage";
 
 const router = (): void => {
+  console.log("ff");
   const routers: IRoute[] = [
     { path: "/", view: MainPage() },
     { path: "/todo", view: TodoListPage() },
