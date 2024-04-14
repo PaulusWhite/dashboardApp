@@ -130,7 +130,7 @@
 }
 
 //popup-options ocmponent
-.popup-options{
+.popup-options {
   @include defaultBg;
   position: absolute;
   right: 1rem;
@@ -138,47 +138,47 @@
   display: flex;
   flex-direction: column;
   width: 13rem;
-  border: solid rgba($darkColor, .5) .1rem;
-  border-radius: .3rem;
-  padding: .3rem;
+  border: solid rgba($darkColor, 0.5) 0.1rem;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
   pointer-events: none;
   opacity: 0;
-  transition: .2s;
+  transition: 0.2s;
 
-  button{
+  button {
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: 0.5rem;
     width: 100%;
     height: 2rem;
-    padding: .3rem;
-    border-radius: .2rem;
+    padding: 0.3rem;
+    border-radius: 0.2rem;
     font-size: 1rem;
-    transition: .2s;
+    transition: 0.2s;
 
-    &:hover:not(.popup-options__delete-btn){
-      background: rgba($darkColor, .2);
+    &:hover:not(.popup-options__delete-btn) {
+      background: rgba($darkColor, 0.2);
     }
 
-    svg{
+    svg {
       width: 2rem;
-      transition: .2s;
+      transition: 0.2s;
     }
 
-    .popup-options__text{
+    .popup-options__text {
       width: 100%;
       text-align: left;
     }
   }
 
-  .popup-options__delete-btn{
+  .popup-options__delete-btn {
     color: $darkRedColor;
     font-weight: bold;
 
-    &:hover{
-      background: rgba($lightRedColor, .2);
+    &:hover {
+      background: rgba($lightRedColor, 0.2);
 
-      svg{
+      svg {
         fill: $darkRedColor;
       }
     }
