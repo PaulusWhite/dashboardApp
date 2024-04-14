@@ -10,26 +10,16 @@ import Task from "../../components/todo-list/Task";
 //Modules
 import displayImportantTasksList from "./displayImportantTasksList";
 
-const showAllTasks = (allTasks: ITask[]): void => {
+const showTasks = (): void => {
+  const todoList: ITodoList = getTodoList();
+  const { allTasks } = todoList;
+
+  const noTasksMessage: HTMLHeadingElement = document.querySelector(".tasks__no-tasks") as HTMLHeadingElement;
   const allTasksList: HTMLDivElement = document.querySelector("#tasks-list-all") as HTMLDivElement;
   const importantTasksList: HTMLDivElement = document.querySelector("#tasks-list-important") as HTMLDivElement;
 
   allTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
   importantTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
-
-  allTasks.forEach((task: ITask) => {
-    const isTaskImportant: boolean = task.isImportant;
-
-    isTaskImportant ? (importantTasksList.innerHTML += Task(task)) : (allTasksList.innerHTML += Task(task));
-  });
-
-  displayImportantTasksList();
-};
-
-const showTasks = (): void => {
-  const todoList: ITodoList = getTodoList();
-  const { allTasks } = todoList;
-  const noTasksMessage: HTMLHeadingElement = document.querySelector(".tasks__no-tasks") as HTMLHeadingElement;
 
   if (!allTasks.length) {
     noTasksMessage.classList.remove("none");
@@ -39,7 +29,13 @@ const showTasks = (): void => {
 
   noTasksMessage.classList.add("none");
 
-  showAllTasks(allTasks);
+  allTasks.forEach((task: ITask) => {
+    const isTaskImportant: boolean = task.isImportant;
+
+    isTaskImportant ? (importantTasksList.innerHTML += Task(task)) : (allTasksList.innerHTML += Task(task));
+  });
+
+  displayImportantTasksList();
 };
 
 export default showTasks;

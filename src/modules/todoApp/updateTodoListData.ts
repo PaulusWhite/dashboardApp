@@ -5,13 +5,13 @@ import { ITask, ITodoList, IUpdatedTaskData } from "../../interfaces/ITodoList";
 import { getTodoList, setTodoList } from "../../storage/getSetTodoList";
 
 //Modules
-import showAllTasks from "./showTasks";
+import showTasks from "./showTasks";
 
-const updateTodoListData = (taskID: string, updatedTaskData: IUpdatedTaskData) => {
+const updateTodoListData = (taskID: string, updatedTaskData: IUpdatedTaskData, isRemove?: boolean) => {
   const todoListData: ITodoList = getTodoList();
   const { allTasks } = todoListData;
 
-  const newAllTasks: ITask[] = allTasks.map((task: ITask) => {
+  let newAllTasks: ITask[] = allTasks.map((task: ITask) => {
     if (task.id === taskID) {
       return { ...task, ...updatedTaskData };
     }
@@ -19,10 +19,12 @@ const updateTodoListData = (taskID: string, updatedTaskData: IUpdatedTaskData) =
     return task;
   });
 
+  if (isRemove) newAllTasks = newAllTasks.filter((task: ITask) => task.id !== taskID);
+
   const updatedTodoListData: ITodoList = { allTasks: newAllTasks };
 
   setTodoList(updatedTodoListData);
-  showAllTasks();
+  showTasks();
 };
 
 export default updateTodoListData;

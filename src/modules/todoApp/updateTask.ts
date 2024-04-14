@@ -4,7 +4,7 @@ import { IUpdatedTaskData } from "../../interfaces/ITodoList";
 //Modules
 import updateTodoListData from "./updateTodoListData";
 
-const markAsCompletedAtion = (taskElement: HTMLDivElement, taskID: string) => {
+const markAsCompletedAtion = (taskElement: HTMLDivElement, taskID: string): void => {
   taskElement.classList.toggle("task__completed");
   const isTaskCompleted: boolean = taskElement.classList.contains("task__completed");
 
@@ -15,7 +15,7 @@ const markAsCompletedAtion = (taskElement: HTMLDivElement, taskID: string) => {
   updateTodoListData(taskID, updatedTaskData);
 };
 
-const markAsImportantAction = (taskElement: HTMLDivElement, taskID: string) => {
+const markAsImportantAction = (taskElement: HTMLDivElement, taskID: string): void => {
   taskElement.classList.toggle("task__important");
   const isTaskImportant: boolean = taskElement.classList.contains("task__important");
 
@@ -45,6 +45,7 @@ const updateTask = (): void => {
     }
 
     //updating with popup-options menu (delete and edit)
+    if (target.closest(".popup-options__delete-btn")) updateTodoListData(taskID, {}, true);
   });
 };
 
