@@ -66,13 +66,25 @@
   background-color: rgba($whiteColor, .5);
 
   .task__complete-btn, 
-  .task__important-btn{
+  .task__important-btn,
+  .task__options{
+    position: relative;
     width: 1.7rem;
     height: 1.7rem;
+    border-radius: .2rem;
 
     img{
       width: 1.7rem;
       height: 1.7rem;
+    }
+
+    &:hover{
+      background-color: rgba($iconBGColor, .1);
+
+      .popup-label{
+        opacity: 1;
+        pointer-events: initial;
+      }
     }
   }
 
@@ -89,6 +101,8 @@
 
     .task__options{
       display: flex;
+      align-items: center;
+      justify-content: center;
       gap: .2rem;
 
       .task__options-circle{
@@ -99,4 +113,21 @@
       }
     }
   }
+}
+
+//PopupLabel component
+.popup-label{
+  position: absolute;
+  left: 50%;
+  top: 130%;
+  transform: translateX(-50%);
+  width: 10rem;
+  padding: .3rem;
+  border-radius: 5px;
+  color: $whiteColor;
+  background-color: $darkColor;
+  font-size: 1.1rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: .2s;
 }
