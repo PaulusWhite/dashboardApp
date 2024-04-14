@@ -39,11 +39,18 @@ const markAsImportantAction = (taskElement: HTMLDivElement, taskID: string): voi
   updateTodoListData(taskID, updatedTaskData);
 };
 
-const setEditModeAction = (taskElement: HTMLDivElement) => {
+const setEditModeAction = (taskElement: HTMLDivElement, taskID: string) => {
   const { editInput, textField } = getEditModeElements(taskElement); //mutable func
 
   editInput.value = textField.innerHTML;
   editInput.focus();
+
+  taskElement.addEventListener("keydown", (event: KeyboardEvent) => {
+    console.log("fasafs");
+    if (event.code === "Enter" || event.code === "NumpadEnter") {
+      editTaskTextAction(taskElement, taskID);
+    }
+  });
 };
 
 const editTaskTextAction = (taskElement: HTMLDivElement, taskID: string) => {
@@ -80,7 +87,7 @@ const updateTask = (): void => {
 
     //updating with popup-options menu (delete and edit)
     if (target.closest(".popup-options__delete-btn")) updateTodoListData(taskID, {}, true);
-    if (target.closest(".popup-options__edit-btn")) setEditModeAction(taskElement);
+    if (target.closest(".popup-options__edit-btn")) setEditModeAction(taskElement, taskID);
     if (target.closest(".task__edit-btn")) editTaskTextAction(taskElement, taskID);
   });
 };
