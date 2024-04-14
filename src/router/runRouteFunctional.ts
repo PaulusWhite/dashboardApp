@@ -4,10 +4,13 @@ import UserNameInputWindow from "../components/UserNameInputWindow";
 //Interfaces
 import { TPath } from "../interfaces/IRouter";
 
-//Modules
+//Modules for MainPage
 import setGreeting from "../modules/mainPage/setGreeting";
+
+//Modules for TodoApp
 import addTask from "../modules/todoApp/addTask";
 import showTasks from "../modules/todoApp/showTasks";
+import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
 
 const runRouterFunctional = (path: TPath): void => {
   if (path === "/") {
@@ -17,6 +20,7 @@ const runRouterFunctional = (path: TPath): void => {
   if (path === "/todo") {
     showTasks();
     addTask();
+    displayTaskOptionsMenu();
   }
 };
 

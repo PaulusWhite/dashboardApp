@@ -77,6 +77,11 @@
   padding: 1rem;
   border-radius: 5px;
   background-color: rgba($whiteColor, 0.5);
+  transition: 0.2s;
+
+  &:hover {
+    background-color: rgba($hoverColor, 0.5);
+  }
 
   .task__complete-btn,
   .task__important-btn,
@@ -87,8 +92,6 @@
     border-radius: 0.2rem;
 
     &:hover {
-      background-color: rgba($iconBGColor, 0.1);
-
       .popup-label {
         opacity: 1;
         pointer-events: initial;
@@ -147,14 +150,13 @@
   position: absolute;
   right: 1rem;
   top: 95%;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   width: 13rem;
   border: solid rgba($darkColor, 0.5) 0.1rem;
   border-radius: 0.3rem;
   padding: 0.3rem;
-  pointer-events: none;
-  opacity: 0;
   transition: 0.2s;
 
   button {
