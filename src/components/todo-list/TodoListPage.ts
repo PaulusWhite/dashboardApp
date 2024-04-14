@@ -11,10 +11,12 @@ const TodoList = (): string => {
           </div>
         </div>
 
-        <div class="tasks__important-tasks tasks__tasks-group">
+        <div class="tasks__important-tasks tasks__tasks-group none">
           <h2>Important</h2>
           <div class="tasks__tasks-list" id="tasks-list-important"></div>
         </div>
+
+        <h3 class="tasks__no-tasks none">You do not have any tasks yet</h3>
 
       </div>
 

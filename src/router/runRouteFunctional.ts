@@ -7,6 +7,7 @@ import { TPath } from "../interfaces/IRouter";
 //Modules
 import setGreeting from "../modules/mainPage/setGreeting";
 import addTask from "../modules/todoApp/addTask";
+import showTasks from "../modules/todoApp/showTasks";
 
 const runRouterFunctional = (path: TPath): void => {
   if (path === "/") {
@@ -14,6 +15,7 @@ const runRouterFunctional = (path: TPath): void => {
     setGreeting();
   }
   if (path === "/todo") {
+    showTasks();
     addTask();
   }
 };

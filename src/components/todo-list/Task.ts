@@ -6,14 +6,17 @@ import PopupOptions from "./PopupOptions";
 import CheckIcon from "../../assets/icons/CheckIcon";
 import StarIcon from "../../assets/icons/StarIcon";
 
-const Task = (id: number): string => {
+//Interfaces
+import { ITask } from "../../interfaces/ITodoList";
+
+const Task = (data: ITask): string => {
   const view = `
-    <div class="task" id="${id}">
+    <div class="task" id="${data.id}">
       <button class="task__complete-btn">
         ${CheckIcon()}
         ${PopupLabel("Mark as completed")}
       </button>
-      <p class="task__text">Get a job in IT sphere</p>
+      <p class="task__text">${data.text}</p>
 
       <div class="task__tools">
         <button class="task__important-btn">

@@ -24,6 +24,10 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    .tasks__no-tasks {
+      color: rgba($darkColor, 0.8);
+    }
   }
 
   .tasks__tasks-group {
