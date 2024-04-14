@@ -1,29 +1,8 @@
 //Interfaces
-import { ITask, ITodoList, IUpdatedTaskData } from "../../interfaces/ITodoList";
-
-//Storage
-import { getTodoList, setTodoList } from "../../storage/getSetTodoList";
+import { IUpdatedTaskData } from "../../interfaces/ITodoList";
 
 //Modules
-import showAllTasks from "./showTasks";
-
-const updateTodoListData = (taskID: string, updatedTaskData: IUpdatedTaskData) => {
-  const todoListData: ITodoList = getTodoList();
-  const { allTasks } = todoListData;
-
-  const newAllTasks: ITask[] = allTasks.map((task: ITask) => {
-    if (task.id === taskID) {
-      return { ...task, ...updatedTaskData };
-    }
-
-    return task;
-  });
-
-  const updatedTodoListData: ITodoList = { allTasks: newAllTasks };
-
-  setTodoList(updatedTodoListData);
-  showAllTasks();
-};
+import updateTodoListData from "./updateTodoListData";
 
 const markAsCompletedAtion = (taskElement: HTMLDivElement, taskID: string) => {
   taskElement.classList.toggle("task__completed");
@@ -57,8 +36,15 @@ const updateTask = (): void => {
     const taskElement: HTMLDivElement = target.closest(".task") as HTMLDivElement;
     const taskID: string = taskElement.id;
 
-    if (target.closest(".task__complete-btn")) markAsCompletedAtion(taskElement, taskID);
-    if (target.closest(".task__important-btn")) markAsImportantAction(taskElement, taskID);
+    if (target.closest(".task__complete-btn") || target.closest(".popup-options__complete-btn")) {
+      markAsCompletedAtion(taskElement, taskID);
+    }
+
+    if (target.closest(".task__important-btn") || target.closest(".popup-options__important-btn")) {
+      markAsImportantAction(taskElement, taskID);
+    }
+
+    //updating with popup-options menu (delete and edit)
   });
 };
 
