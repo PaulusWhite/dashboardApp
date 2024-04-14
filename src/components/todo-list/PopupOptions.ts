@@ -4,7 +4,7 @@ import CheckIcon from "../../assets/icons/CheckIcon";
 import StarIcon from "../../assets/icons/StarIcon";
 import BinIcon from "../../assets/icons/BinIcon";
 
-const PopupOptions = (): string => {
+const PopupOptions = (importanceBtnText: string, statusBtnText: string): string => {
   const view = `
     <div class="popup-options hide">
       <button class="popup-options__edit-btn">
@@ -14,12 +14,12 @@ const PopupOptions = (): string => {
 
       <button class="popup-options__complete-btn">
         ${CheckIcon()}
-        <span class="popup-options__text">Mark as completed</span>
+        <span class="popup-options__text">${statusBtnText}</span>
       </button>
 
       <button class="popup-options__important-btn">
         ${StarIcon()}
-        <span class="popup-options__text">Mark as important</span>
+        <span class="popup-options__text">${importanceBtnText}</span>
       </button>
 
       <button class="popup-options__delete-btn">

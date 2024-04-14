@@ -10,18 +10,21 @@ import StarIcon from "../../assets/icons/StarIcon";
 import { ITask } from "../../interfaces/ITodoList";
 
 const Task = (data: ITask): string => {
+  const importanceLabelText: string = data.isImportant ? "Remove importance" : "Mark as important";
+  const statusLabelText: string = data.isCompleted ? "Mark as uncompleted" : "Mark as completed";
+
   const view = `
     <div class="task ${data.isCompleted && "task__completed"} ${data.isImportant && "task__important"}" id="${data.id}">
       <button class="task__complete-btn">
         ${CheckIcon()}
-        ${PopupLabel("Mark as completed")}
+        ${PopupLabel(statusLabelText)}
       </button>
       <p class="task__text">${data.text}</p>
 
       <div class="task__tools">
         <button class="task__important-btn">
           ${StarIcon()}
-          ${PopupLabel("Mark as important")}
+          ${PopupLabel(importanceLabelText)}
         </button>
         <button class="task__options">
           <span class="task__options-circle"></span>
@@ -31,7 +34,7 @@ const Task = (data: ITask): string => {
         </button>
       </div>
 
-      ${PopupOptions()}
+      ${PopupOptions(importanceLabelText, statusLabelText)}
     </div>
   `;
 
