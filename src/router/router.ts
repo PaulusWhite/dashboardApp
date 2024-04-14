@@ -4,8 +4,15 @@ import { IRoute } from "./../interfaces/IRouter";
 //runRouterPathFunc
 import runRouterFunctional from "./runRouteFunctional";
 
+//Components
+import TodoListPage from "../components/todo-list/TodoListPage";
+import MainPage from "../components/MainPage";
+
 const router = (): void => {
-  const routers: IRoute[] = [{ path: "/" }];
+  const routers: IRoute[] = [
+    { path: "/", view: MainPage() },
+    { path: "/todo", view: TodoListPage() },
+  ];
 
   const currentPath: string = window.location.pathname;
   let isMatch = false;
@@ -13,6 +20,8 @@ const router = (): void => {
   routers.forEach((route: IRoute) => {
     if (route.path === currentPath) {
       isMatch = true;
+      document.body.innerHTML += route.view;
+
       runRouterFunctional(currentPath);
     }
   });
@@ -22,14 +31,14 @@ const router = (): void => {
   }
 };
 
-// const navigateTo = (url: string) => {
-//   window.history.pushState(null, "", url);
+const navigateTo = (url: string) => {
+  window.history.pushState(null, "", url);
 
-//   if (url === "/") {
-//     return;
-//   }
+  if (url === "/") {
+    return;
+  }
 
-//   router();
-// };
+  router();
+};
 
-export { router };
+export { router, navigateTo };

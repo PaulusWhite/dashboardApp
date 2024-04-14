@@ -1,6 +1,3 @@
-//Components
-import Task from "./Task";
-
 const TodoList = (): string => {
   const view = `
     <div class="todo-list">
@@ -11,7 +8,6 @@ const TodoList = (): string => {
         <div class="tasks__all-tasks tasks__tasks-group">
           <h2>Tasks</h2>
           <div class="tasks__tasks-list" id="tasks-list-all">
-          ${Task(1)}
           </div>
         </div>
 
