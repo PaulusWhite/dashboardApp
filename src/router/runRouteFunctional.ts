@@ -1,3 +1,6 @@
+//Storage
+import { getGreetingTimeoutID } from "../storage/getSetGreetingTimeoutID";
+
 //Components
 import UserNameInputWindow from "../components/UserNameInputWindow";
 
@@ -14,6 +17,8 @@ import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
 import updateTask from "../modules/todoApp/updateTask";
 
 const runRouterFunctional = (path: TPath) => {
+  if (path !== "/") clearTimeout(getGreetingTimeoutID());
+
   if (path === "/") {
     document.body.innerHTML += UserNameInputWindow();
     setGreeting();

@@ -1,6 +1,9 @@
 //Utils
 import getCurrentTime from "../../utils/getCurrentTime";
 
+//Storage
+import { setGreetingTimeoutID } from "../../storage/getSetGreetingTimeoutID";
+
 //storage Modules
 import { getUserName } from "../../storage/getSetUserName";
 
@@ -21,9 +24,11 @@ const setGreeting = () => {
 
   const secTillNextMin: number = SEC_PER_MIN - +seconds;
 
-  setTimeout(() => {
+  const greetingID: NodeJS.Timeout = setTimeout(() => {
     setGreeting();
   }, +`${secTillNextMin}000`);
+
+  setGreetingTimeoutID(greetingID);
 };
 
 export default setGreeting;
