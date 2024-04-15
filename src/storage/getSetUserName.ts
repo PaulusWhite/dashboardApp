@@ -6,7 +6,7 @@ const getUserName = (): string | null => {
   return userName;
 };
 
-const setUserName = (name: string): void => {
+const setUserName = (name: string) => {
   localStorage.setItem(USER_NAME_KEY, name);
 };
 

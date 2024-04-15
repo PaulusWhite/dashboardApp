@@ -18,7 +18,7 @@ const getTodoList = (): ITodoList => {
   return JSON.parse(todoList as string) as ITodoList;
 };
 
-const setTodoList = (todoList: ITodoList): void => {
+const setTodoList = (todoList: ITodoList) => {
   localStorage.setItem(TODO_LIST_KEY, JSON.stringify(todoList));
 };
 

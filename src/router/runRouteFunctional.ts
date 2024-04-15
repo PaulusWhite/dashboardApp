@@ -13,7 +13,7 @@ import showTasks from "../modules/todoApp/showTasks";
 import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
 import updateTask from "../modules/todoApp/updateTask";
 
-const runRouterFunctional = (path: TPath): void => {
+const runRouterFunctional = (path: TPath) => {
   if (path === "/") {
     document.body.innerHTML += UserNameInputWindow();
     setGreeting();

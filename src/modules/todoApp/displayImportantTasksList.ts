@@ -1,4 +1,4 @@
-const displayImportantTasksList = (): void => {
+const displayImportantTasksList = () => {
   const importantTasksList: HTMLDivElement = document.querySelector("#tasks-list-important") as HTMLDivElement;
   const tasksGroupBlock: HTMLDivElement = importantTasksList.parentElement as HTMLDivElement;
 

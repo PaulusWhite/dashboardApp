@@ -1,4 +1,4 @@
-const displayComponent = (element: HTMLElement, flag: boolean, transition: number): void => {
+const displayComponent = (element: HTMLElement, flag: boolean, transition: number) => {
   if (flag) {
     element.classList.remove("none");
 

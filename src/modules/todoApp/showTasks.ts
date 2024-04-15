@@ -10,7 +10,7 @@ import Task from "../../components/todo-list/Task";
 //Modules
 import displayImportantTasksList from "./displayImportantTasksList";
 
-const showTasks = (): void => {
+const showTasks = () => {
   const todoList: ITodoList = getTodoList();
   const { allTasks } = todoList;
 

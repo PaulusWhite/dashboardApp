@@ -32,9 +32,11 @@ const addTaskAction = () => {
 
   setTodoList(newTodoList);
   showTasks();
+
+  document.body.scrollIntoView(false);
 };
 
-const addTask = (): void => {
+const addTask = () => {
   const todoList: HTMLDivElement = document.querySelector(".todo-list") as HTMLDivElement;
   const addBtn: HTMLButtonElement = document.querySelector(".todo-list__add-btn") as HTMLButtonElement;
 

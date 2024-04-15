@@ -6,7 +6,7 @@ import { getUserName } from "../../storage/getSetUserName";
 
 const SEC_PER_MIN: number = 60;
 
-const setGreeting = (): void => {
+const setGreeting = () => {
   const greetingTime: HTMLParagraphElement = document.querySelector(".greeting__time") as HTMLParagraphElement;
   const greetingName: HTMLParagraphElement = document.querySelector(".greeting__name") as HTMLParagraphElement;
 

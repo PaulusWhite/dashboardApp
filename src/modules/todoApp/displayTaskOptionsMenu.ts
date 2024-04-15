@@ -1,4 +1,4 @@
-const hideExtraOptionsMenu = (openedOptionsMenu?: HTMLDivElement): void => {
+const hideExtraOptionsMenu = (openedOptionsMenu?: HTMLDivElement) => {
   const allOptionsMenus: NodeListOf<HTMLDivElement> = document.querySelectorAll(".popup-options") as NodeListOf<HTMLDivElement>;
 
   allOptionsMenus.forEach((optionsMenu: HTMLDivElement) => {
@@ -8,7 +8,7 @@ const hideExtraOptionsMenu = (openedOptionsMenu?: HTMLDivElement): void => {
   });
 };
 
-const displayTaskOptionsMenu = (): void => {
+const displayTaskOptionsMenu = () => {
   const todoList: HTMLDivElement = document.querySelector(".todo-list") as HTMLDivElement;
 
   todoList.addEventListener("click", (event: Event) => {

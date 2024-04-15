@@ -30,7 +30,7 @@ const applyUserNameWithKeyboard = (Event: KeyboardEvent) => {
   if (Event.code === "Enter" || Event.code === "NumpadEnter") applyUserName(input);
 };
 
-const askUserName = (): void => {
+const askUserName = () => {
   const userName: string | null = getUserName();
 
   if (userName) return;
