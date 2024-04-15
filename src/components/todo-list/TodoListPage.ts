@@ -1,6 +1,9 @@
 //Icons
 import CheckIcon from "../../assets/icons/CheckIcon";
 
+//Components
+import BackBtn from "../common/BackBtn";
+
 const TodoList = (): string => {
   const view = `
     <div class="todo-list">
@@ -28,6 +31,7 @@ const TodoList = (): string => {
         <button class="todo-list__add-btn">+ Add</button>
       </div>
       
+      ${BackBtn("/")}
     </div>
   `;
 

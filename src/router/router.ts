@@ -20,6 +20,7 @@ const router = () => {
   routers.forEach((route: IRoute) => {
     if (route.path === currentPath) {
       isMatch = true;
+      console.log(route);
       document.body.innerHTML = "";
       document.body.innerHTML += route.view;
 
@@ -35,9 +36,9 @@ const router = () => {
 const navigateTo = (url: string) => {
   window.history.pushState(null, "", url);
 
-  if (url === "/") {
-    return;
-  }
+  // if (url === "/") {
+  //   return;
+  // }
 
   router();
 };

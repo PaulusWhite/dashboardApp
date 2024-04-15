@@ -8,6 +8,7 @@ $yellowColor: #e7d213;
 $greenColor: #048d04;
 
 @mixin defaultBg {
+  position: relative;
   background: #ffcaf4;
   background: radial-gradient(at left top, #ffcaf4, #ccf0ff);
 }
@@ -83,4 +84,13 @@ $greenColor: #048d04;
 .hide {
   opacity: 0 !important;
   pointer-events: none;
+}
+
+//Back btn component
+.back-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
 }
