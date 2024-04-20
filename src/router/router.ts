@@ -20,7 +20,6 @@ const router = () => {
   routers.forEach((route: IRoute) => {
     if (route.path === currentPath) {
       isMatch = true;
-      console.log(route);
       document.body.innerHTML = "";
       document.body.innerHTML += route.view;
 
