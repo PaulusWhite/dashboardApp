@@ -17,10 +17,11 @@ import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
 import updateTask from "../modules/todoApp/updateTask";
 
 const runRouterFunctional = (path: TPath) => {
+  document.body.innerHTML += UserNameInputWindow();
+
   if (path !== "/") clearTimeout(getGreetingTimeoutID());
 
   if (path === "/") {
-    document.body.innerHTML += UserNameInputWindow();
     setGreeting();
   }
   if (path === "/todo") {

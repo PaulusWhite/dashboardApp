@@ -7,7 +7,7 @@ import BackBtn from "../common/BackBtn";
 const TodoList = (): string => {
   const view = `
     <div class="todo-list">
-      <h1> ${CheckIcon()} Todo Lists</h1>
+      <h1> ${CheckIcon()} Todo List</h1>
 
       <div class="tasks">
 
