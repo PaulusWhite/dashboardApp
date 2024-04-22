@@ -6,7 +6,7 @@ import BackBtn from "../common/BackBtn";
 
 const TodoList = (): string => {
   const view = `
-    <div class="todo-list">
+    <main class="todo-list">
       <h1> ${CheckIcon()} Todo List</h1>
 
       <div class="tasks">
@@ -30,8 +30,8 @@ const TodoList = (): string => {
         <button class="todo-list__add-btn">+ Add</button>
       </div>
       
-      ${BackBtn("/")}
-    </div>
+      ${BackBtn("/todo/list/")}
+    </main>
   `;
 
   return view;

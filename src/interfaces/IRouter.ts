@@ -1,4 +1,4 @@
-type TPath = "/" | "/todo";
+type TPath = "/" | "/todo" | "/todo/list/";
 
 interface IRoute {
   path: TPath;

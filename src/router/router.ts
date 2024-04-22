@@ -6,12 +6,14 @@ import runRouterFunctional from "./runRouteFunctional";
 
 //Components
 import TodoListPage from "../components/todo-list/TodoListPage";
+import MyTodoListsPage from "../components/todo-list/MyTodoListsPage";
 import MainPage from "../components/MainPage";
 
 const router = () => {
   const routers: IRoute[] = [
     { path: "/", view: MainPage() },
-    { path: "/todo", view: TodoListPage() },
+    { path: "/todo", view: MyTodoListsPage() },
+    { path: "/todo/list/", view: TodoListPage() },
   ];
 
   const currentPath: string = window.location.pathname;
@@ -27,9 +29,9 @@ const router = () => {
     }
   });
 
-  if (!isMatch) {
-    window.history.pushState(null, "", "/");
-  }
+  // if (!isMatch) {
+  //   window.history.pushState(null, "", "/");
+  // }
 };
 
 const navigateTo = (url: string) => {

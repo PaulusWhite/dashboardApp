@@ -1,8 +1,6 @@
 @import "./common.scss";
 
 .main {
-  @include defaultBg;
-
   display: grid;
   grid-template:
     "toolbar forecast forecast"

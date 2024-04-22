@@ -24,7 +24,7 @@ const runRouterFunctional = (path: TPath) => {
   if (path === "/") {
     setGreeting();
   }
-  if (path === "/todo") {
+  if (path === "/todo/list/") {
     showTasks();
     addTask();
     updateTask();

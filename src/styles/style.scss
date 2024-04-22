@@ -18,3 +18,7 @@ button {
   outline: none;
   box-sizing: border-box;
 }
+
+html {
+  @include defaultBg;
+}
