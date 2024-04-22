@@ -16,8 +16,8 @@ const showTasks = () => {
   const { allTasks } = todoList;
 
   const noTasksMessage: HTMLHeadingElement = document.querySelector(".tasks__no-tasks") as HTMLHeadingElement;
-  const allTasksList: HTMLDivElement = document.querySelector("#tasks-list-all") as HTMLDivElement;
-  const importantTasksList: HTMLDivElement = document.querySelector("#tasks-list-important") as HTMLDivElement;
+  const allTasksList: HTMLUListElement = document.querySelector("#tasks-list-all") as HTMLUListElement;
+  const importantTasksList: HTMLUListElement = document.querySelector("#tasks-list-important") as HTMLUListElement;
 
   allTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
   importantTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module

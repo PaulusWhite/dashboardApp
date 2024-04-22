@@ -14,14 +14,14 @@ const displayTaskOptionsMenu = () => {
   todoList.addEventListener("click", (event: Event) => {
     const target: HTMLElement = event.target as HTMLElement;
 
-    if (!target.closest(".task__options")) {
+    if (!target.closest(".bullet-point__options")) {
       const activeOptionsMenu: HTMLElement | null = document.querySelector(".popup-options:not(.hide)");
       activeOptionsMenu && activeOptionsMenu.classList.add("hide");
 
       return;
     }
 
-    const taskOptionsBtn: HTMLButtonElement = target.closest(".task__options") as HTMLButtonElement;
+    const taskOptionsBtn: HTMLButtonElement = target.closest(".bullet-point__options") as HTMLButtonElement;
     const popupOptionsMenu: HTMLDivElement = taskOptionsBtn.parentElement?.nextElementSibling as HTMLDivElement;
 
     popupOptionsMenu.classList.remove("hide");

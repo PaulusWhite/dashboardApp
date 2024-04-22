@@ -26,9 +26,9 @@ const runRouterFunctional = (path: TPath) => {
   }
   if (path === "/todo") {
     showTasks();
-    // addTask();
-    // updateTask();
-    // displayTaskOptionsMenu();
+    addTask();
+    updateTask();
+    displayTaskOptionsMenu();
   }
 };
 

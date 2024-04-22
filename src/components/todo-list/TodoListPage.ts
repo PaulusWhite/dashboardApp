@@ -13,13 +13,12 @@ const TodoList = (): string => {
 
         <div class="tasks__all-tasks tasks__tasks-group">
           <h2>Tasks</h2>
-          <div class="tasks__tasks-list" id="tasks-list-all">
-          </div>
+          <ul class="tasks__tasks-list" id="tasks-list-all"></ul>
         </div>
 
         <div class="tasks__important-tasks tasks__tasks-group none">
           <h2>Important</h2>
-          <div class="tasks__tasks-list" id="tasks-list-important"></div>
+          <ul class="tasks__tasks-list" id="tasks-list-important"></ul>
         </div>
 
         <h3 class="tasks__no-tasks none">You do not have any tasks yet</h3>
