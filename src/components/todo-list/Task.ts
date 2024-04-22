@@ -23,6 +23,7 @@ const Task = (data: ITask): string => {
       </button>
 
       <p class="task__text">${data.text}</p>
+      
       <div class="task__edit-mode-field none">
         <input type="text" class="task__edit-input">
         <button class="task__edit-btn">
