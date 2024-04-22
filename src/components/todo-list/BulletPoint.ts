@@ -1,7 +1,8 @@
 //Icons
 import CheckIcon from "../../assets/icons/CheckIcon";
 import StarIcon from "../../assets/icons/StarIcon";
-import EditIcon from "../../assets/icons/EditIcon";
+// import EditIcon from "../../assets/icons/EditIcon";
+import SingleCheckIcon from "../../assets/icons/SingleCheckIcon";
 
 //Components
 import PopupLabel from "./PopupLabel";
@@ -20,7 +21,7 @@ const bulletPointData: IBulletPointObjectData = {
     className: "bullet-point__important-btn",
   },
   edit: {
-    icon: EditIcon(),
+    icon: SingleCheckIcon(),
     className: "bullet-point__edit-btn",
   },
 };
@@ -42,7 +43,7 @@ const BulletPoint = (data: IBulletPointData, type: "task" | "list"): string => {
   const { isCompleted, isImportant, isEditMode, id } = data;
   const importanceLabelText: string = data.isImportant ? "Remove importance" : "Mark as important";
   const statusLabelText: string = data.isCompleted ? "Mark as uncompleted" : "Mark as completed";
-  // const editLabelText: string = "Apply changes";
+  const apllyingLabelText: string = "Apply changes";
 
   const fulfillmentClass = isCompleted ? "bullet-point__completed" : "";
   const importanceClass = isImportant ? "bullet-point__important" : "";
@@ -53,6 +54,11 @@ const BulletPoint = (data: IBulletPointData, type: "task" | "list"): string => {
       ${type === "task" ? BulletPointBtn("complete", statusLabelText) : ""}
     
       <p class="bullet-point__text">${data.text}</p>
+
+      <div class="bullet-point__edit-mode-field none">
+        <input type="text" class="bullet-point__edit-input">
+        ${BulletPointBtn("edit", apllyingLabelText)}
+      </div>
 
       ${
         type === "task"
