@@ -5,7 +5,8 @@ import { getTodoList } from "../../storage/getSetTodoList";
 import { ITodoList, ITask } from "../../interfaces/ITodoList";
 
 //Components
-import Task from "../../components/todo-list/Task";
+import BulletPoint from "../../components/todo-list/BulletPoint";
+// import Task from "../../components/todo-list/Task";
 
 //Modules
 import displayImportantTasksList from "./displayImportantTasksList";
@@ -31,8 +32,9 @@ const showTasks = () => {
 
   allTasks.forEach((task: ITask) => {
     const isTaskImportant: boolean = task.isImportant;
+    const taskComponent: string = BulletPoint({ ...task }, "task"); //ITask interface keys match IBulletPointData interface
 
-    isTaskImportant ? (importantTasksList.innerHTML += Task(task)) : (allTasksList.innerHTML += Task(task));
+    isTaskImportant ? (importantTasksList.innerHTML += taskComponent) : (allTasksList.innerHTML += taskComponent);
   });
 
   displayImportantTasksList();

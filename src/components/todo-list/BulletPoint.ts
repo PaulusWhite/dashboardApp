@@ -7,40 +7,23 @@ import EditIcon from "../../assets/icons/EditIcon";
 import PopupLabel from "./PopupLabel";
 import PopupOptions from "./PopupOptions";
 
-interface IBulletPointData {
-  isCompleted?: boolean;
-  isImportant?: boolean;
-  isEditMode?: boolean;
-  bulletPointID: string;
-}
-
-interface IBulletPointBtnData {
-  icon: string;
-  className: "complete-btn" | "important-btn" | "edit-btn";
-}
-
-interface IBulletPointObjectData {
-  complete?: IBulletPointBtnData;
-  important?: IBulletPointBtnData;
-  edit?: IBulletPointBtnData;
-}
+//Interfaces
+import { IBulletPointObjectData, IBulletPointBtnData, IBulletPointData, TBulletPointBtnType } from "../../interfaces/ITodoList";
 
 const bulletPointData: IBulletPointObjectData = {
   complete: {
     icon: CheckIcon(),
-    className: "complete-btn",
+    className: "bullet-point__complete-btn",
   },
   important: {
     icon: StarIcon(),
-    className: "important-btn",
+    className: "bullet-point__important-btn",
   },
   edit: {
     icon: EditIcon(),
-    className: "edit-btn",
+    className: "bullet-point__edit-btn",
   },
 };
-
-type TBulletPointBtnType = "complete" | "important" | "edit";
 
 const BulletPointBtn = (btnType: TBulletPointBtnType, labelText: string): string => {
   const btnData: IBulletPointBtnData = bulletPointData[btnType] as IBulletPointBtnData;
@@ -56,28 +39,32 @@ const BulletPointBtn = (btnType: TBulletPointBtnType, labelText: string): string
 };
 
 const BulletPoint = (data: IBulletPointData, type: "task" | "list"): string => {
+  const { isCompleted, isImportant, isEditMode, id } = data;
   const importanceLabelText: string = data.isImportant ? "Remove importance" : "Mark as important";
   const statusLabelText: string = data.isCompleted ? "Mark as uncompleted" : "Mark as completed";
   // const editLabelText: string = "Apply changes";
 
+  const fulfillmentClass = isCompleted ? "bullet-point__completed" : "";
+  const importanceClass = isImportant ? "bullet-point__important" : "";
+
   const view: string = `
-    <li class="bullet-point ${data.isCompleted && "mark-completed"} ${data.isImportant && "mark-important"}" id="${data.bulletPointID}">
+    <li class="bullet-point ${fulfillmentClass} ${importanceClass}" id="${id}" data-bullet-point-type="${type}">
 
       ${type === "task" ? BulletPointBtn("complete", statusLabelText) : ""}
     
-      <p class="bullet-point__text"></p>
+      <p class="bullet-point__text">${data.text}</p>
 
       ${
         type === "task"
           ? `
-        <div class="task__tools">
+        <div class="bullet-point__tools">
 
           ${BulletPointBtn("important", importanceLabelText)}
 
-          <button class="task__options">
-            <span class="task__options-circle"></span>
-            <span class="task__options-circle"></span>
-            <span class="task__options-circle"></span>
+          <button class="bullet-point__options">
+            <span class="bullet-point__options-circle"></span>
+            <span class="bullet-point__options-circle"></span>
+            <span class="bullet-point__options-circle"></span>
             ${PopupLabel("More options")}
           </button>
           
