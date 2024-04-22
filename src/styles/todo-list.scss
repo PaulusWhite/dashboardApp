@@ -86,26 +86,27 @@
       @include listTemplate;
     }
   }
+}
 
-  .todo-list__input-field {
-    @include blockWidth;
-    display: flex;
-    width: 100%;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+//InputField component
+.input-field {
+  @include blockWidth;
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 
-    #todo-list__input {
-      @include input;
-      flex-grow: 1;
-      padding: 0.7rem;
-    }
+  #input-field__input {
+    @include input;
+    flex-grow: 1;
+    padding: 0.7rem;
+  }
 
-    .todo-list__add-btn {
-      @include secondBtn;
-      padding: 0.5rem 1.5rem;
-      border-top-right-radius: 0.3rem;
-      border-bottom-right-radius: 0.3rem;
-    }
+  .input-field__add-btn {
+    @include secondBtn;
+    padding: 0.5rem 1.5rem;
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
   }
 }
 

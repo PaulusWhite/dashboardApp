@@ -3,9 +3,12 @@ import CheckIcon from "../../assets/icons/CheckIcon";
 
 //Components
 import BackBtn from "../common/BackBtn";
+import InpitField from "./InputField";
 
 const TodoList = (): string => {
-  const view = `
+  const placeholder: string = "What do you want to do?";
+
+  const view: string = `
     <main class="todo-list">
       <h1> ${CheckIcon()} Todo List</h1>
 
@@ -25,10 +28,7 @@ const TodoList = (): string => {
 
       </div>
 
-      <div class="todo-list__input-field">
-        <input id="todo-list__input" type="text" placeholder="What do you need to do?">
-        <button class="todo-list__add-btn">+ Add</button>
-      </div>
+      ${InpitField(placeholder)}
       
       ${BackBtn("/todo/list/")}
     </main>
