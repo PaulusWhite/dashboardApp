@@ -4,6 +4,9 @@ import { IRoute } from "./../interfaces/IRouter";
 //runRouterPathFunc
 import runRouterFunctional from "./runRouteFunctional";
 
+//Utils
+import getCurrentTodoListIdFromURL from "../utils/getCurrentTodoListIdFromURL";
+
 //Components
 import TodoListPage from "../components/todo-list/TodoListPage";
 import MyTodoListsPage from "../components/todo-list/MyTodoListsPage";
@@ -13,7 +16,7 @@ const router = () => {
   const routers: IRoute[] = [
     { path: "/", view: MainPage() },
     { path: "/todo", view: MyTodoListsPage() },
-    { path: "/todo/list/", view: TodoListPage(window.location.hash.slice(1)) }, //hash is todoList ID
+    { path: "/todo/list/", view: TodoListPage(getCurrentTodoListIdFromURL()) },
   ];
 
   const currentPath: string = window.location.pathname;

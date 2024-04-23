@@ -1,16 +1,17 @@
 //storage
-import { getTodoListById, setTodoList } from "../../storage/getSetTodoList";
+import { getTodoListDataById, setTodoListData } from "../../storage/getSetTodoList";
 
 //Interfaces
 import { ITodoList, ITask, TBulletPointType, TPageClass } from "../../interfaces/ITodoList";
 
 //utils
 import getRandomID from "../../utils/getRandomID";
+import getCurrentTodoListIdFromURL from "../../utils/getCurrentTodoListIdFromURL";
 
 //Modules
 import showBulletPoints from "./showBulletPoints";
 
-const addBulletPointAction = (type: TBulletPointType, listId?: string) => {
+const addBulletPointAction = (type: TBulletPointType) => {
   const input: HTMLInputElement = document.querySelector("#input-field__input") as HTMLInputElement;
   const inputValue: string = input.value.replace(/\s{2,}/g, " ").trim();
 
@@ -18,7 +19,9 @@ const addBulletPointAction = (type: TBulletPointType, listId?: string) => {
 
   let addedTodoList: ITodoList;
 
-  if (type === "task" && listId) {
+  if (type === "task") {
+    const currenTodoListId = getCurrentTodoListIdFromURL();
+
     const newTask: ITask = {
       isCompleted: false,
       isImportant: false,
@@ -26,7 +29,7 @@ const addBulletPointAction = (type: TBulletPointType, listId?: string) => {
       id: getRandomID(),
     };
 
-    const updList: ITodoList = getTodoListById(listId) as ITodoList;
+    const updList: ITodoList = getTodoListDataById(currenTodoListId) as ITodoList;
     updList.allTasks.push(newTask);
 
     addedTodoList = updList;
@@ -40,7 +43,7 @@ const addBulletPointAction = (type: TBulletPointType, listId?: string) => {
 
   input.value = "";
 
-  setTodoList(addedTodoList);
+  setTodoListData(addedTodoList);
   showBulletPoints(type);
 
   document.body.scrollIntoView(false);

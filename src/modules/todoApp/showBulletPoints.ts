@@ -1,5 +1,5 @@
 //storage
-import { getMyTodoLists, getTodoListById } from "../../storage/getSetTodoList";
+import { getMyTodoListsData, getTodoListDataById } from "../../storage/getSetTodoList";
 
 //Interfaces
 import { ITodoList, ITask, TBulletPointType, TMyTodoLists } from "../../interfaces/ITodoList";
@@ -17,7 +17,7 @@ const showTasks = () => {
   const importantTasksList: HTMLUListElement = document.querySelector("#tasks-list-important") as HTMLUListElement;
 
   const todoListId: string = todoListPage.id;
-  const todoListData: ITodoList = getTodoListById(todoListId) as ITodoList;
+  const todoListData: ITodoList = getTodoListDataById(todoListId) as ITodoList;
   const { allTasks } = todoListData;
 
   allTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
@@ -44,7 +44,7 @@ const showTasks = () => {
 const showAllTodoLists = () => {
   const todoListsList: HTMLUListElement = document.querySelector(".my-todo-lists__list") as HTMLUListElement;
   const noListsMessage: HTMLHeadElement = document.querySelector(".my-todo-lists__no-lists") as HTMLHeadElement;
-  const myTodoListsData: TMyTodoLists = getMyTodoLists();
+  const myTodoListsData: TMyTodoLists = getMyTodoListsData();
 
   todoListsList.innerHTML = "";
 

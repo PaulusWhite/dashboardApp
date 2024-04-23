@@ -8,7 +8,7 @@ const setMyTodoListsData = (allTodoLists: TMyTodoLists) => {
   localStorage.setItem(TODO_LISTS_KEY, JSON.stringify(allTodoLists));
 };
 
-const getMyTodoLists = (): TMyTodoLists => {
+const getMyTodoListsData = (): TMyTodoLists => {
   const allTodoLists: string | null = localStorage.getItem(TODO_LISTS_KEY);
 
   if (!allTodoLists) {
@@ -20,16 +20,16 @@ const getMyTodoLists = (): TMyTodoLists => {
   return JSON.parse(allTodoLists as string) as TMyTodoLists;
 };
 
-const getTodoListById = (listId: string): ITodoList | undefined => {
-  const allTodoLists: TMyTodoLists = getMyTodoLists();
+const getTodoListDataById = (listId: string): ITodoList | undefined => {
+  const allTodoLists: TMyTodoLists = getMyTodoListsData();
   const todoList: ITodoList | undefined = allTodoLists.find((todoList: ITodoList) => todoList.id === listId);
 
   return todoList;
 };
 
-const setTodoList = (updTodoList: ITodoList) => {
-  const allTodoLists: TMyTodoLists = getMyTodoLists();
-  const isUpdTodoList: boolean = Boolean(getTodoListById(updTodoList.id));
+const setTodoListData = (updTodoList: ITodoList) => {
+  const allTodoLists: TMyTodoLists = getMyTodoListsData();
+  const isUpdTodoList: boolean = Boolean(getTodoListDataById(updTodoList.id));
 
   if (!isUpdTodoList) {
     allTodoLists.push(updTodoList);
@@ -38,11 +38,11 @@ const setTodoList = (updTodoList: ITodoList) => {
     return;
   }
 
-  const updAllTodoLists = allTodoLists.map((todoList: ITodoList) => {
+  const updAllTodoListsData = allTodoLists.map((todoList: ITodoList) => {
     return todoList.id === updTodoList.id ? updTodoList : todoList;
   });
 
-  setMyTodoListsData(updAllTodoLists);
+  setMyTodoListsData(updAllTodoListsData);
 };
 
-export { getMyTodoLists, getTodoListById, setTodoList };
+export { getMyTodoListsData, getTodoListDataById, setTodoListData };

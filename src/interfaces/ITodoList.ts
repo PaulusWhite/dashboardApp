@@ -13,7 +13,7 @@ interface ITodoList {
 
 type TMyTodoLists = ITodoList[];
 
-interface IUpdatedTaskData {
+interface IUpdBulletPointData {
   isCompleted?: boolean;
   isImportant?: boolean;
   text?: string;
@@ -40,8 +40,15 @@ interface IBulletPointObjectData {
   edit?: IBulletPointBtnData;
 }
 
+interface IUpdTodoListsData {
+  updDataType: TBulletPointType;
+  bulletPointId: string;
+  updData: IUpdBulletPointData;
+  isRemove?: boolean;
+}
+
 type TBulletPointType = "task" | "list";
 type TPageClass = "todo-list" | "my-todo-lists";
 
-export { ITask, ITodoList, IUpdatedTaskData, IBulletPointBtnData, IBulletPointData, IBulletPointObjectData };
+export { ITask, ITodoList, IUpdBulletPointData, IBulletPointBtnData, IBulletPointData, IBulletPointObjectData, IUpdTodoListsData };
 export { TMyTodoLists, TBulletPointBtnType, TBulletPointType, TPageClass };

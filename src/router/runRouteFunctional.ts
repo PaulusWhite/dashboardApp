@@ -6,6 +6,7 @@ import UserNameInputWindow from "../components/UserNameInputWindow";
 
 //Interfaces
 import { TPath } from "../interfaces/IRouter";
+import { TPageClass, TBulletPointType } from "../interfaces/ITodoList";
 
 //Modules for MainPage
 import setGreeting from "../modules/mainPage/setGreeting";
@@ -14,7 +15,7 @@ import setGreeting from "../modules/mainPage/setGreeting";
 import addBulletPoint from "../modules/todoApp/addBulletPoint";
 import showBulletPoints from "../modules/todoApp/showBulletPoints";
 import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
-// import updateTask from "../modules/todoApp/updateTask";
+import updateBulletPoint from "../modules/todoApp/updateBulletPoint";
 
 const runRouterFunctional = (path: TPath) => {
   document.body.innerHTML += UserNameInputWindow();
@@ -25,13 +26,20 @@ const runRouterFunctional = (path: TPath) => {
     setGreeting();
   }
   if (path === "/todo") {
-    showBulletPoints("list");
-    addBulletPoint("my-todo-lists");
+    const myTodoListsPageClass: TPageClass = "my-todo-lists";
+    const bulletPointType: TBulletPointType = "list";
+
+    showBulletPoints(bulletPointType);
+    addBulletPoint(myTodoListsPageClass);
+    updateBulletPoint(myTodoListsPageClass);
   }
   if (path === "/todo/list/") {
-    showBulletPoints("task");
-    addBulletPoint("todo-list");
-    // updateTask();
+    const todoListPageClass: TPageClass = "todo-list";
+    const bulletPointType: TBulletPointType = "task";
+
+    showBulletPoints(bulletPointType);
+    addBulletPoint(todoListPageClass);
+    updateBulletPoint(todoListPageClass);
     displayTaskOptionsMenu();
   }
 };

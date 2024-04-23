@@ -1,8 +1,8 @@
-// //Interfaces
-// import { IUpdatedTaskData } from "../../interfaces/ITodoList";
+//Interfaces
+import { TPageClass } from "../../interfaces/ITodoList";
 
-// //Modules
-// import updateTodoListData from "./updateTodoListData";
+//Modules
+import updateTodoListsData from "./updateTodoListsData";
 
 // const displayEditMode = (taskElement: HTMLLIElement, editModeField: HTMLDivElement, textField: HTMLParagraphElement) => {
 //   taskElement.classList.toggle("bullet-point__edit-mode");
@@ -18,27 +18,27 @@
 //   return { editModeField, editInput, textField };
 // };
 
-// const markAsCompletedAtion = (taskElement: HTMLLIElement, taskID: string) => {
-//   taskElement.classList.toggle("bullet-point__completed");
-//   const isTaskCompleted: boolean = taskElement.classList.contains("bullet-point__completed");
+const markTaskAction = (taskElement: HTMLLIElement, taskID: string, type: "importance" | "status") => {
+  // interface IUpdTaskData {
+  //   isImportant?: boolean,
+  //   isCompleted?: boolean,
+  // }
 
-//   const updatedTaskData: IUpdatedTaskData = {
-//     isCompleted: isTaskCompleted,
-//   };
+  const markClass = type === "importance" ? "bullet-point__important" : "bullet-point__completed";
+  taskElement.classList.toggle(markClass);
 
-//   updateTodoListData(taskID, updatedTaskData);
-// };
+  const isTaskMarked: boolean = taskElement.classList.contains(`${markClass}`);
 
-// const markAsImportantAction = (taskElement: HTMLLIElement, taskID: string) => {
-//   taskElement.classList.toggle("bullet-point__important");
-//   const isTaskImportant: boolean = taskElement.classList.contains("bullet-point__important");
+  const updTaskData = {
+    [type === "importance" ? "isImportant" : "isCompleted"]: isTaskMarked,
+  };
 
-//   const updatedTaskData: IUpdatedTaskData = {
-//     isImportant: isTaskImportant,
-//   };
-
-//   updateTodoListData(taskID, updatedTaskData);
-// };
+  updateTodoListsData({
+    updDataType: "task",
+    bulletPointId: taskID,
+    updData: updTaskData,
+  });
+};
 
 // const setEditModeAction = (taskElement: HTMLLIElement, taskID: string) => {
 //   const { editInput, textField, editModeField } = getEditModeElements(taskElement);
@@ -88,33 +88,33 @@
 
 //   const isTaskRemoved: boolean = !newTaskText ? true : false;
 
-//   updateTodoListData(taskID, updatedTaskData, isTaskRemoved);
+//   updateTodoListsData(taskID, updatedTaskData, isTaskRemoved);
 // };
 
-// const updateTask = () => {
-//   const allTasksList: HTMLDivElement = document.querySelector(".tasks") as HTMLDivElement;
+const updateBulletPoint = (pageClass: TPageClass) => {
+  const page: HTMLDivElement = document.querySelector(`.${pageClass}`) as HTMLDivElement;
 
-//   allTasksList.addEventListener("click", (event: Event) => {
-//     const target: HTMLElement = event.target as HTMLElement;
+  page.addEventListener("click", (event: Event) => {
+    const target: HTMLElement = event.target as HTMLElement;
 
-//     if (!target.closest(".bullet-point")) return;
+    if (!target.closest(".bullet-point")) return;
 
-//     const taskElement: HTMLLIElement = target.closest(".bullet-point") as HTMLLIElement;
-//     const taskID: string = taskElement.id;
+    const bulletPoint: HTMLLIElement = target.closest(".bullet-point") as HTMLLIElement;
+    const bulletPoindId: string = bulletPoint.id; // it can be either task id or list id
 
-//     if (target.closest(".bullet-point__complete-btn") || target.closest(".popup-options__complete-btn")) {
-//       markAsCompletedAtion(taskElement, taskID);
-//     }
+    if (target.closest(".bullet-point__complete-btn") || target.closest(".popup-options__complete-btn")) {
+      markTaskAction(bulletPoint, bulletPoindId, "status");
+    }
 
-//     if (target.closest(".bullet-point__important-btn") || target.closest(".popup-options__important-btn")) {
-//       markAsImportantAction(taskElement, taskID);
-//     }
+    if (target.closest(".bullet-point__important-btn") || target.closest(".popup-options__important-btn")) {
+      markTaskAction(bulletPoint, bulletPoindId, "importance");
+    }
 
-//     //updating with popup-options menu (delete and edit)
-//     if (target.closest(".popup-options__delete-btn")) updateTodoListData(taskID, {}, true);
-//     if (target.closest(".popup-options__edit-btn")) setEditModeAction(taskElement, taskID);
-//     if (target.closest(".bullet-point__edit-btn")) editTaskTextAction(taskElement, taskID);
-//   });
-// };
+    // //updating with popup-options menu (delete and edit)
+    // if (target.closest(".popup-options__delete-btn")) updateTodoListsData(taskID, {}, true);
+    // if (target.closest(".popup-options__edit-btn")) setEditModeAction(taskElement, taskID);
+    // if (target.closest(".bullet-point__edit-btn")) editTaskTextAction(taskElement, taskID);
+  });
+};
 
-// export default updateTask;
+export default updateBulletPoint;
