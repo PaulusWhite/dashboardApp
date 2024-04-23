@@ -75,6 +75,9 @@ const setEditModeAction = (
   const editTaskWithKeyboardAction = (event: KeyboardEvent) => {
     if (event.code === "Enter" || event.code === "NumpadEnter") {
       editBulletPointTextAction(bulletPoint, bulletPointId, bulletPointType);
+
+      page.removeEventListener("click", removeEditMode);
+      bulletPoint.removeEventListener("keydown", editTaskWithKeyboardAction);
     }
   };
 
