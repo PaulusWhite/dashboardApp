@@ -31,7 +31,7 @@ const TodoList = (listId: string): string => {
 
       ${InpitField(placeholder, applyBtnText)}
       
-      ${BackBtn("/todo/list/")}
+      ${BackBtn("/todo")}
     </main>
   `;
 

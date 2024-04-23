@@ -13,7 +13,7 @@ const router = () => {
   const routers: IRoute[] = [
     { path: "/", view: MainPage() },
     { path: "/todo", view: MyTodoListsPage() },
-    { path: "/todo/list/", view: TodoListPage(window.location.hash) }, //hash is todoList ID
+    { path: "/todo/list/", view: TodoListPage(window.location.hash.slice(1)) }, //hash is todoList ID
   ];
 
   const currentPath: string = window.location.pathname;
