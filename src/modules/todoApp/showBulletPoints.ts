@@ -41,20 +41,31 @@ const showTasks = () => {
   displayImportantTasksList();
 };
 
+const showAllTodoLists = () => {
+  const todoListsList: HTMLUListElement = document.querySelector(".my-todo-lists__list") as HTMLUListElement;
+  const noListsMessage: HTMLHeadElement = document.querySelector(".my-todo-lists__no-lists") as HTMLHeadElement;
+  const myTodoListsData: TMyTodoLists = getMyTodoLists();
+
+  todoListsList.innerHTML = "";
+
+  if (!myTodoListsData.length) {
+    noListsMessage.classList.remove("none");
+
+    return;
+  }
+
+  noListsMessage.classList.add("none");
+
+  myTodoListsData.forEach((todoList: ITodoList) => {
+    const { id, name } = todoList;
+
+    todoListsList.innerHTML += BulletPoint({ id, text: name }, "list");
+  });
+};
+
 const showBulletPoints = (type: TBulletPointType) => {
   if (type === "task") showTasks();
-
-  if (type === "list") {
-    const todoListsList: HTMLUListElement = document.querySelector(".my-todo-lists__list") as HTMLUListElement;
-    const myTodoListsData: TMyTodoLists = getMyTodoLists();
-
-    todoListsList.innerHTML = "";
-    myTodoListsData.forEach((todoList: ITodoList) => {
-      const { id, name } = todoList;
-
-      todoListsList.innerHTML += BulletPoint({ id, text: name }, "list");
-    });
-  }
+  if (type === "list") showAllTodoLists();
 };
 
 export default showBulletPoints;
