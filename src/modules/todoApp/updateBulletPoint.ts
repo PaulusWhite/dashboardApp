@@ -30,7 +30,7 @@ const markTaskAction = (taskElement: HTMLLIElement, taskID: string, type: "impor
   const isTaskMarked: boolean = taskElement.classList.contains(`${markClass}`);
 
   const updTaskData = {
-    [type === "importance" ? "isImportant" : "isCompleted"]: isTaskMarked,
+    [type === "importance" ? "isImportant" : "isCompleted"]: isTaskMarked, //
   };
 
   updateTodoListsData({
@@ -100,18 +100,20 @@ const updateBulletPoint = (pageClass: TPageClass) => {
     if (!target.closest(".bullet-point")) return;
 
     const bulletPoint: HTMLLIElement = target.closest(".bullet-point") as HTMLLIElement;
-    const bulletPoindId: string = bulletPoint.id; // it can be either task id or list id
+    const bulletPointId: string = bulletPoint.id; // it can be either task id or list id
 
     if (target.closest(".bullet-point__complete-btn") || target.closest(".popup-options__complete-btn")) {
-      markTaskAction(bulletPoint, bulletPoindId, "status");
+      markTaskAction(bulletPoint, bulletPointId, "status");
     }
 
     if (target.closest(".bullet-point__important-btn") || target.closest(".popup-options__important-btn")) {
-      markTaskAction(bulletPoint, bulletPoindId, "importance");
+      markTaskAction(bulletPoint, bulletPointId, "importance");
     }
 
     // //updating with popup-options menu (delete and edit)
-    // if (target.closest(".popup-options__delete-btn")) updateTodoListsData(taskID, {}, true);
+    if (target.closest(".popup-options__delete-btn"))
+      updateTodoListsData({ updDataType: "task", bulletPointId, updData: {}, isRemove: true });
+
     // if (target.closest(".popup-options__edit-btn")) setEditModeAction(taskElement, taskID);
     // if (target.closest(".bullet-point__edit-btn")) editTaskTextAction(taskElement, taskID);
   });
