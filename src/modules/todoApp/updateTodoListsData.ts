@@ -39,6 +39,7 @@ const updList = (updListId: string, updData: IUpdBulletPointData, isRemove: bool
 };
 
 const updateTodoListsData = (data: IUpdTodoListsData) => {
+  console.log(data);
   if (data.updDataType === "task") updTask(data.bulletPointId, data.updData, data.isRemove);
   if (data.updDataType === "list") updList(data.bulletPointId, data.updData, data.isRemove);
 };

@@ -35,7 +35,7 @@ interface IBulletPointBtnData {
     | "bullet-point__complete-btn"
     | "bullet-point__important-btn"
     | "bullet-point__edit-btn"
-    | "bullet-point__delete-btn"
+    | "bullet-point__option-delete-list-btn"
     | "bullet-point__option-edit-list-btn";
 }
 

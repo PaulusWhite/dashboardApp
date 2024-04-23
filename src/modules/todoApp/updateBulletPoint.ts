@@ -122,8 +122,8 @@ const updateBulletPoint = (pageClass: TPageClass) => {
     }
 
     // //updating with popup-options menu (delete and edit)
-    if (target.closest(".popup-options__delete-btn")) {
-      updateTodoListsData({ updDataType: "task", bulletPointId, updData: {}, isRemove: true });
+    if (target.closest(".popup-options__delete-btn") || target.closest(".bullet-point__option-delete-list-btn")) {
+      updateTodoListsData({ updDataType: bulletPointType, bulletPointId, updData: {}, isRemove: true });
     }
     if (target.closest(".popup-options__edit-btn") || target.closest(".bullet-point__option-edit-list-btn")) {
       setEditModeAction(bulletPoint, bulletPointId, pageClass, bulletPointType);

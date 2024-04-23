@@ -32,7 +32,7 @@ const bulletPointData: IBulletPointObjectData = {
   },
   delete: {
     icon: BinIcon(),
-    className: "bullet-point__delete-btn",
+    className: "bullet-point__option-delete-list-btn",
   },
 };
 
