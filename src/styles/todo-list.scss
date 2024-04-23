@@ -126,6 +126,10 @@
     background-color: rgba($hoverColor, 0.2);
   }
 
+  &[data-bullet-point-type="list"]:hover {
+    cursor: pointer;
+  }
+
   .bullet-point-btn,
   .bullet-point__options {
     position: relative;
