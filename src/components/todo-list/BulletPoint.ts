@@ -46,11 +46,13 @@ const BulletPoint = (data: IBulletPointData, type: TBulletPointType): string => 
   const statusLabelText: string = data.isCompleted ? "Mark as uncompleted" : "Mark as completed";
   const apllyingLabelText: string = "Apply changes";
 
-  const fulfillmentClass = isCompleted ? "bullet-point__completed" : "";
-  const importanceClass = isImportant ? "bullet-point__important" : "";
+  const fulfillmentClass: "bullet-point__completed" | "" = isCompleted ? "bullet-point__completed" : "";
+  const importanceClass: "bullet-point__important" | "" = isImportant ? "bullet-point__important" : "";
+  const navLinkClass: "nav-link" | "" = type === "list" ? "nav-link" : "";
+  const dataURL: string = navLinkClass ? `data-url="/todo/list/#${id}"` : "";
 
   const view: string = `
-    <li class="bullet-point ${fulfillmentClass} ${importanceClass}" id="${id}" data-bullet-point-type="${type}">
+    <li class="bullet-point ${fulfillmentClass} ${importanceClass} ${navLinkClass}" id="${id}" ${dataURL} data-bullet-point-type="${type}">
 
       ${type === "task" ? BulletPointBtn("complete", statusLabelText) : ""}
     

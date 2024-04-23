@@ -13,7 +13,7 @@ import setGreeting from "../modules/mainPage/setGreeting";
 //Modules for TodoApp
 import addBulletPoint from "../modules/todoApp/addBulletPoint";
 import showBulletPoints from "../modules/todoApp/showBulletPoints";
-// import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
+import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
 // import updateTask from "../modules/todoApp/updateTask";
 
 const runRouterFunctional = (path: TPath) => {
@@ -29,10 +29,10 @@ const runRouterFunctional = (path: TPath) => {
     addBulletPoint("my-todo-lists");
   }
   if (path === "/todo/list/") {
-    // showTasks();
-    // addBulletPoint("todo-list");
+    showBulletPoints("task");
+    addBulletPoint("todo-list");
     // updateTask();
-    // displayTaskOptionsMenu();
+    displayTaskOptionsMenu();
   }
 };
 
