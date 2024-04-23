@@ -29,10 +29,18 @@ const updTask = (updTaskId: string, updData: IUpdBulletPointData, isRemove: bool
   showBulletPoints("task");
 };
 
-const updateTodoListsData = (data: IUpdTodoListsData) => {
-  // const todoListsData: TMyTodoLists = getMyTodoListsData();
+const updList = (updListId: string, updData: IUpdBulletPointData, isRemove: boolean | undefined) => {
+  const todoList: ITodoList = getTodoListDataById(updListId) as ITodoList;
 
+  const updTodoListData: ITodoList = { ...todoList, name: updData.text as string };
+
+  setTodoListData(updTodoListData, isRemove);
+  showBulletPoints("list");
+};
+
+const updateTodoListsData = (data: IUpdTodoListsData) => {
   if (data.updDataType === "task") updTask(data.bulletPointId, data.updData, data.isRemove);
+  if (data.updDataType === "list") updList(data.bulletPointId, data.updData, data.isRemove);
 };
 
 export default updateTodoListsData;

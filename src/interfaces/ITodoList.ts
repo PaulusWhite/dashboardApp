@@ -19,7 +19,7 @@ interface IUpdBulletPointData {
   text?: string;
 }
 
-type TBulletPointBtnType = "complete" | "important" | "edit";
+type TBulletPointBtnType = "complete" | "important" | "editTaskName" | "editListName" | "delete";
 
 interface IBulletPointData {
   isCompleted?: boolean;
@@ -31,13 +31,20 @@ interface IBulletPointData {
 
 interface IBulletPointBtnData {
   icon: string;
-  className: "bullet-point__complete-btn" | "bullet-point__important-btn" | "bullet-point__edit-btn";
+  className:
+    | "bullet-point__complete-btn"
+    | "bullet-point__important-btn"
+    | "bullet-point__edit-btn"
+    | "bullet-point__delete-btn"
+    | "bullet-point__option-edit-list-btn";
 }
 
 interface IBulletPointObjectData {
   complete?: IBulletPointBtnData;
   important?: IBulletPointBtnData;
-  edit?: IBulletPointBtnData;
+  editTaskName?: IBulletPointBtnData;
+  editListName?: IBulletPointBtnData;
+  delete?: IBulletPointBtnData;
 }
 
 interface IUpdTodoListsData {

@@ -27,7 +27,7 @@ const getTodoListDataById = (listId: string): ITodoList | undefined => {
   return todoList;
 };
 
-const setTodoListData = (updTodoList: ITodoList) => {
+const setTodoListData = (updTodoList: ITodoList, isRemove?: boolean) => {
   const allTodoLists: TMyTodoLists = getMyTodoListsData();
   const isUpdTodoList: boolean = Boolean(getTodoListDataById(updTodoList.id));
 
@@ -38,9 +38,11 @@ const setTodoListData = (updTodoList: ITodoList) => {
     return;
   }
 
-  const updAllTodoListsData = allTodoLists.map((todoList: ITodoList) => {
+  let updAllTodoListsData = allTodoLists.map((todoList: ITodoList) => {
     return todoList.id === updTodoList.id ? updTodoList : todoList;
   });
+
+  if (isRemove) updAllTodoListsData = updAllTodoListsData.filter((todoList: ITodoList) => todoList.id !== updTodoList.id);
 
   setMyTodoListsData(updAllTodoListsData);
 };

@@ -1,7 +1,8 @@
 //Icons
 import CheckIcon from "../../assets/icons/CheckIcon";
 import StarIcon from "../../assets/icons/StarIcon";
-// import EditIcon from "../../assets/icons/EditIcon";
+import EditIcon from "../../assets/icons/EditIcon";
+import BinIcon from "../../assets/icons/BinIcon";
 import SingleCheckIcon from "../../assets/icons/SingleCheckIcon";
 
 //Components
@@ -21,9 +22,17 @@ const bulletPointData: IBulletPointObjectData = {
     icon: StarIcon(),
     className: "bullet-point__important-btn",
   },
-  edit: {
+  editTaskName: {
     icon: SingleCheckIcon(),
     className: "bullet-point__edit-btn",
+  },
+  editListName: {
+    icon: EditIcon(),
+    className: "bullet-point__option-edit-list-btn",
+  },
+  delete: {
+    icon: BinIcon(),
+    className: "bullet-point__delete-btn",
   },
 };
 
@@ -41,10 +50,11 @@ const BulletPointBtn = (btnType: TBulletPointBtnType, labelText: string): string
 };
 
 const BulletPoint = (data: IBulletPointData, type: TBulletPointType): string => {
-  const { isCompleted, isImportant, isEditMode, id } = data;
-  const importanceLabelText: string = data.isImportant ? "Remove importance" : "Mark as important";
-  const statusLabelText: string = data.isCompleted ? "Mark as uncompleted" : "Mark as completed";
+  const { isCompleted, isImportant, id } = data;
+  const importanceLabelText: string = data.isImportant ? "Remove importance" : "Mark as important"; //only for task
+  const statusLabelText: string = data.isCompleted ? "Mark as uncompleted" : "Mark as completed"; //only for task
   const apllyingLabelText: string = "Apply changes";
+  const removindLabelText: string = "Delete the list"; //only for list
 
   const fulfillmentClass: "bullet-point__completed" | "" = isCompleted ? "bullet-point__completed" : "";
   const importanceClass: "bullet-point__important" | "" = isImportant ? "bullet-point__important" : "";
@@ -60,26 +70,28 @@ const BulletPoint = (data: IBulletPointData, type: TBulletPointType): string => 
 
       <div class="bullet-point__edit-mode-field none">
         <input type="text" class="bullet-point__edit-input">
-        ${BulletPointBtn("edit", apllyingLabelText)}
+        ${BulletPointBtn("editTaskName", apllyingLabelText)}
       </div>
 
-      ${
-        type === "task"
-          ? `
-        <div class="bullet-point__tools">
+      <div class="bullet-point__tools">
+        ${
+          type === "task"
+            ? `
+              ${BulletPointBtn("important", importanceLabelText)}
 
-          ${BulletPointBtn("important", importanceLabelText)}
-
-          <button class="bullet-point__options">
-            <span class="bullet-point__options-circle"></span>
-            <span class="bullet-point__options-circle"></span>
-            <span class="bullet-point__options-circle"></span>
-            ${PopupLabel("More options")}
-          </button>
-          
-        </div>`
-          : ""
-      }
+              <button class="bullet-point__options">
+                <span class="bullet-point__options-circle"></span>
+                <span class="bullet-point__options-circle"></span>
+                <span class="bullet-point__options-circle"></span>
+                ${PopupLabel("More options")}
+              </button>
+           `
+            : `
+            ${BulletPointBtn("editListName", apllyingLabelText)}
+            ${BulletPointBtn("delete", removindLabelText)}
+          `
+        }
+      </div>
 
       ${type === "task" ? PopupOptions(importanceLabelText, statusLabelText) : ""}
     </li>

@@ -5,21 +5,27 @@ import { TPageClass, TBulletPointType, IUpdBulletPointData } from "../../interfa
 import updateTodoListsData from "./updateTodoListsData";
 
 const displayEditMode = (bulletPoint: HTMLLIElement, editModeField: HTMLDivElement, textField: HTMLParagraphElement) => {
+  const optionEditListBtn: HTMLButtonElement | null = document.querySelector(".bullet-point__option-edit-list-btn");
+
   bulletPoint.classList.toggle("bullet-point__edit-mode");
   editModeField.classList.toggle("none");
   textField.classList.toggle("none");
+  optionEditListBtn?.classList.toggle("none");
 };
 
-const getEditModeElements = (bulletPoint: HTMLLIElement) => {
-  const editModeField: HTMLDivElement = bulletPoint.children[2] as HTMLDivElement;
+const getEditModeElements = (bulletPoint: HTMLLIElement, bulletPointType: TBulletPointType) => {
+  const editModeFieldIndex: 2 | 1 = bulletPointType === "task" ? 2 : 1;
+  const textFieldIndex: 1 | 0 = bulletPointType === "task" ? 1 : 0;
+
+  const editModeField: HTMLDivElement = bulletPoint.children[editModeFieldIndex] as HTMLDivElement;
   const editInput: HTMLInputElement = editModeField.firstElementChild as HTMLInputElement;
-  const textField: HTMLParagraphElement = bulletPoint.children[1] as HTMLParagraphElement;
+  const textField: HTMLParagraphElement = bulletPoint.children[textFieldIndex] as HTMLParagraphElement;
 
   return { editModeField, editInput, textField };
 };
 
 const editBulletPointTextAction = (bulletPoint: HTMLLIElement, bulletPointId: string, bulletPointType: TBulletPointType) => {
-  const { editInput, textField, editModeField } = getEditModeElements(bulletPoint);
+  const { editInput, textField, editModeField } = getEditModeElements(bulletPoint, bulletPointType);
 
   displayEditMode(bulletPoint, editModeField, textField);
 
@@ -57,7 +63,7 @@ const setEditModeAction = (
   pageClass: TPageClass,
   bulletPointType: TBulletPointType,
 ) => {
-  const { editInput, textField, editModeField } = getEditModeElements(bulletPoint);
+  const { editInput, textField, editModeField } = getEditModeElements(bulletPoint, bulletPointType);
 
   displayEditMode(bulletPoint, editModeField, textField);
 
@@ -66,7 +72,7 @@ const setEditModeAction = (
   editInput.value = textField.innerHTML;
   editInput.focus();
 
-  const editTaskWithKeuboardAction = (event: KeyboardEvent) => {
+  const editTaskWithKeyboardAction = (event: KeyboardEvent) => {
     if (event.code === "Enter" || event.code === "NumpadEnter") {
       editBulletPointTextAction(bulletPoint, bulletPointId, bulletPointType);
     }
@@ -74,18 +80,18 @@ const setEditModeAction = (
 
   const removeEditMode = (event: Event) => {
     const target: HTMLElement = event.target as HTMLElement;
-    const clickedBulletPointInput: HTMLInputElement | null = target.closest(".bullet-point__edit-input");
-    const clickedBulletPoind: HTMLDivElement | null = target.closest(".bullet-point");
 
-    if (clickedBulletPoind && clickedBulletPoind.id === bulletPointId && clickedBulletPointInput) return;
+    if (target.closest(".bullet-point__edit-mode") && !target.closest(".bullet-point__edit-btn")) return;
 
-    displayEditMode(bulletPoint, editModeField, textField);
+    if (target.closest(".bullet-point__edit-btn")) {
+      editBulletPointTextAction(bulletPoint, bulletPointId, bulletPointType);
+    } else displayEditMode(bulletPoint, editModeField, textField);
 
     page.removeEventListener("click", removeEditMode);
-    bulletPoint.removeEventListener("keydown", editTaskWithKeuboardAction);
+    bulletPoint.removeEventListener("keydown", editTaskWithKeyboardAction);
   };
 
-  bulletPoint.addEventListener("keydown", editTaskWithKeuboardAction);
+  bulletPoint.addEventListener("keydown", editTaskWithKeyboardAction);
 
   setTimeout(() => {
     page.addEventListener("click", removeEditMode);
@@ -116,8 +122,9 @@ const updateBulletPoint = (pageClass: TPageClass) => {
     if (target.closest(".popup-options__delete-btn")) {
       updateTodoListsData({ updDataType: "task", bulletPointId, updData: {}, isRemove: true });
     }
-    if (target.closest(".popup-options__edit-btn")) setEditModeAction(bulletPoint, bulletPointId, pageClass, bulletPointType);
-    if (target.closest(".bullet-point__edit-btn")) editBulletPointTextAction(bulletPoint, bulletPointId, bulletPointType);
+    if (target.closest(".popup-options__edit-btn") || target.closest(".bullet-point__option-edit-list-btn")) {
+      setEditModeAction(bulletPoint, bulletPointId, pageClass, bulletPointType);
+    }
   });
 };
 
