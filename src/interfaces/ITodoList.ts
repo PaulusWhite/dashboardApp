@@ -7,7 +7,11 @@ interface ITask {
 
 interface ITodoList {
   allTasks: ITask[];
+  name: string;
+  id: string;
 }
+
+type TMyTodoLists = ITodoList[];
 
 interface IUpdatedTaskData {
   isCompleted?: boolean;
@@ -36,4 +40,8 @@ interface IBulletPointObjectData {
   edit?: IBulletPointBtnData;
 }
 
-export { ITask, ITodoList, IUpdatedTaskData, TBulletPointBtnType, IBulletPointBtnData, IBulletPointData, IBulletPointObjectData };
+type TBulletPointType = "task" | "list";
+type TPageClass = "todo-list" | "my-todo-lists";
+
+export { ITask, ITodoList, IUpdatedTaskData, IBulletPointBtnData, IBulletPointData, IBulletPointObjectData };
+export { TMyTodoLists, TBulletPointBtnType, TBulletPointType, TPageClass };

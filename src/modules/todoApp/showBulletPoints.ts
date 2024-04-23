@@ -1,23 +1,24 @@
 //storage
-import { getTodoList } from "../../storage/getSetTodoList";
+import { getMyTodoLists, getTodoListById } from "../../storage/getSetTodoList";
 
 //Interfaces
-import { ITodoList, ITask } from "../../interfaces/ITodoList";
+import { ITodoList, ITask, TBulletPointType, TMyTodoLists } from "../../interfaces/ITodoList";
 
 //Components
 import BulletPoint from "../../components/todo-list/BulletPoint";
-// import Task from "../../components/todo-list/Task";
 
 //Modules
 import displayImportantTasksList from "./displayImportantTasksList";
 
 const showTasks = () => {
-  const todoList: ITodoList = getTodoList();
-  const { allTasks } = todoList;
-
+  const todoListPage: HTMLDivElement = document.querySelector(".todo-list") as HTMLDivElement;
   const noTasksMessage: HTMLHeadingElement = document.querySelector(".tasks__no-tasks") as HTMLHeadingElement;
   const allTasksList: HTMLUListElement = document.querySelector("#tasks-list-all") as HTMLUListElement;
   const importantTasksList: HTMLUListElement = document.querySelector("#tasks-list-important") as HTMLUListElement;
+
+  const todoListId: string = todoListPage.id;
+  const todoListData: ITodoList = getTodoListById(todoListId) as ITodoList;
+  const { allTasks } = todoListData;
 
   allTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
   importantTasksList.innerHTML = ""; //this is neccesery for using this func after adding new task in AddTask.ts module
@@ -40,4 +41,20 @@ const showTasks = () => {
   displayImportantTasksList();
 };
 
-export default showTasks;
+const showBulletPoints = (type: TBulletPointType) => {
+  if (type === "task") showTasks();
+
+  if (type === "list") {
+    const todoListsList: HTMLUListElement = document.querySelector(".my-todo-lists__list") as HTMLUListElement;
+    const myTodoListsData: TMyTodoLists = getMyTodoLists();
+
+    todoListsList.innerHTML = "";
+    myTodoListsData.forEach((todoList: ITodoList) => {
+      const { id, name } = todoList;
+
+      todoListsList.innerHTML += BulletPoint({ id, text: name }, "list");
+    });
+  }
+};
+
+export default showBulletPoints;

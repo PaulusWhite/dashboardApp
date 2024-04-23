@@ -11,10 +11,10 @@ import { TPath } from "../interfaces/IRouter";
 import setGreeting from "../modules/mainPage/setGreeting";
 
 //Modules for TodoApp
-import addTask from "../modules/todoApp/addTask";
-import showTasks from "../modules/todoApp/showTasks";
-import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
-import updateTask from "../modules/todoApp/updateTask";
+import addBulletPoint from "../modules/todoApp/addBulletPoint";
+import showBulletPoints from "../modules/todoApp/showBulletPoints";
+// import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
+// import updateTask from "../modules/todoApp/updateTask";
 
 const runRouterFunctional = (path: TPath) => {
   document.body.innerHTML += UserNameInputWindow();
@@ -24,11 +24,15 @@ const runRouterFunctional = (path: TPath) => {
   if (path === "/") {
     setGreeting();
   }
+  if (path === "/todo") {
+    showBulletPoints("list");
+    addBulletPoint("my-todo-lists");
+  }
   if (path === "/todo/list/") {
-    showTasks();
-    addTask();
-    updateTask();
-    displayTaskOptionsMenu();
+    // showTasks();
+    // addBulletPoint("todo-list");
+    // updateTask();
+    // displayTaskOptionsMenu();
   }
 };
 

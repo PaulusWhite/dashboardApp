@@ -5,11 +5,12 @@ import CheckIcon from "../../assets/icons/CheckIcon";
 import BackBtn from "../common/BackBtn";
 import InpitField from "./InputField";
 
-const TodoList = (): string => {
+const TodoList = (listId: string): string => {
   const placeholder: string = "What do you want to do?";
+  const applyBtnText: string = "Add";
 
   const view: string = `
-    <main class="todo-list">
+    <main class="todo-list" id="${listId}">
       <h1> ${CheckIcon()} Todo List</h1>
 
       <div class="tasks">
@@ -28,7 +29,7 @@ const TodoList = (): string => {
 
       </div>
 
-      ${InpitField(placeholder)}
+      ${InpitField(placeholder, applyBtnText)}
       
       ${BackBtn("/todo/list/")}
     </main>

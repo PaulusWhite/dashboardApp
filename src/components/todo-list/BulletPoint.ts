@@ -10,6 +10,7 @@ import PopupOptions from "./PopupOptions";
 
 //Interfaces
 import { IBulletPointObjectData, IBulletPointBtnData, IBulletPointData, TBulletPointBtnType } from "../../interfaces/ITodoList";
+import { TBulletPointType } from "../../interfaces/ITodoList";
 
 const bulletPointData: IBulletPointObjectData = {
   complete: {
@@ -39,7 +40,7 @@ const BulletPointBtn = (btnType: TBulletPointBtnType, labelText: string): string
   return view;
 };
 
-const BulletPoint = (data: IBulletPointData, type: "task" | "list"): string => {
+const BulletPoint = (data: IBulletPointData, type: TBulletPointType): string => {
   const { isCompleted, isImportant, isEditMode, id } = data;
   const importanceLabelText: string = data.isImportant ? "Remove importance" : "Mark as important";
   const statusLabelText: string = data.isCompleted ? "Mark as uncompleted" : "Mark as completed";

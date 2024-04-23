@@ -13,15 +13,15 @@ const router = () => {
   const routers: IRoute[] = [
     { path: "/", view: MainPage() },
     { path: "/todo", view: MyTodoListsPage() },
-    { path: "/todo/list/", view: TodoListPage() },
+    { path: "/todo/list/", view: TodoListPage(window.location.hash) }, //hash is todoList ID
   ];
 
   const currentPath: string = window.location.pathname;
-  let isMatch = false;
+  // let isMatch = false;
 
   routers.forEach((route: IRoute) => {
     if (route.path === currentPath) {
-      isMatch = true;
+      // isMatch = true;
       document.body.innerHTML = "";
       document.body.innerHTML += route.view;
 
