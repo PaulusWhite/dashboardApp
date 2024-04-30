@@ -10,7 +10,7 @@ import { getTodoListDataById, setTodoListData } from "../../storage/getSetTodoLi
 //Modules
 import showBulletPoints from "./showBulletPoints";
 
-const updTask = (updTaskId: string, updData: IUpdBulletPointData, isRemove: boolean | undefined) => {
+const updTask = (updTaskId: string, updData: IUpdBulletPointData, isRemove: boolean | undefined): void => {
   const currenTodoListId: string = getCurrentTodoListIdFromURL();
   const todoList: ITodoList = getTodoListDataById(currenTodoListId) as ITodoList;
   let { allTasks } = todoList;
@@ -29,7 +29,7 @@ const updTask = (updTaskId: string, updData: IUpdBulletPointData, isRemove: bool
   showBulletPoints("task");
 };
 
-const updList = (updListId: string, updData: IUpdBulletPointData, isRemove: boolean | undefined) => {
+const updList = (updListId: string, updData: IUpdBulletPointData, isRemove: boolean | undefined): void => {
   const todoList: ITodoList = getTodoListDataById(updListId) as ITodoList;
 
   const updTodoListData: ITodoList = { ...todoList, name: updData.text as string };
@@ -38,7 +38,7 @@ const updList = (updListId: string, updData: IUpdBulletPointData, isRemove: bool
   showBulletPoints("list");
 };
 
-const updateTodoListsData = (data: IUpdTodoListsData) => {
+const updateTodoListsData = (data: IUpdTodoListsData): void => {
   console.log(data);
   if (data.updDataType === "task") updTask(data.bulletPointId, data.updData, data.isRemove);
   if (data.updDataType === "list") updList(data.bulletPointId, data.updData, data.isRemove);

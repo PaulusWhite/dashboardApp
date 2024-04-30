@@ -17,7 +17,7 @@ import showBulletPoints from "../modules/todoApp/showBulletPoints";
 import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
 import updateBulletPoint from "../modules/todoApp/updateBulletPoint";
 
-const runRouterFunctional = (path: TPath) => {
+const runRouterFunctional = (path: TPath): void => {
   document.body.innerHTML += UserNameInputWindow();
 
   if (path !== "/") clearTimeout(getGreetingTimeoutID());
@@ -41,7 +41,6 @@ const runRouterFunctional = (path: TPath) => {
     addBulletPoint(todoListPageClass);
     updateBulletPoint(todoListPageClass);
     displayTaskOptionsMenu();
-    
   }
 };
 

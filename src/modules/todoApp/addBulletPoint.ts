@@ -11,8 +11,8 @@ import getCurrentTodoListIdFromURL from "../../utils/getCurrentTodoListIdFromURL
 //Modules
 import showBulletPoints from "./showBulletPoints";
 
-const addBulletPointAction = (type: TBulletPointType) => {
-  const input: HTMLInputElement = document.querySelector("#input-field__input") as HTMLInputElement;
+const addBulletPointAction = (type: TBulletPointType): void => {
+  const input: HTMLInputElement = document.querySelector("#input-field__input")!;
   const inputValue: string = input.value.replace(/\s{2,}/g, " ").trim();
 
   if (!inputValue) return;
@@ -49,9 +49,9 @@ const addBulletPointAction = (type: TBulletPointType) => {
   document.body.scrollIntoView(false);
 };
 
-const addBulletPoint = (pageClass: TPageClass) => {
-  const page: HTMLDivElement = document.querySelector(`.${pageClass}`) as HTMLDivElement;
-  const addBtn: HTMLButtonElement = document.querySelector(".input-field__add-btn") as HTMLButtonElement;
+const addBulletPoint = (pageClass: TPageClass): void => {
+  const page: HTMLDivElement = document.querySelector(`.${pageClass}`)!;
+  const addBtn: HTMLButtonElement = document.querySelector(".input-field__add-btn")!;
 
   const bulletPointType: TBulletPointType = pageClass === "my-todo-lists" ? "list" : "task";
 

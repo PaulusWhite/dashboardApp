@@ -54,8 +54,14 @@ interface IUpdTodoListsData {
   isRemove?: boolean;
 }
 
+interface IEditModeElements {
+  editModeField: HTMLDivElement;
+  editInput: HTMLInputElement;
+  textField: HTMLParagraphElement;
+}
+
 type TBulletPointType = "task" | "list";
 type TPageClass = "todo-list" | "my-todo-lists";
 
 export { ITask, ITodoList, IUpdBulletPointData, IBulletPointBtnData, IBulletPointData, IBulletPointObjectData, IUpdTodoListsData };
-export { TMyTodoLists, TBulletPointBtnType, TBulletPointType, TPageClass };
+export { TMyTodoLists, TBulletPointBtnType, TBulletPointType, TPageClass, IEditModeElements };

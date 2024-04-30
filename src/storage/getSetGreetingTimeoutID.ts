@@ -1,6 +1,6 @@
 const GREETING_TIMEOUT_KEY = "greeting-timeout-id";
 
-const setGreetingTimeoutID = (greetingID: NodeJS.Timeout) => {
+const setGreetingTimeoutID = (greetingID: NodeJS.Timeout): void => {
   sessionStorage.setItem(GREETING_TIMEOUT_KEY, `${greetingID}`);
 };
 

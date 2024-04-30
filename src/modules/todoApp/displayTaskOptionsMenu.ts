@@ -1,5 +1,5 @@
-const hideExtraOptionsMenu = (openedOptionsMenu?: HTMLDivElement) => {
-  const allOptionsMenus: NodeListOf<HTMLDivElement> = document.querySelectorAll(".popup-options") as NodeListOf<HTMLDivElement>;
+const hideExtraOptionsMenu = (openedOptionsMenu?: HTMLDivElement): void => {
+  const allOptionsMenus: NodeListOf<HTMLDivElement> = document.querySelectorAll(".popup-options")!;
 
   allOptionsMenus.forEach((optionsMenu: HTMLDivElement) => {
     if (openedOptionsMenu && optionsMenu === openedOptionsMenu) return;
@@ -8,8 +8,8 @@ const hideExtraOptionsMenu = (openedOptionsMenu?: HTMLDivElement) => {
   });
 };
 
-const displayTaskOptionsMenu = () => {
-  const todoList: HTMLDivElement = document.querySelector(".todo-list") as HTMLDivElement;
+const displayTaskOptionsMenu = (): void => {
+  const todoList: HTMLDivElement = document.querySelector(".todo-list")!;
 
   todoList.addEventListener("click", (event: Event) => {
     const target: HTMLElement = event.target as HTMLElement;
@@ -21,7 +21,7 @@ const displayTaskOptionsMenu = () => {
       return;
     }
 
-    const taskOptionsBtn: HTMLButtonElement = target.closest(".bullet-point__options") as HTMLButtonElement;
+    const taskOptionsBtn: HTMLButtonElement = target.closest(".bullet-point__options")!;
     const popupOptionsMenu: HTMLDivElement = taskOptionsBtn.parentElement?.nextElementSibling as HTMLDivElement;
 
     popupOptionsMenu.classList.remove("hide");

@@ -3,15 +3,15 @@ import { getUserName, setUserName } from "../storage/getSetUserName";
 
 //modules
 import setGreeting from "./mainPage/setGreeting";
-import displayComponent from "./common/displayComponents";
+import displayComponent from "./common/displayComponent";
 
-const displayNameInputWindow = (flag: boolean) => {
-  const userNameInputWindow: HTMLElement = document.querySelector(".username-input-window") as HTMLElement;
+const displayNameInputWindow = (flag: boolean): void => {
+  const userNameInputWindow: HTMLElement = document.querySelector(".username-input-window")!;
 
   displayComponent(userNameInputWindow, flag, 500);
 };
 
-const applyUserName = (input: HTMLInputElement) => {
+const applyUserName = (input: HTMLInputElement): void => {
   let userNameValue: string = input.value.trim();
   userNameValue = userNameValue ? userNameValue : "Buddy";
 
@@ -22,23 +22,23 @@ const applyUserName = (input: HTMLInputElement) => {
   window.removeEventListener("keydown", applyUserNameWithKeyboard);
 };
 
-const applyUserNameWithKeyboard = (Event: KeyboardEvent) => {
-  const input: HTMLInputElement = document.querySelector("#username-input") as HTMLInputElement;
+const applyUserNameWithKeyboard = (Event: KeyboardEvent): void => {
+  const input: HTMLInputElement = document.querySelector("#username-input")!;
 
   if (input !== document.activeElement) return;
 
   if (Event.code === "Enter" || Event.code === "NumpadEnter") applyUserName(input);
 };
 
-const askUserName = () => {
+const askUserName = (): void => {
   const userName: string | null = getUserName();
 
   if (userName) return;
 
   displayNameInputWindow(true);
 
-  const input: HTMLInputElement = document.querySelector("#username-input") as HTMLInputElement;
-  const okBtn: HTMLButtonElement = document.querySelector(".username-input-window__okBtn") as HTMLButtonElement;
+  const input: HTMLInputElement = document.querySelector("#username-input")!;
+  const okBtn: HTMLButtonElement = document.querySelector(".username-input-window__okBtn")!;
 
   input.focus();
 

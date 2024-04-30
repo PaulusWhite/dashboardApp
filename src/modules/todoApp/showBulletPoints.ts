@@ -10,11 +10,11 @@ import BulletPoint from "../../components/todo-list/BulletPoint";
 //Modules
 import displayImportantTasksList from "./displayImportantTasksList";
 
-const showTasks = () => {
-  const todoListPage: HTMLDivElement = document.querySelector(".todo-list") as HTMLDivElement;
-  const noTasksMessage: HTMLHeadingElement = document.querySelector(".tasks__no-tasks") as HTMLHeadingElement;
-  const allTasksList: HTMLUListElement = document.querySelector("#tasks-list-all") as HTMLUListElement;
-  const importantTasksList: HTMLUListElement = document.querySelector("#tasks-list-important") as HTMLUListElement;
+const showTasks = (): void => {
+  const todoListPage: HTMLDivElement = document.querySelector(".todo-list")!;
+  const noTasksMessage: HTMLHeadingElement = document.querySelector(".tasks__no-tasks")!;
+  const allTasksList: HTMLUListElement = document.querySelector("#tasks-list-all")!;
+  const importantTasksList: HTMLUListElement = document.querySelector("#tasks-list-important")!;
 
   const todoListId: string = todoListPage.id;
   const todoListData: ITodoList = getTodoListDataById(todoListId) as ITodoList;
@@ -41,9 +41,9 @@ const showTasks = () => {
   displayImportantTasksList();
 };
 
-const showAllTodoLists = () => {
-  const todoListsList: HTMLUListElement = document.querySelector(".my-todo-lists__list") as HTMLUListElement;
-  const noListsMessage: HTMLHeadElement = document.querySelector(".my-todo-lists__no-lists") as HTMLHeadElement;
+const showAllTodoLists = (): void => {
+  const todoListsList: HTMLUListElement = document.querySelector(".my-todo-lists__list")!;
+  const noListsMessage: HTMLHeadElement = document.querySelector(".my-todo-lists__no-lists")!;
   const myTodoListsData: TMyTodoLists = getMyTodoListsData();
 
   todoListsList.innerHTML = "";
@@ -63,7 +63,7 @@ const showAllTodoLists = () => {
   });
 };
 
-const showBulletPoints = (type: TBulletPointType) => {
+const showBulletPoints = (type: TBulletPointType): void => {
   if (type === "task") showTasks();
   if (type === "list") showAllTodoLists();
 };

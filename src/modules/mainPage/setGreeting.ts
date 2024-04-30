@@ -9,14 +9,14 @@ import { getUserName } from "../../storage/getSetUserName";
 
 const SEC_PER_MIN: number = 60;
 
-const setGreeting = () => {
-  const greetingTime: HTMLParagraphElement = document.querySelector(".greeting__time") as HTMLParagraphElement;
-  const greetingName: HTMLParagraphElement = document.querySelector(".greeting__name") as HTMLParagraphElement;
+const setGreeting = (): void => {
+  const greetingTime: HTMLParagraphElement = document.querySelector(".greeting__time")!;
+  const greetingName: HTMLParagraphElement = document.querySelector(".greeting__name")!;
 
   const [hours, minutes, seconds] = getCurrentTime();
-  greetingTime.textContent = `${hours}:${minutes}`;
-
   let userName: string | null = getUserName();
+
+  greetingTime.textContent = `${hours}:${minutes}`;
   userName = userName ? userName : "Buddy";
 
   const greetingPhrase: string = `Hello, dear ${userName}`;

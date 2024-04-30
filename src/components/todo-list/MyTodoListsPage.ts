@@ -9,7 +9,7 @@ const MyTodoListsPage = (): string => {
   const placeholder: string = "Create new list";
   const applyBtnText: string = "Create";
 
-  const view: string = `
+  const view = `
     <main class="my-todo-lists">
       <h1>${CheckIcon()} My Todo Lists</h1>
 

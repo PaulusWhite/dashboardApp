@@ -12,7 +12,7 @@ import TodoListPage from "../components/todo-list/TodoListPage";
 import MyTodoListsPage from "../components/todo-list/MyTodoListsPage";
 import MainPage from "../components/MainPage";
 
-const router = () => {
+const router = (): void => {
   const routers: IRoute[] = [
     { path: "/", view: MainPage() },
     { path: "/todo", view: MyTodoListsPage() },
@@ -37,7 +37,7 @@ const router = () => {
   // }
 };
 
-const navigateTo = (url: string) => {
+const navigateTo = (url: string): void => {
   window.history.pushState(null, "", url);
 
   // if (url === "/") {

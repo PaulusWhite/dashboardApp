@@ -9,7 +9,7 @@ const TodoList = (listId: string): string => {
   const placeholder: string = "What do you want to do?";
   const applyBtnText: string = "Add";
 
-  const view: string = `
+  const view = `
     <main class="todo-list" id="${listId}">
       <h1> ${CheckIcon()} <span class="todo-list__name"></span></h1>
 

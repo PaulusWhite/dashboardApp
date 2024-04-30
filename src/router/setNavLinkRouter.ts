@@ -1,7 +1,7 @@
 //modules
 import { navigateTo } from "./router";
 
-const isPreventedClassName = (element: HTMLElement) => {
+const isPreventedClassName = (element: HTMLElement): boolean => {
   const preventedClasses: string[] = ["bullet-point__edit-mode", "bullet-point__tools", "bullet-point__edit-btn"];
 
   const isPrevented: boolean = preventedClasses.some((className: string) => element.closest(`.${className}`));
@@ -9,7 +9,7 @@ const isPreventedClassName = (element: HTMLElement) => {
   return isPrevented;
 };
 
-const setNavLinkRouter = () => {
+const setNavLinkRouter = (): void => {
   window.addEventListener("click", (event: Event) => {
     const target: HTMLElement = event.target as HTMLElement;
 

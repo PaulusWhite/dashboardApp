@@ -1,10 +1,10 @@
 //Interfaces
-import { TPageClass, TBulletPointType, IUpdBulletPointData } from "../../interfaces/ITodoList";
+import { TPageClass, TBulletPointType, IUpdBulletPointData, IEditModeElements } from "../../interfaces/ITodoList";
 
 //Modules
 import updateTodoListsData from "./updateTodoListsData";
 
-const displayEditMode = (bulletPoint: HTMLLIElement, editModeField: HTMLDivElement, textField: HTMLParagraphElement) => {
+const displayEditMode = (bulletPoint: HTMLLIElement, editModeField: HTMLDivElement, textField: HTMLParagraphElement): void => {
   const optionEditListBtn: HTMLButtonElement | null = document.querySelector(".bullet-point__option-edit-list-btn");
 
   bulletPoint.classList.toggle("bullet-point__edit-mode");
@@ -13,7 +13,7 @@ const displayEditMode = (bulletPoint: HTMLLIElement, editModeField: HTMLDivEleme
   optionEditListBtn?.classList.toggle("none");
 };
 
-const getEditModeElements = (bulletPoint: HTMLLIElement, bulletPointType: TBulletPointType) => {
+const getEditModeElements = (bulletPoint: HTMLLIElement, bulletPointType: TBulletPointType): IEditModeElements => {
   const editModeFieldIndex: 2 | 1 = bulletPointType === "task" ? 2 : 1;
   const textFieldIndex: 1 | 0 = bulletPointType === "task" ? 1 : 0;
 
@@ -24,7 +24,7 @@ const getEditModeElements = (bulletPoint: HTMLLIElement, bulletPointType: TBulle
   return { editModeField, editInput, textField };
 };
 
-const editBulletPointTextAction = (bulletPoint: HTMLLIElement, bulletPointId: string, bulletPointType: TBulletPointType) => {
+const editBulletPointTextAction = (bulletPoint: HTMLLIElement, bulletPointId: string, bulletPointType: TBulletPointType): void => {
   const { editInput, textField, editModeField } = getEditModeElements(bulletPoint, bulletPointType);
 
   displayEditMode(bulletPoint, editModeField, textField);
@@ -40,7 +40,7 @@ const editBulletPointTextAction = (bulletPoint: HTMLLIElement, bulletPointId: st
   updateTodoListsData({ bulletPointId, updData, updDataType: bulletPointType, isRemove: isBulletPointRemoved });
 };
 
-const markTaskAction = (taskElement: HTMLLIElement, taskID: string, type: "importance" | "status") => {
+const markTaskAction = (taskElement: HTMLLIElement, taskID: string, type: "importance" | "status"): void => {
   const markClass = type === "importance" ? "bullet-point__important" : "bullet-point__completed";
   taskElement.classList.toggle(markClass);
 
@@ -62,17 +62,17 @@ const setEditModeAction = (
   bulletPointId: string,
   pageClass: TPageClass,
   bulletPointType: TBulletPointType,
-) => {
+): void => {
   const { editInput, textField, editModeField } = getEditModeElements(bulletPoint, bulletPointType);
 
   displayEditMode(bulletPoint, editModeField, textField);
 
-  const page: HTMLDivElement = document.querySelector(`.${pageClass}`) as HTMLDivElement;
+  const page: HTMLDivElement = document.querySelector(`.${pageClass}`)!; //tag main
 
   editInput.value = textField.innerHTML;
   editInput.focus();
 
-  const editTaskWithKeyboardAction = (event: KeyboardEvent) => {
+  const editTaskWithKeyboardAction = (event: KeyboardEvent): void => {
     if (event.code === "Enter" || event.code === "NumpadEnter") {
       editBulletPointTextAction(bulletPoint, bulletPointId, bulletPointType);
 
@@ -81,7 +81,7 @@ const setEditModeAction = (
     }
   };
 
-  const removeEditMode = (event: Event) => {
+  const removeEditMode = (event: Event): void => {
     const target: HTMLElement = event.target as HTMLElement;
 
     if (target.closest(".bullet-point__edit-mode") && !target.closest(".bullet-point__edit-btn")) return;
@@ -101,8 +101,8 @@ const setEditModeAction = (
   }, 0);
 };
 
-const updateBulletPoint = (pageClass: TPageClass) => {
-  const page: HTMLDivElement = document.querySelector(`.${pageClass}`) as HTMLDivElement;
+const updateBulletPoint = (pageClass: TPageClass): void => {
+  const page: HTMLDivElement = document.querySelector(`.${pageClass}`)!;
 
   page.addEventListener("click", (event: Event) => {
     const target: HTMLElement = event.target as HTMLElement;

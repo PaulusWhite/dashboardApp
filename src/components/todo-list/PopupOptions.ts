@@ -7,6 +7,7 @@ import BinIcon from "../../assets/icons/BinIcon";
 const PopupOptions = (importanceBtnText: string, statusBtnText: string): string => {
   const view = `
     <div class="popup-options hide">
+    
       <button class="popup-options__edit-btn">
         ${EditIcon()}
         <span class="popup-options__text">Edit task</span>

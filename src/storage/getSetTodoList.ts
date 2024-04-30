@@ -4,7 +4,7 @@ import { ITodoList, TMyTodoLists } from "../interfaces/ITodoList";
 const TODO_LISTS_KEY: string = "my-todo-lists";
 const INITIAL_MY_TODO_LISTS_DATA: TMyTodoLists = [];
 
-const setMyTodoListsData = (allTodoLists: TMyTodoLists) => {
+const setMyTodoListsData = (allTodoLists: TMyTodoLists): void => {
   localStorage.setItem(TODO_LISTS_KEY, JSON.stringify(allTodoLists));
 };
 
@@ -27,7 +27,7 @@ const getTodoListDataById = (listId: string): ITodoList | undefined => {
   return todoList;
 };
 
-const setTodoListData = (updTodoList: ITodoList, isRemove?: boolean) => {
+const setTodoListData = (updTodoList: ITodoList, isRemove?: boolean): void => {
   const allTodoLists: TMyTodoLists = getMyTodoListsData();
   const isUpdTodoList: boolean = Boolean(getTodoListDataById(updTodoList.id));
 
