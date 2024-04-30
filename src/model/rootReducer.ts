@@ -8,7 +8,7 @@ const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
   if (action.type === INIT) return state;
 
   if (action.type === SET_USER_NAME) {
-    const userName: string = action.type as string;
+    const userName: string = action.payload as string;
     state = { ...state, userName };
   }
 

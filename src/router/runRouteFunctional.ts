@@ -1,6 +1,3 @@
-//store
-import store from "../model/store";
-
 //Storage
 import { getGreetingTimeoutID } from "../storage/getSetGreetingTimeoutID";
 
@@ -12,7 +9,7 @@ import { TPath } from "../interfaces/IRouter";
 import { TPageClass, TBulletPointType } from "../interfaces/ITodoList";
 
 //Modules for MainPage
-import setGreeting from "../modules/mainPage/setGreeting";
+import setGreeting from "../controllers/mainPage/setGreeting";
 
 //Modules for TodoApp
 import addBulletPoint from "../modules/todoApp/addBulletPoint";
@@ -26,9 +23,7 @@ const runRouterFunctional = (path: TPath): void => {
   if (path !== "/") clearTimeout(getGreetingTimeoutID());
 
   if (path === "/") {
-    const userName: string | null = store.getState().userName;
-
-    setGreeting(userName);
+    setGreeting();
   }
   if (path === "/todo") {
     const myTodoListsPageClass: TPageClass = "my-todo-lists";

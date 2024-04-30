@@ -3,7 +3,7 @@ import store from "../model/store";
 
 //modules
 import displayComponent from "../modules/common/displayComponent";
-import setGreeting from "../modules/mainPage/setGreeting";
+import setGreeting from "./mainPage/setGreeting";
 
 //Utils
 import getCurrentURLPath from "../utils/getCurrentURLPath";
@@ -31,7 +31,7 @@ const applyUserName = (): void => {
   window.removeEventListener("keydown", applyUserNameWithKeyboard);
   okBtn.removeEventListener("click", applyUserName);
 
-  if (currentURLPath === "/") setGreeting(userNameValue);
+  if (currentURLPath === "/") setGreeting();
 
   displayComponent(userNameInputWindow, false, 500);
 };
