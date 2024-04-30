@@ -6,6 +6,7 @@ import runRouterFunctional from "./runRouteFunctional";
 
 //Utils
 import getCurrentTodoListIdFromURL from "../utils/getCurrentTodoListIdFromURL";
+import getCurrentURLPath from "../utils/getCurrentURLPath";
 
 //Components
 import TodoListPage from "../components/todo-list/TodoListPage";
@@ -19,7 +20,7 @@ const router = (): void => {
     { path: "/todo/list/", view: TodoListPage(getCurrentTodoListIdFromURL()) },
   ];
 
-  const currentPath: string = window.location.pathname;
+  const currentPath: string = getCurrentURLPath();
   // let isMatch = false;
 
   routers.forEach((route: IRoute) => {

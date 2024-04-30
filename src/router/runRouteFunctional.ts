@@ -1,3 +1,6 @@
+//store
+import store from "../model/store";
+
 //Storage
 import { getGreetingTimeoutID } from "../storage/getSetGreetingTimeoutID";
 
@@ -23,7 +26,9 @@ const runRouterFunctional = (path: TPath): void => {
   if (path !== "/") clearTimeout(getGreetingTimeoutID());
 
   if (path === "/") {
-    setGreeting();
+    const userName: string | null = store.getState().userName;
+
+    setGreeting(userName);
   }
   if (path === "/todo") {
     const myTodoListsPageClass: TPageClass = "my-todo-lists";

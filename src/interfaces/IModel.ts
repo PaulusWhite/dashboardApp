@@ -1,5 +1,5 @@
 type TState = {
-  userName: string;
+  userName: string | null;
 };
 
 interface IAction<T> {
