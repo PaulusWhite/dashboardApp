@@ -41,6 +41,7 @@ const runRouterFunctional = (path: TPath) => {
     addBulletPoint(todoListPageClass);
     updateBulletPoint(todoListPageClass);
     displayTaskOptionsMenu();
+    
   }
 };
 

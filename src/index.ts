@@ -10,3 +10,5 @@ import setNavLinkRouter from "./router/setNavLinkRouter";
 router();
 setNavLinkRouter();
 askUserName();
+
+window.addEventListener("popstate", router);

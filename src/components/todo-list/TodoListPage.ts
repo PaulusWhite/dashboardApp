@@ -11,7 +11,7 @@ const TodoList = (listId: string): string => {
 
   const view: string = `
     <main class="todo-list" id="${listId}">
-      <h1> ${CheckIcon()} Todo List</h1>
+      <h1> ${CheckIcon()} <span class="todo-list__name"></span></h1>
 
       <div class="tasks">
 
