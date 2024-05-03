@@ -2,7 +2,7 @@
 import { ITodoListData, ITaskData, TBulletPointType, TTodoListsData } from "../../interfaces/ITodoList";
 
 //Components
-import BulletPoint from "../../components/todo-list/BulletPoint";
+import BulletPoint from "../../components/todoApp/BulletPoint";
 
 //Modules
 import displayImportantTasksList from "./displayImportantTasksList";

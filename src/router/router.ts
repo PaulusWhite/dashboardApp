@@ -9,8 +9,8 @@ import getCurrentTodoListIdFromURL from "../utils/getCurrentTodoListIdFromURL";
 import getCurrentURLPath from "../utils/getCurrentURLPath";
 
 //Components
-import TodoListPage from "../components/todo-list/TodoListPage";
-import MyTodoListsPage from "../components/todo-list/MyTodoListsPage";
+import TodoListPage from "../components/todoApp/TodoListPage";
+import MyTodoListsPage from "../components/todoApp/MyTodoListsPage";
 import MainPage from "../components/MainPage";
 
 const router = (): void => {
