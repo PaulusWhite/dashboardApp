@@ -38,6 +38,7 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "ipdata": "^2.2.4"
   }
 }
