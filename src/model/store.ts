@@ -17,6 +17,7 @@ const createStore = (): IStore => {
   const initState: TState = {
     userName: getUserNameData(),
     todo: getTodoListsData(),
+    isPreloader: false,
   };
 
   let state = rootReducer(initState, { type: INIT });
