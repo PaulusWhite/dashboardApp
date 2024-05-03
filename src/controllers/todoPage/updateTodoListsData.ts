@@ -29,7 +29,7 @@ const updTask = (updTaskId: string, updData: IUpdBulletPointData, isRemove: bool
 
   store.dispatch(createUpdTodoListAction(updatedTodoListData));
 
-  showBulletPoints("task"); //put into subscribers
+  showBulletPoints("task");
 };
 
 const updList = (updListId: string, updData: IUpdBulletPointData, isRemove: boolean | undefined): void => {
@@ -39,7 +39,7 @@ const updList = (updListId: string, updData: IUpdBulletPointData, isRemove: bool
 
   store.dispatch(createUpdTodoListsAction({ todoListData: updTodoListData, isRemove }));
 
-  showBulletPoints("list"); //put into subscribers
+  showBulletPoints("list");
 };
 
 const updateTodoListsData = (data: IUpdTodoListsData): void => {

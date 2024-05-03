@@ -51,7 +51,7 @@ const addBulletPointAction = (type: TBulletPointType): void => {
 
   input.value = "";
 
-  showBulletPoints(type); //put into subscribers
+  showBulletPoints(type);
 
   document.body.scrollIntoView(false);
 };
