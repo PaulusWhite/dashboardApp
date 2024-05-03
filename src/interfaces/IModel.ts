@@ -4,7 +4,7 @@ import { TTodoListsData, ITodoListData } from "./ITodoList";
 type TState = {
   userName: string | null;
   todo: TTodoListsData;
-  isPreloader: boolean,
+  isPreloader: boolean;
 };
 
 interface IAction<T> {

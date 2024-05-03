@@ -6,7 +6,8 @@ const BASE_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/r
 
 const getWeatherForecast = async (requestData: IWeatherForecastRequsetData) => {
   const { location } = requestData;
-  const URL: string = `${BASE_URL}${location}?key=${API_KEY}`;
+  const { date1 } = requestData;
+  const URL: string = `${BASE_URL}${location}${date1 ? `/${date1}` : ""}?key=${API_KEY}`;
 
   try {
     const response = await fetch(URL);

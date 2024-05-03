@@ -6,13 +6,40 @@
     "toolbar forecast forecast"
     "toolbar wrapper empty";
   grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);
-  grid-template-rows: 14rem auto;
+  grid-template-rows: 10rem auto;
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
 
   .forecast {
     grid-area: forecast;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 35rem;
+    margin-left: auto;
+
+    .forecast__date,
+    .forecast__temp {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .forecast__temp-data {
+        display: flex;
+        align-items: center;
+      }
+
+      > span:first-child {
+        font-size: 2.5rem;
+      }
+
+      .forecast__location {
+        font-size: 1.5rem;
+      }
+    }
   }
 
   .toolbar {
