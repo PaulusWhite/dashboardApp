@@ -11,6 +11,7 @@ const getWeatherForecast = async (requestData: IWeatherForecastRequsetData) => {
   try {
     const response = await fetch(URL);
     const data = await response.json();
+
     console.log(data);
   } catch (err) {
     console.log(err);

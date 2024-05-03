@@ -4,4 +4,9 @@ interface IWeatherForecastRequsetData {
   date2?: string;
 }
 
-export { IWeatherForecastRequsetData };
+interface IUserGeoData {
+  city?: string;
+  country: string;
+}
+
+export { IWeatherForecastRequsetData, IUserGeoData };
