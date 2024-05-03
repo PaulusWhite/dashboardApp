@@ -1,10 +1,12 @@
 //interfaces
 import { TTodoListsData, ITodoListData } from "./ITodoList";
+import { IUserWeatherForecastData } from "./IWeatherForecast";
 
 type TState = {
   userName: string | null;
   todo: TTodoListsData;
   isPreloader: boolean;
+  userWeatherForecast: IUserWeatherForecastData | null;
 };
 
 interface IAction<T> {
@@ -24,4 +26,4 @@ interface IUpdTodoListsData {
   isRemove: boolean | undefined;
 }
 
-export { IStore, TState, IAction, IUpdTodoListsData };
+export { IStore, TState, IAction, IUpdTodoListsData, IUserWeatherForecastData };
