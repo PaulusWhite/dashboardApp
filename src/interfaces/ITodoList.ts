@@ -1,17 +1,17 @@
-interface ITask {
+interface ITaskData {
   isCompleted: boolean;
   isImportant: boolean;
   text: string;
   id: string;
 }
 
-interface ITodoList {
-  allTasks: ITask[];
+interface ITodoListData {
+  allTasks: ITaskData[];
   name: string;
   id: string;
 }
 
-type TMyTodoLists = ITodoList[];
+type TTodoListsData = ITodoListData[];
 
 interface IUpdBulletPointData {
   isCompleted?: boolean;
@@ -63,5 +63,13 @@ interface IEditModeElements {
 type TBulletPointType = "task" | "list";
 type TPageClass = "todo-list" | "my-todo-lists";
 
-export { ITask, ITodoList, IUpdBulletPointData, IBulletPointBtnData, IBulletPointData, IBulletPointObjectData, IUpdTodoListsData };
-export { TMyTodoLists, TBulletPointBtnType, TBulletPointType, TPageClass, IEditModeElements };
+export {
+  ITaskData,
+  ITodoListData,
+  IUpdBulletPointData,
+  IBulletPointBtnData,
+  IBulletPointData,
+  IBulletPointObjectData,
+  IUpdTodoListsData,
+};
+export { TTodoListsData, TBulletPointBtnType, TBulletPointType, TPageClass, IEditModeElements };

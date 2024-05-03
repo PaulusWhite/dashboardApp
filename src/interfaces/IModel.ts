@@ -1,5 +1,9 @@
+//interfaces
+import { TTodoListsData, ITodoListData } from "./ITodoList";
+
 type TState = {
   userName: string | null;
+  todo: TTodoListsData;
 };
 
 interface IAction<T> {
@@ -13,4 +17,10 @@ interface IStore {
   getState: () => TState;
 }
 
-export { IStore, TState, IAction };
+//Interfaces for actions
+interface IUpdTodoListsData {
+  todoListData: ITodoListData;
+  isRemove: boolean | undefined;
+}
+
+export { IStore, TState, IAction, IUpdTodoListsData };

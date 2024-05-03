@@ -5,14 +5,18 @@ import rootReducer from "./rootReducer";
 import { IStore, IAction, TState } from "../interfaces/IModel";
 
 //storage modules
-import { getLSUserName } from "../storage/getSetUserName";
+import { getUserNameData } from "../API/accessUserNameData";
 
 //ActionTypes
 import { INIT } from "./actionTypes";
 
+//Controllers
+import { getTodoListsData } from "../API/accessTodoListsData";
+
 const createStore = (): IStore => {
   const initState: TState = {
-    userName: getLSUserName(),
+    userName: getUserNameData(),
+    todo: getTodoListsData(),
   };
 
   let state = rootReducer(initState, { type: INIT });

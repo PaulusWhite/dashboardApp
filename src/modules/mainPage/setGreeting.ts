@@ -5,7 +5,7 @@ import store from "../../model/store";
 import getCurrentTime from "../../utils/getCurrentTime";
 
 //Storage
-import { setGreetingTimeoutID } from "../../storage/getSetGreetingTimeoutID";
+import { setGreetingTimeoutID } from "../getSetGreetingTimeoutID";
 
 const SEC_PER_MIN: number = 60;
 

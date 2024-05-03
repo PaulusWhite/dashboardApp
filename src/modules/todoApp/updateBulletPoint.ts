@@ -2,7 +2,7 @@
 import { TPageClass, TBulletPointType, IUpdBulletPointData, IEditModeElements } from "../../interfaces/ITodoList";
 
 //Modules
-import updateTodoListsData from "./updateTodoListsData";
+import updateTodoListsData from "../../controllers/todoPage/updateTodoListsData";
 
 const displayEditMode = (bulletPoint: HTMLLIElement, editModeField: HTMLDivElement, textField: HTMLParagraphElement): void => {
   const optionEditListBtn: HTMLButtonElement | null = document.querySelector(".bullet-point__option-edit-list-btn");

@@ -1,15 +1,21 @@
-//storage
-import { getTodoListDataById, setTodoListData } from "../../storage/getSetTodoList";
+//store
+import store from "../../model/store";
+
+//Actions
+import { createAddTodoListAction, createUpdTodoListAction } from "../../model/actionCreators";
 
 //Interfaces
-import { ITodoList, ITask, TBulletPointType, TPageClass } from "../../interfaces/ITodoList";
+import { ITodoListData, ITaskData, TBulletPointType, TPageClass } from "../../interfaces/ITodoList";
 
 //utils
 import getRandomID from "../../utils/getRandomID";
 import getCurrentTodoListIdFromURL from "../../utils/getCurrentTodoListIdFromURL";
 
 //Modules
-import showBulletPoints from "./showBulletPoints";
+import showBulletPoints from "../../modules/todoApp/showBulletPoints";
+
+//Controllers
+import getTodoListDataByID from "./getTodoListDataByID";
 
 const addBulletPointAction = (type: TBulletPointType): void => {
   const input: HTMLInputElement = document.querySelector("#input-field__input")!;
@@ -17,34 +23,35 @@ const addBulletPointAction = (type: TBulletPointType): void => {
 
   if (!inputValue) return;
 
-  let addedTodoList: ITodoList;
-
   if (type === "task") {
     const currenTodoListId = getCurrentTodoListIdFromURL();
 
-    const newTask: ITask = {
+    const newTask: ITaskData = {
       isCompleted: false,
       isImportant: false,
       text: inputValue,
       id: getRandomID(),
     };
 
-    const updList: ITodoList = getTodoListDataById(currenTodoListId) as ITodoList;
+    const updList: ITodoListData = getTodoListDataByID(currenTodoListId) as ITodoListData;
     updList.allTasks.push(newTask);
 
-    addedTodoList = updList;
-  } else {
-    addedTodoList = {
+    store.dispatch(createUpdTodoListAction(updList));
+  }
+
+  if (type === "list") {
+    const addedTodoListData: ITodoListData = {
       allTasks: [],
       name: inputValue,
       id: getRandomID(),
-    } as ITodoList;
+    } as ITodoListData;
+
+    store.dispatch(createAddTodoListAction(addedTodoListData));
   }
 
   input.value = "";
 
-  setTodoListData(addedTodoList);
-  showBulletPoints(type);
+  showBulletPoints(type); //put into subscribers
 
   document.body.scrollIntoView(false);
 };

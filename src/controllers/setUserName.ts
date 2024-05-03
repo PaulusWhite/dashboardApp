@@ -3,13 +3,13 @@ import store from "../model/store";
 
 //modules
 import displayComponent from "../modules/common/displayComponent";
-import setGreeting from "./mainPage/setGreeting";
+import setGreeting from "../modules/mainPage/setGreeting";
 
 //Utils
 import getCurrentURLPath from "../utils/getCurrentURLPath";
 
 //actionCreators
-import { createSettingUserNameAction } from "../model/actionCreators";
+import { createSetUserNameAction } from "../model/actionCreators";
 
 const getInputFieldElements = () => {
   const userNameInputWindow: HTMLElement = document.querySelector(".username-input-window")!;
@@ -26,7 +26,7 @@ const applyUserName = (): void => {
   let userNameValue: string = input.value.trim();
   userNameValue = userNameValue ? userNameValue : "Buddy";
 
-  store.dispatch(createSettingUserNameAction(userNameValue));
+  store.dispatch(createSetUserNameAction(userNameValue));
 
   window.removeEventListener("keydown", applyUserNameWithKeyboard);
   okBtn.removeEventListener("click", applyUserName);

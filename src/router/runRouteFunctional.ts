@@ -1,5 +1,5 @@
 //Storage
-import { getGreetingTimeoutID } from "../storage/getSetGreetingTimeoutID";
+import { getGreetingTimeoutID } from "../modules/getSetGreetingTimeoutID";
 
 //Components
 import UserNameInputWindow from "../components/UserNameInputWindow";
@@ -9,10 +9,10 @@ import { TPath } from "../interfaces/IRouter";
 import { TPageClass, TBulletPointType } from "../interfaces/ITodoList";
 
 //Modules for MainPage
-import setGreeting from "../controllers/mainPage/setGreeting";
+import setGreeting from "../modules/mainPage/setGreeting";
 
 //Modules for TodoApp
-import addBulletPoint from "../modules/todoApp/addBulletPoint";
+import addBulletPoint from "../controllers/todoPage/addBulletPoint";
 import showBulletPoints from "../modules/todoApp/showBulletPoints";
 import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
 import updateBulletPoint from "../modules/todoApp/updateBulletPoint";
