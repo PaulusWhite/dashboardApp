@@ -8,8 +8,9 @@ import UserNameInputWindow from "../components/UserNameInputWindow";
 import { TPath } from "../interfaces/IRouter";
 import { TPageClass, TBulletPointType } from "../interfaces/ITodoList";
 
-//Modules for MainPage
+//Modules and controllers for MainPage
 import setGreeting from "../modules/mainPage/setGreeting";
+import setUserWeatherForecastByIP from "../controllers/mainPage/setUserWeatherForecastByIP";
 
 //Modules and controllers for TodoApp
 import addBulletPoint from "../controllers/todoPage/addBulletPoint";
@@ -24,6 +25,7 @@ const runRouterFunctional = (path: TPath): void => {
   if (path !== "/") clearTimeout(getGreetingTimeoutID());
 
   if (path === "/") {
+    setUserWeatherForecastByIP();
     setGreeting();
   }
   if (path === "/todo") {

@@ -11,7 +11,7 @@ import getCurrentURLPath from "../utils/getCurrentURLPath";
 //Components
 import TodoListPage from "../components/todoApp/TodoListPage";
 import MyTodoListsPage from "../components/todoApp/MyTodoListsPage";
-import MainPage from "../components/MainPage";
+import MainPage from "../components/mainPage/MainPage";
 
 const router = (): void => {
   const routers: IRoute[] = [

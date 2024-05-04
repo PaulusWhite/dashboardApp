@@ -7,13 +7,29 @@ import { createAsyncSetUserWeatherForecastByIPAction } from "../../model/asyncAc
 //Interfaces
 import { IUserWeatherForecastData } from "../../interfaces/IWeatherForecast";
 
+//Components
+import MainWeatherForecast from "../../components/mainPage/MainWeatherForecast";
+
+const convertTempCelsius = (initValue: number): number => {
+  return Math.ceil((Math.ceil(initValue) - 32) / 1.8);
+};
+
 const setUserWeatherForecastByIP = async () => {
-  const userWeatherForecast: IUserWeatherForecastData | null = store.getState().userWeatherForecast;
+  try {
+    let userWeatherForecast: IUserWeatherForecastData | null = store.getState().userWeatherForecast;
 
-  if (!userWeatherForecast) {
-    await createAsyncSetUserWeatherForecastByIPAction();
+    if (!userWeatherForecast) {
+      await createAsyncSetUserWeatherForecastByIPAction();
 
-    console.log(store.getState().userWeatherForecast);
+      userWeatherForecast = store.getState().userWeatherForecast as IUserWeatherForecastData;
+    }
+
+    userWeatherForecast.temp = convertTempCelsius(userWeatherForecast.temp);
+
+    const weatherForecastSection: HTMLElement = document.querySelector(".main .forecast")!;
+    weatherForecastSection.innerHTML = MainWeatherForecast(userWeatherForecast);
+  } catch (err) {
+    console.log(err);
   }
 };
 

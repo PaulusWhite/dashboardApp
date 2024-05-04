@@ -14,6 +14,7 @@ import { IUserWeatherForecastData, IWeatherData } from "../interfaces/IWeatherFo
 
 //Utils
 import getTodayDate from "../utils/getTodayDate";
+import getReadableDateValue from "../utils/getReadableDateValue";
 
 const createAsyncSetUserWeatherForecastByIPAction = async <N extends IWeatherData>() => {
   try {
@@ -22,12 +23,14 @@ const createAsyncSetUserWeatherForecastByIPAction = async <N extends IWeatherDat
     const date1: string = getTodayDate();
 
     const weatherData: N = await getWeatherForecast({ location, date1 });
+    const { temp, icon } = weatherData.currentConditions;
+    const iconURL: string = `https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/2nd%20Set%20-%20Color/${icon}.png`;
 
     const userWeatherForecast: IUserWeatherForecastData = {
-      temp: weatherData.currentConditions.temp,
-      icon: weatherData.currentConditions.icon,
+      temp,
+      icon: iconURL,
       location: `${userGeoData.city ? userGeoData.city : ""}, ${userGeoData.country}`,
-      day: getTodayDate(),
+      day: getReadableDateValue(),
       desc: weatherData.description,
     };
 
