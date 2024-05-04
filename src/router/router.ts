@@ -8,16 +8,18 @@ import runRouterFunctional from "./runRouteFunctional";
 import getCurrentTodoListIdFromURL from "../utils/getCurrentTodoListIdFromURL";
 import getCurrentURLPath from "../utils/getCurrentURLPath";
 
-//Components
+//Page Components
 import TodoListPage from "../components/todoApp/TodoListPage";
 import MyTodoListsPage from "../components/todoApp/MyTodoListsPage";
 import MainPage from "../components/mainPage/MainPage";
+import ForecastPage from "../components/forecastApp/ForeastPage";
 
 const router = (): void => {
   const routers: IRoute[] = [
     { path: "/", view: MainPage() },
     { path: "/todo", view: MyTodoListsPage() },
     { path: "/todo/list/", view: TodoListPage(getCurrentTodoListIdFromURL()) },
+    { path: "/forecast", view: ForecastPage() },
   ];
 
   const currentPath: string = getCurrentURLPath();

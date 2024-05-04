@@ -1,7 +1,7 @@
-const ToolbarIcon = (iconPath: string, iconID: string): string => {
+const ToolbarIcon = (icon: string, navPath: string): string => {
   const view = `
-    <figure class="toolbar-icon nav-link" id="${iconID}" data-url="/todo">
-      ${iconPath}
+    <figure class="toolbar-icon nav-link" data-url="${navPath}">
+      ${icon}
     </figure>
   `;
 
