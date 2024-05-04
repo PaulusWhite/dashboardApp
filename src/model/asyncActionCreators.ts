@@ -16,6 +16,10 @@ import { IUserWeatherForecastData, IWeatherData } from "../interfaces/IWeatherFo
 import getTodayDate from "../utils/getTodayDate";
 import getReadableDateValue from "../utils/getReadableDateValue";
 
+const convertTempCelsius = (initValue: number): number => {
+  return Math.ceil((Math.ceil(initValue) - 32) / 1.8);
+};
+
 const createAsyncSetUserWeatherForecastByIPAction = async <N extends IWeatherData>() => {
   try {
     const userGeoData: IUserGeoData = await getUserGeoData();
@@ -27,7 +31,7 @@ const createAsyncSetUserWeatherForecastByIPAction = async <N extends IWeatherDat
     const iconURL: string = `https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/2nd%20Set%20-%20Color/${icon}.png`;
 
     const userWeatherForecast: IUserWeatherForecastData = {
-      temp,
+      temp: convertTempCelsius(temp),
       icon: iconURL,
       location: `${userGeoData.city ? userGeoData.city : ""}, ${userGeoData.country}`,
       day: getReadableDateValue(),

@@ -10,10 +10,6 @@ import { IUserWeatherForecastData } from "../../interfaces/IWeatherForecast";
 //Components
 import MainWeatherForecast from "../../components/mainPage/MainWeatherForecast";
 
-const convertTempCelsius = (initValue: number): number => {
-  return Math.ceil((Math.ceil(initValue) - 32) / 1.8);
-};
-
 const setUserWeatherForecastByIP = async () => {
   try {
     let userWeatherForecast: IUserWeatherForecastData | null = store.getState().userWeatherForecast;
@@ -23,8 +19,6 @@ const setUserWeatherForecastByIP = async () => {
 
       userWeatherForecast = store.getState().userWeatherForecast as IUserWeatherForecastData;
     }
-
-    userWeatherForecast.temp = convertTempCelsius(userWeatherForecast.temp);
 
     const weatherForecastSection: HTMLElement = document.querySelector(".main .forecast")!;
     weatherForecastSection.innerHTML = MainWeatherForecast(userWeatherForecast);
