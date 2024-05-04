@@ -2,11 +2,12 @@
 import { TState, IAction, IUpdTodoListsData } from "../interfaces/IModel";
 import { ITodoListData } from "../interfaces/ITodoList";
 import { IUserWeatherForecastData } from "../interfaces/IWeatherForecast";
+import { IQuotationData } from "../interfaces/IAPI";
 
 //action types
 import { INIT, SET_USER_NAME, ADD_TODO_LIST, UPD_TODO_LIST, UPD_TODO_LISTS } from "./actionTypes";
 //async action types
-import { SET_USER_WEATHER_FORECAST } from "./actionTypes";
+import { SET_USER_WEATHER_FORECAST, SET_RANDOM_QUOTATION } from "./actionTypes";
 
 const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
   if (action.type === INIT) return state;
@@ -32,6 +33,8 @@ const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
   } else if (action.type === SET_USER_WEATHER_FORECAST) {
     const weatherData: IUserWeatherForecastData = action.payload as IUserWeatherForecastData;
     state.userWeatherForecast = weatherData;
+  } else if (action.type === SET_RANDOM_QUOTATION) {
+    state.quotation = action.payload as IQuotationData;
   }
 
   return state;

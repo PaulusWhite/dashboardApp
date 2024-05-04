@@ -5,7 +5,7 @@
   grid-template:
     "toolbar forecast forecast"
     "toolbar wrapper empty";
-  grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);
+  grid-template-columns: calc(100% / 4) calc(100% / 2) calc(100% / 4);
   grid-template-rows: 10rem auto;
   flex-direction: column;
   width: 100%;
@@ -59,6 +59,7 @@
     grid-area: wrapper;
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
 
     .greeting {
       flex-grow: 1;
@@ -74,6 +75,37 @@
 
       .greeting__name {
         font-size: 1.5rem;
+      }
+    }
+
+    //quotation component
+    .quotation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 4rem;
+
+      .quotation__text {
+        margin: 0.2rem 0;
+        text-align: center;
+        font-size: 1.3rem;
+
+        &::after {
+          content: "";
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+          display: block;
+          width: 30%;
+          height: 0.05rem;
+          margin-top: 0.3rem;
+          background-color: black;
+        }
+      }
+
+      .quotation__author {
+        margin-top: 0.1rem;
+        font-size: 1rem;
       }
     }
   }

@@ -1,10 +1,12 @@
 //interfaces
 import { TTodoListsData, ITodoListData } from "./ITodoList";
 import { IUserWeatherForecastData } from "./IWeatherForecast";
+import { IQuotationData } from "./IAPI";
 
 type TState = {
   userName: string | null;
   todo: TTodoListsData;
+  quotation: IQuotationData | null;
   isPreloader: boolean;
   userWeatherForecast: IUserWeatherForecastData | null;
 };

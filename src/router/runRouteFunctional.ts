@@ -11,6 +11,7 @@ import { TPageClass, TBulletPointType } from "../interfaces/ITodoList";
 //Modules and controllers for MainPage
 import setGreeting from "../modules/mainPage/setGreeting";
 import setUserWeatherForecastByIP from "../controllers/mainPage/setUserWeatherForecastByIP";
+import setRandomQuotation from "../controllers/mainPage/setRandomQuotation";
 
 //Modules and controllers for TodoApp
 import addBulletPoint from "../controllers/todoPage/addBulletPoint";
@@ -25,7 +26,8 @@ const runRouterFunctional = (path: TPath): void => {
   if (path !== "/") clearTimeout(getGreetingTimeoutID());
 
   if (path === "/") {
-    setUserWeatherForecastByIP();
+    // setUserWeatherForecastByIP();
+    setRandomQuotation();
     setGreeting();
   }
   if (path === "/todo") {

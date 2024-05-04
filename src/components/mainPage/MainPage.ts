@@ -15,7 +15,7 @@ const MainPage = (): string => {
           <p class="greeting__name"></p>
         </div>
 
-        <div class="feauters-panel"></div>
+        <div class="quotation"></div>
       </div>
 
       <div class="empty"></div>

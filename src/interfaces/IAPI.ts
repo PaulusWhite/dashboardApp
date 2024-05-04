@@ -9,4 +9,9 @@ interface IUserGeoData {
   country: string;
 }
 
-export { IWeatherForecastRequsetData, IUserGeoData };
+interface IQuotationData {
+  content: string;
+  author: string;
+}
+
+export { IWeatherForecastRequsetData, IUserGeoData, IQuotationData };

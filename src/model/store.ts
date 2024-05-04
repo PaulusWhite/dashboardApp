@@ -17,6 +17,7 @@ const createStore = (): IStore => {
   const initState: TState = {
     userName: getUserNameData(),
     todo: getTodoListsData(),
+    quotation: null,
     userWeatherForecast: null,
     isPreloader: false,
   };
