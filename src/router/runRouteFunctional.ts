@@ -2,7 +2,7 @@
 import { getGreetingTimeoutID } from "../modules/getSetGreetingTimeoutID";
 
 //Components
-import UserNameInputWindow from "../components/UserNameInputWindow";
+import UserNameInputWindow from "../view/components/UserNameInputWindow";
 
 //Interfaces
 import { TPath } from "../interfaces/IRouter";

@@ -8,7 +8,7 @@ import { createAsyncSetRandomQuotationAction } from "../../model/asyncActionCrea
 import { IQuotationData } from "../../interfaces/IAPI";
 
 //Components
-import Quotation from "../../components/mainPage/Quotation";
+import Quotation from "../../view/components/mainPage/Quotation";
 
 const setRandomQuotation = async () => {
   const quotationField: HTMLDivElement = document.querySelector(".main .quotation")!;

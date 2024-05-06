@@ -1,8 +1,8 @@
 //Icons
-import backIcon from "../../assets/icons/BackIcon";
+import backIcon from "../../../assets/icons/BackIcon";
 
 //Interfaces
-import { TPath } from "../../interfaces/IRouter";
+import { TPath } from "../../../interfaces/IRouter";
 
 const BackBtn = (url: TPath): string => {
   const view = `

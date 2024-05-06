@@ -1,8 +1,8 @@
 //Icons Compoents
-import EditIcon from "../../assets/icons/EditIcon";
-import CheckIcon from "../../assets/icons/CheckIcon";
-import StarIcon from "../../assets/icons/StarIcon";
-import BinIcon from "../../assets/icons/BinIcon";
+import EditIcon from "../../../assets/icons/EditIcon";
+import CheckIcon from "../../../assets/icons/CheckIcon";
+import StarIcon from "../../../assets/icons/StarIcon";
+import BinIcon from "../../../assets/icons/BinIcon";
 
 const PopupOptions = (importanceBtnText: string, statusBtnText: string): string => {
   const view = `

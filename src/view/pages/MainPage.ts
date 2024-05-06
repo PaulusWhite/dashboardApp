@@ -1,5 +1,5 @@
 //Components
-import Toolbar from "../Toolbar";
+import Toolbar from "../components/mainPage/Toolbar";
 
 const MainPage = (): string => {
   const view = `

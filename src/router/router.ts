@@ -9,10 +9,10 @@ import getCurrentTodoListIdFromURL from "../utils/getCurrentTodoListIdFromURL";
 import getCurrentURLPath from "../utils/getCurrentURLPath";
 
 //Page Components
-import TodoListPage from "../components/todoApp/TodoListPage";
-import MyTodoListsPage from "../components/todoApp/MyTodoListsPage";
-import MainPage from "../components/mainPage/MainPage";
-import ForecastPage from "../components/forecastApp/ForeastPage";
+import TodoListPage from "../view/pages/TodoListPage";
+import MyTodoListsPage from "../view/pages/MyTodoListsPage";
+import MainPage from "../view/pages/MainPage";
+import ForecastPage from "../view/pages/ForecastPage";
 
 const router = (): void => {
   const routers: IRoute[] = [

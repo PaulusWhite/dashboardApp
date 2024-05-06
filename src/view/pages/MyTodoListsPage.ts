@@ -2,8 +2,8 @@
 import CheckIcon from "../../assets/icons/CheckIcon";
 
 //Components
-import BackBtn from "../common/BackBtn";
-import InpitField from "./InputField";
+import BackBtn from "../components/common/BackBtn";
+import InpitField from "../components/todoApp/InputField";
 
 const MyTodoListsPage = (): string => {
   const placeholder: string = "Create new list";

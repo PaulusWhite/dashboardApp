@@ -8,7 +8,7 @@ import { createAsyncSetUserWeatherForecastByIPAction } from "../../model/asyncAc
 import { IUserWeatherForecastData } from "../../interfaces/IWeatherForecast";
 
 //Components
-import MainWeatherForecast from "../../components/mainPage/MainWeatherForecast";
+import MainWeatherForecast from "../../view/components/mainPage/MainWeatherForecast";
 
 const setUserWeatherForecastByIP = async () => {
   try {

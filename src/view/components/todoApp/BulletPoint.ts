@@ -1,17 +1,22 @@
 //Icons
-import CheckIcon from "../../assets/icons/CheckIcon";
-import StarIcon from "../../assets/icons/StarIcon";
-import EditIcon from "../../assets/icons/EditIcon";
-import BinIcon from "../../assets/icons/BinIcon";
-import SingleCheckIcon from "../../assets/icons/SingleCheckIcon";
+import CheckIcon from "../../../assets/icons/CheckIcon";
+import StarIcon from "../../../assets/icons/StarIcon";
+import EditIcon from "../../../assets/icons/EditIcon";
+import BinIcon from "../../../assets/icons/BinIcon";
+import SingleCheckIcon from "../../../assets/icons/SingleCheckIcon";
 
 //Components
 import PopupLabel from "./PopupLabel";
 import PopupOptions from "./PopupOptions";
 
 //Interfaces
-import { IBulletPointObjectData, IBulletPointBtnData, IBulletPointData, TBulletPointBtnType } from "../../interfaces/ITodoList";
-import { TBulletPointType } from "../../interfaces/ITodoList";
+import {
+  IBulletPointObjectData,
+  IBulletPointBtnData,
+  IBulletPointData,
+  TBulletPointBtnType,
+  TBulletPointType,
+} from "../../../interfaces/ITodoList";
 
 const bulletPointData: IBulletPointObjectData = {
   complete: {

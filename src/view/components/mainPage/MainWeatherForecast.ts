@@ -1,5 +1,5 @@
 //Interfaces
-import { IUserWeatherForecastData } from "../../interfaces/IWeatherForecast";
+import { IUserWeatherForecastData } from "../../../interfaces/IWeatherForecast";
 
 const MainWeatherForecast = (weatherForecastData: IUserWeatherForecastData): string => {
   const view = `

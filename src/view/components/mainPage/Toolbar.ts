@@ -1,9 +1,9 @@
 //Components
-import ToolbarIcon from "./toolbar-icons/ToolbarIcon";
+import ToolbarIcon from "../ToolbarIcon";
 
 //Icons
-import TodoIcon from "../assets/icons/TodoIcon";
-import WeatherIcon from "../assets/icons/WeatherIcon";
+import TodoIcon from "../../../assets/icons/TodoIcon";
+import WeatherIcon from "../../../assets/icons/WeatherIcon";
 
 const Toolbar = (): string => {
   const view = `
