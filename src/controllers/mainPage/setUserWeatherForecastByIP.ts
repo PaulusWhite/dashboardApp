@@ -11,20 +11,22 @@ import { IUserWeatherForecastData } from "../../interfaces/IWeatherForecast";
 import MainWeatherForecast from "../../view/components/mainPage/MainWeatherForecast";
 
 const setUserWeatherForecastByIP = async () => {
-  try {
-    let userWeatherForecast: IUserWeatherForecastData | null = store.getState().userWeatherForecast;
+  let userWeatherForecast: IUserWeatherForecastData | null = store.getState().userWeatherForecast;
 
-    if (!userWeatherForecast) {
+  if (!userWeatherForecast) {
+    try {
       await createAsyncSetUserWeatherForecastByIPAction();
 
       userWeatherForecast = store.getState().userWeatherForecast as IUserWeatherForecastData;
+    } catch (err: unknown) {
+      console.log(err);
     }
-
-    const weatherForecastSection: HTMLElement = document.querySelector(".main .forecast")!;
-    weatherForecastSection.innerHTML = MainWeatherForecast(userWeatherForecast);
-  } catch (err) {
-    console.log(err);
   }
+
+  if (!userWeatherForecast) return;
+
+  const weatherForecastSection: HTMLElement = document.querySelector(".main .forecast")!;
+  weatherForecastSection.innerHTML = MainWeatherForecast(userWeatherForecast);
 };
 
 export default setUserWeatherForecastByIP;

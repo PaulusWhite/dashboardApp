@@ -4,15 +4,11 @@ import { IQuotationData } from "../interfaces/IAPI";
 const URL = "https://api.quotable.io/quotes/random?maxLength=140";
 
 const getRandomQuotation = async <T extends IQuotationData>(): Promise<T> => {
-  try {
-    const response: Response = await fetch(URL);
-    const data = await response.json();
-    const quotationData: T = data[0];
+  const response: Response = await fetch(URL);
+  const data = await response.json();
+  const quotationData: T = data[0];
 
-    return quotationData;
-  } catch (err) {
-    throw new Error("Erro from qutation API");
-  }
+  return quotationData;
 };
 
 export default getRandomQuotation;

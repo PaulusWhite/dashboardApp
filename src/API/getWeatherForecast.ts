@@ -9,14 +9,10 @@ const getWeatherForecast = async <T>(requestData: IWeatherForecastRequsetData): 
   const { date1 } = requestData;
   const URL: string = `${BASE_URL}${location}${date1 ? `/${date1}` : ""}?key=${API_KEY}`;
 
-  try {
-    const response: Response = await fetch(URL);
-    const data: T = await response.json();
+  const response: Response = await fetch(URL);
+  const data: T = await response.json();
 
-    return data;
-  } catch (err) {
-    throw new Error("sth happened in getWeather script");
-  }
+  return data;
 };
 
 export default getWeatherForecast;

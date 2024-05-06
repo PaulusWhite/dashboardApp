@@ -12,10 +12,14 @@ import { SET_USER_WEATHER_FORECAST, SET_RANDOM_QUOTATION } from "./actionTypes";
 //Interfaces
 import { IUserGeoData, IQuotationData } from "../interfaces/IAPI";
 import { IUserWeatherForecastData, IWeatherData } from "../interfaces/IWeatherForecast";
+import { IError } from "../interfaces/IError";
 
 //Utils
 import getTodayDate from "../utils/getTodayDate";
 import getReadableDateValue from "../utils/getReadableDateValue";
+
+//modules
+import getErrorData from "../modules/common/getErrorData";
 
 const convertTempCelsius = (initValue: number): number => {
   return Math.ceil((Math.ceil(initValue) - 32) / 1.8);
@@ -40,8 +44,11 @@ const createAsyncSetUserWeatherForecastByIPAction = async <N extends IWeatherDat
     };
 
     store.dispatch({ type: SET_USER_WEATHER_FORECAST, payload: userWeatherForecast });
-  } catch (err) {
-    throw new Error("error from createAsyncSetUserWeatherForecastByIPAction");
+  } catch (err: unknown) {
+    const errorDescription: string = `The User Forecast data was not gottent. Reason: ${(err as Error).name}`;
+    const errorData: IError = getErrorData(err as Error, errorDescription);
+
+    throw errorData;
   }
 };
 
@@ -50,8 +57,11 @@ const createAsyncSetRandomQuotationAction = async () => {
     const quotationData: IQuotationData = await getRandomQuotation();
 
     store.dispatch({ type: SET_RANDOM_QUOTATION, payload: quotationData });
-  } catch (err) {
-    throw new Error("Err from quotation");
+  } catch (err: unknown) {
+    const errorDescription: string = `The quotation was not gotten. Reason: ${(err as Error).name}`;
+    const errorData: IError = getErrorData(err as Error, errorDescription);
+
+    throw errorData;
   }
 };
 

@@ -11,7 +11,6 @@ import { IQuotationData } from "../../interfaces/IAPI";
 import Quotation from "../../view/components/mainPage/Quotation";
 
 const setRandomQuotation = async () => {
-  const quotationField: HTMLDivElement = document.querySelector(".main .quotation")!;
   let quotation: IQuotationData | null = store.getState().quotation;
 
   if (!quotation) {
@@ -19,11 +18,14 @@ const setRandomQuotation = async () => {
       await createAsyncSetRandomQuotationAction();
 
       quotation = store.getState().quotation as IQuotationData;
-    } catch (err) {
-      throw new Error("error from SetRandomQuotation");
+    } catch (err: unknown) {
+      console.log(err);
     }
   }
 
+  if (!quotation) return;
+
+  const quotationField: HTMLDivElement = document.querySelector(".main .quotation")!;
   quotationField.innerHTML = Quotation(quotation.content, quotation.author);
 };
 
