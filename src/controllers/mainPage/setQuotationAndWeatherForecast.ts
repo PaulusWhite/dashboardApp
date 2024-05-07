@@ -30,6 +30,7 @@ const setQuotationAndWeatherForecast = async () => {
 
   if (!state.quotation) promiseArr.push(getRandomQuotationData());
   if (!state.userWeatherForecast) promiseArr.push(getUserWeatherForecastDataByIP());
+  if (promiseArr.length) console.log("START SPINNER");
 
   await Promise.allSettled(promiseArr).then((promiseDataArr) => {
     promiseDataArr.forEach((promiseData) => {
@@ -48,6 +49,8 @@ const setQuotationAndWeatherForecast = async () => {
 
   if (state.quotation) quotationField.innerHTML = Quotation(state.quotation.content, state.quotation.author);
   if (state.userWeatherForecast) forecastField.innerHTML = MainWeatherForecast(state.userWeatherForecast);
+
+  if (promiseArr.length) console.log("END SPINNER");
 };
 
 export default setQuotationAndWeatherForecast;

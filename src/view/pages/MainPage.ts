@@ -10,10 +10,7 @@ const MainPage = (): string => {
 
       <div class="wrapper">
 
-        <div class="greeting">
-          <p class="greeting__time"></p>
-          <p class="greeting__name"></p>
-        </div>
+        <div class="greeting"></div>
 
         <div class="quotation"></div>
       </div>

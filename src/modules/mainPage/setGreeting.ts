@@ -1,27 +1,21 @@
-//store
-import store from "../../model/store";
-
 //Utils
 import getCurrentTime from "../../utils/getCurrentTime";
 
-//Storage
+//Modules
 import { setGreetingTimeoutID } from "../getSetGreetingTimeoutID";
+
+//Components
+import Greetings from "../../view/components/mainPage/Greetings";
 
 const SEC_PER_MIN: number = 60;
 
 const setGreeting = (): void => {
-  const greetingTime: HTMLParagraphElement = document.querySelector(".greeting__time")!;
-  const greetingName: HTMLParagraphElement = document.querySelector(".greeting__name")!;
+  const greetindField: HTMLDivElement = document.querySelector(".greeting")!;
 
   const [hours, minutes, seconds] = getCurrentTime();
+  const greetingTime = `${hours}:${minutes}`;
 
-  let userName: string | null = store.getState().userName;
-
-  greetingTime.textContent = `${hours}:${minutes}`;
-  userName = userName ? userName : "Buddy";
-
-  const greetingPhrase: string = `Hello, dear ${userName}`;
-  greetingName.textContent = greetingPhrase;
+  greetindField.innerHTML = Greetings(greetingTime);
 
   const secTillNextMin: number = SEC_PER_MIN - +seconds;
 
