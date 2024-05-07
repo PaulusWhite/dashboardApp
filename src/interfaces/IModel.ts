@@ -2,6 +2,7 @@
 import { TTodoListsData, ITodoListData } from "./ITodoList";
 import { IUserWeatherForecastData } from "./IWeatherForecast";
 import { IQuotationData } from "./IAPI";
+import { IWeatherForecastData } from "./IWeatherForecast";
 
 type TState = {
   userName: string | null;
@@ -9,6 +10,7 @@ type TState = {
   quotation: IQuotationData | null;
   isPreloader: boolean;
   userWeatherForecast: IUserWeatherForecastData | null;
+  weatherForecast: IWeatherForecastData | null;
 };
 
 interface IAction<T> {

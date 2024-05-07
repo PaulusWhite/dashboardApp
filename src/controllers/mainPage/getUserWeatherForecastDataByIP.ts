@@ -7,7 +7,7 @@ import getTodayDate from "../../utils/getTodayDate";
 import getReadableDateValue from "../../utils/getReadableDateValue";
 
 //Interfaces
-import { IUserWeatherForecastData, IWeatherData } from "../../interfaces/IWeatherForecast";
+import { IUserWeatherForecastData, IUserWeatherData } from "../../interfaces/IWeatherForecast";
 import { IUserGeoData } from "../../interfaces/IAPI";
 import { IError } from "../../interfaces/IError";
 import IPromiseValue from "../../interfaces/IPromise";
@@ -19,7 +19,7 @@ const convertTempCelsius = (initValue: number): number => {
   return Math.ceil((Math.ceil(initValue) - 32) / 1.8);
 };
 
-const getUserWeatherForecastDataByIP = async <T extends IWeatherData>(): Promise<IPromiseValue> => {
+const getUserWeatherForecastDataByIP = async <T extends IUserWeatherData>(): Promise<IPromiseValue> => {
   try {
     const userGeoData: IUserGeoData = await getUserGeoData();
     const location = userGeoData.city ? userGeoData.city : userGeoData.country;

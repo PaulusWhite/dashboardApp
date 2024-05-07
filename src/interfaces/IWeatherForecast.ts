@@ -1,4 +1,5 @@
-interface IWeatherData {
+//Interfaces for User Weather Forecast on the Main Page
+interface IUserWeatherData {
   description: string;
   currentConditions: {
     temp: number;
@@ -14,6 +15,7 @@ interface IUserWeatherForecastData {
   desc: string;
 }
 
+//Interfaces for Weather Foreast on Forecast APP Page
 interface IPeriodDayData {
   id: string;
   icon: string;
@@ -46,4 +48,22 @@ interface IDetailedInfoData {
   icon: string;
 }
 
-export { IWeatherData, IUserWeatherForecastData, IPeriodDayData, IHourData, IDetailedInfoData };
+interface ICurrentForecastData {
+  location: string;
+  time: string;
+  temp: number;
+  windspeed: number;
+}
+
+interface IDayForecastData {
+  basicData: IPeriodDayData;
+  hoursData: IDetailedInfoData[];
+}
+
+interface IWeatherForecastData {
+  current: ICurrentForecastData;
+  days: IDayForecastData[];
+}
+
+export { IUserWeatherData, IUserWeatherForecastData };
+export { IPeriodDayData, IHourData, IDetailedInfoData, IWeatherForecastData };

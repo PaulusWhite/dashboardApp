@@ -20,6 +20,7 @@ const createStore = (): IStore => {
     quotation: null,
     userWeatherForecast: null,
     isPreloader: false,
+    weatherForecast: null,
   };
 
   let state = rootReducer(initState, { type: INIT });
