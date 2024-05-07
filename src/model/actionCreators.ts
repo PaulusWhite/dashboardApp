@@ -1,9 +1,18 @@
 //interfaces
 import { IAction, IUpdTodoListsData } from "../interfaces/IModel";
 import { ITodoListData } from "../interfaces/ITodoList";
+import { IQuotationData } from "../interfaces/IAPI";
+import { IUserWeatherForecastData } from "../interfaces/IModel";
 
 //Actions Types
-import { SET_USER_NAME, ADD_TODO_LIST, UPD_TODO_LIST, UPD_TODO_LISTS } from "./actionTypes";
+import {
+  SET_USER_NAME,
+  ADD_TODO_LIST,
+  UPD_TODO_LIST,
+  UPD_TODO_LISTS,
+  SET_RANDOM_QUOTATION,
+  SET_USER_WEATHER_FORECAST,
+} from "./actionTypes";
 
 //API
 import { setUserNameData } from "../API/accessUserNameData";
@@ -47,4 +56,19 @@ const createUpdTodoListsAction = <T>(updateTodoListsData: IUpdTodoListsData): IA
   };
 };
 
+const createSetRandomQuotationAction = <T>(quotationData: IQuotationData): IAction<T> => {
+  return {
+    type: SET_RANDOM_QUOTATION,
+    payload: quotationData as T,
+  };
+};
+
+const createSetUserWeatherForecastAction = <T>(userWeatherForecastData: IUserWeatherForecastData): IAction<T> => {
+  return {
+    type: SET_USER_WEATHER_FORECAST,
+    payload: userWeatherForecastData as T,
+  };
+};
+
 export { createSetUserNameAction, createAddTodoListAction, createUpdTodoListAction, createUpdTodoListsAction };
+export { createSetRandomQuotationAction, createSetUserWeatherForecastAction };
