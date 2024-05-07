@@ -61,7 +61,7 @@ interface IEditModeElements {
 }
 
 type TBulletPointType = "task" | "list";
-type TPageClass = "todo-list" | "my-todo-lists";
+type TPageClass = "todo-list-page" | "todo-lists-page";
 
 export {
   ITaskData,

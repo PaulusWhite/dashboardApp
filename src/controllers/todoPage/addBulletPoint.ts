@@ -60,7 +60,7 @@ const addBulletPoint = (pageClass: TPageClass): void => {
   const page: HTMLDivElement = document.querySelector(`.${pageClass}`)!;
   const addBtn: HTMLButtonElement = document.querySelector(".input-field__add-btn")!;
 
-  const bulletPointType: TBulletPointType = pageClass === "my-todo-lists" ? "list" : "task";
+  const bulletPointType: TBulletPointType = pageClass === "todo-lists-page" ? "list" : "task";
 
   page.addEventListener("keydown", (event: KeyboardEvent) => {
     if (event.code === "Enter" || event.code === "NumpadEnter") addBulletPointAction(bulletPointType);

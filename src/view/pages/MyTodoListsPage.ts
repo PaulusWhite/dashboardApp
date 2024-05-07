@@ -10,12 +10,12 @@ const MyTodoListsPage = (): string => {
   const applyBtnText: string = "Create";
 
   const view = `
-    <main class="my-todo-lists">
+    <main class="todo-lists-page">
       <h1>${CheckIcon()} My Todo Lists</h1>
 
-      <ul class="my-todo-lists__list"></ul>
+      <ul class="todo-lists-page__list"></ul>
 
-      <h3 class="my-todo-lists__no-lists none">You do not have any lists yet</h3>
+      <h3 class="todo-lists-page__no-lists none">You do not have any lists yet</h3>
 
       ${InpitField(placeholder, applyBtnText)}
 

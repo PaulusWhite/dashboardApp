@@ -3,7 +3,7 @@ import Toolbar from "../components/mainPage/Toolbar";
 
 const MainPage = (): string => {
   const view = `
-    <main class="main">
+    <main class="main-page">
       <section class="forecast"></section>
 
       ${Toolbar()}

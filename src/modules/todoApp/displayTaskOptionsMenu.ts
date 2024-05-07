@@ -9,7 +9,7 @@ const hideExtraOptionsMenu = (openedOptionsMenu?: HTMLDivElement): void => {
 };
 
 const displayTaskOptionsMenu = (): void => {
-  const todoList: HTMLDivElement = document.querySelector(".todo-list")!;
+  const todoList: HTMLDivElement = document.querySelector(".todo-list-page")!;
 
   todoList.addEventListener("click", (event: Event) => {
     const target: HTMLElement = event.target as HTMLElement;

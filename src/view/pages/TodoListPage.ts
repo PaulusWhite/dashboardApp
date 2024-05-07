@@ -10,8 +10,8 @@ const TodoList = (listId: string): string => {
   const applyBtnText: string = "Add";
 
   const view = `
-    <main class="todo-list" id="${listId}">
-      <h1> ${CheckIcon()} <span class="todo-list__name"></span></h1>
+    <main class="todo-list-page" id="${listId}">
+      <h1> ${CheckIcon()} <span class="todo-list-page__name"></span></h1>
 
       <div class="tasks">
 

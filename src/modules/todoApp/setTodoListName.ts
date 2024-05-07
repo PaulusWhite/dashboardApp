@@ -5,8 +5,8 @@ import getTodoListDataByID from "../../controllers/todoPage/getTodoListDataByID"
 import { ITodoListData } from "../../interfaces/ITodoList";
 
 const setTodoListName = (): void => {
-  const todoListPage: HTMLDivElement = document.querySelector(".todo-list")!;
-  const todoListName: HTMLSpanElement = todoListPage.querySelector(".todo-list__name")!;
+  const todoListPage: HTMLDivElement = document.querySelector(".todo-list-page")!;
+  const todoListName: HTMLSpanElement = todoListPage.querySelector(".todo-list-page__name")!;
 
   const todoListID: string = todoListPage.id!;
 

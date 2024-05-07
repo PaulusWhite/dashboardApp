@@ -106,7 +106,7 @@ const updateBulletPoint = (pageClass: TPageClass): void => {
 
   page.addEventListener("click", (event: Event) => {
     const target: HTMLElement = event.target as HTMLElement;
-    const bulletPointType: TBulletPointType = pageClass === "my-todo-lists" ? "list" : "task";
+    const bulletPointType: TBulletPointType = pageClass === "todo-lists-page" ? "list" : "task";
 
     if (!target.closest(".bullet-point")) return;
 

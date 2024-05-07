@@ -29,7 +29,7 @@ const runRouterFunctional = (path: TPath): void => {
     setGreeting();
   }
   if (path === "/todo") {
-    const myTodoListsPageClass: TPageClass = "my-todo-lists";
+    const myTodoListsPageClass: TPageClass = "todo-lists-page";
     const bulletPointType: TBulletPointType = "list";
 
     showBulletPoints(bulletPointType);
@@ -37,7 +37,7 @@ const runRouterFunctional = (path: TPath): void => {
     updateBulletPoint(myTodoListsPageClass);
   }
   if (path === "/todo/list/") {
-    const todoListPageClass: TPageClass = "todo-list";
+    const todoListPageClass: TPageClass = "todo-list-page";
     const bulletPointType: TBulletPointType = "task";
 
     setTodoListName();

@@ -50,21 +50,21 @@ $noBulletPointsColor: rgba($darkColor, 0.8);
 }
 
 //MyTodoLists component
-.my-todo-lists {
+.todo-lists-page {
   @include pageTemplate;
 
-  .my-todo-lists__no-lists {
+  .todo-lists-page__no-lists {
     color: $noBulletPointsColor;
   }
 
-  .my-todo-lists__list {
+  .todo-lists-page__list {
     @include listTemplate;
     @include blockWidth;
   }
 }
 
 //TodoList component
-.todo-list {
+.todo-list-page {
   @include pageTemplate;
 
   .tasks {

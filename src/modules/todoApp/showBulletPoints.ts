@@ -12,7 +12,7 @@ import getTodoListDataByID from "../../controllers/todoPage/getTodoListDataByID"
 import getTodoLists from "../../controllers/todoPage/getTodoLists";
 
 const showTasks = (): void => {
-  const todoListPage: HTMLDivElement = document.querySelector(".todo-list")!;
+  const todoListPage: HTMLDivElement = document.querySelector(".todo-list-page")!;
   const noTasksMessage: HTMLHeadingElement = document.querySelector(".tasks__no-tasks")!;
   const allTasksList: HTMLUListElement = document.querySelector("#tasks-list-all")!;
   const importantTasksList: HTMLUListElement = document.querySelector("#tasks-list-important")!;
@@ -43,8 +43,8 @@ const showTasks = (): void => {
 };
 
 const showAllTodoLists = (): void => {
-  const todoListsList: HTMLUListElement = document.querySelector(".my-todo-lists__list")!;
-  const noListsMessage: HTMLHeadElement = document.querySelector(".my-todo-lists__no-lists")!;
+  const todoListsList: HTMLUListElement = document.querySelector(".todo-lists-page__list")!;
+  const noListsMessage: HTMLHeadElement = document.querySelector(".todo-lists-page__no-lists")!;
   const todoLists: TTodoListsData = getTodoLists();
 
   todoListsList.innerHTML = "";
