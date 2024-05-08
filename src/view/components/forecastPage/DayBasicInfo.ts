@@ -13,6 +13,8 @@ const DayBasicInfo = (data: ICurrentForecastData): string => {
 
     <span class="today-basic-info__temp">${data.temp}°C</span>
     <span class="today-basic-info__windspeed">Windspeed: ${data.windspeed} km/h</span>
+
+    <span class="day-basic-info__partition"></span>
   `;
 
   return view;

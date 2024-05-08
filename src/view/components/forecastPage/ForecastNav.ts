@@ -1,5 +1,7 @@
 const ForecastNav = (): string => {
   const view = `
+    <h3 class="forecast-nav__heading">The Next Days Forecast</h3>
+
     <div class="forecast-nav__periods-list">
       <input type="radio" id="3days" name="period" value="3" checked>
       <label for="3days">3 days</label>

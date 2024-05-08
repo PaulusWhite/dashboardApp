@@ -30,10 +30,7 @@ const ForecastPage = (): string => {
 
         <div class="nav-interface">
           <div class="day-basic-info"></div>
-
-          <span class="nav-interface__partition"></span>
-          <h3 class="nav-interface__heading">The Next Days Forecast</h3>
-
+          
           <nav class="forecast-nav"></nav>
         </div>
 

@@ -42,6 +42,7 @@
         flex-grow: 1;
         display: flex;
         flex-wrap: wrap;
+        font-size: 1.5rem;
 
         .detailed-info__first-part,
         .detailed-info__first__second-part {
@@ -88,6 +89,7 @@
     }
 
     .nav-interface {
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -122,13 +124,13 @@
           margin: 2rem 0;
           font-size: 3rem;
         }
-      }
 
-      .nav-interface__partition {
-        width: 100%;
-        height: 0.1rem;
-        margin: 2rem 0 1rem 0;
-        background-color: $darkColor;
+        .day-basic-info__partition {
+          width: 100%;
+          height: 0.1rem;
+          margin: 2rem 0 1rem 0;
+          background-color: $darkColor;
+        }
       }
 
       //ForecastNav components
