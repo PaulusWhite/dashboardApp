@@ -14,6 +14,9 @@ import { IDayForecastData, IWeatherForecastData, IDetailedInfoData, IHourData } 
 //Modules
 import showPeriodDaysList from "../../modules/forecastApp/showPeriodDaysList";
 
+//Controllers
+import changeDayInfo from "./changeDayInfo";
+
 const setPeriodDaysList = () => {
   const weatherForecast: IWeatherForecastData = store.getState().weatherForecast!;
   const currentDayIndex: number = weatherForecast.current.currentDayIndex;
@@ -40,8 +43,9 @@ const getCheckedHourDataIndex = (): number => {
 
 const setDetailedInfo = (): void => {
   const weatherForecast = store.getState().weatherForecast!;
+  const currentDayIndex: number = weatherForecast.current.currentDayIndex;
   const checkedHourData: number = getCheckedHourDataIndex();
-  const detailedInfoData: IDetailedInfoData = weatherForecast.days[1].hoursData[checkedHourData]; //TEST
+  const detailedInfoData: IDetailedInfoData = weatherForecast.days[currentDayIndex].hoursData[checkedHourData];
 
   const detailedInfoField: HTMLDivElement = document.querySelector(".detailed-info")!;
   detailedInfoField.innerHTML = DetailedInfo(detailedInfoData);
@@ -57,11 +61,13 @@ const setRelevantTime = () => {
 
 const setHoursInfo = (): void => {
   const weatherForecast = store.getState().weatherForecast!;
+  const currentDayIndex: number = weatherForecast.current.currentDayIndex;
   const relevantTime: string = weatherForecast.current.time;
 
   const hoursList: HTMLUListElement = document.querySelector(".hours-list")!;
+  hoursList.innerHTML = "";
 
-  weatherForecast.days[1].hoursData.forEach((hourData: IDetailedInfoData, index: number) => {
+  weatherForecast.days[currentDayIndex].hoursData.forEach((hourData: IDetailedInfoData, index: number) => {
     const { time, temp, icon } = hourData;
     const isChecked = relevantTime === hourData.time ? true : false;
 
@@ -88,6 +94,9 @@ const showForecast = () => {
 
   setHoursInfo();
   setDetailedInfo();
+
+  //
+  changeDayInfo();
 };
 
-export default showForecast;
+export { setHoursInfo, setDetailedInfo, showForecast };

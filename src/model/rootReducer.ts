@@ -5,9 +5,16 @@ import { IUserWeatherForecastData } from "../interfaces/IWeatherForecast";
 import { IQuotationData } from "../interfaces/IAPI";
 
 //action types
-import { INIT, SET_USER_NAME, ADD_TODO_LIST, UPD_TODO_LIST, UPD_TODO_LISTS } from "./actionTypes";
-//async action types
-import { SET_USER_WEATHER_FORECAST, SET_RANDOM_QUOTATION } from "./actionTypes";
+import {
+  INIT,
+  SET_USER_NAME,
+  ADD_TODO_LIST,
+  UPD_TODO_LIST,
+  UPD_TODO_LISTS,
+  SET_USER_WEATHER_FORECAST,
+  SET_RANDOM_QUOTATION,
+  SET_FORECAST_DAY_INDEX,
+} from "./actionTypes";
 
 const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
   if (action.type === INIT) return state;
@@ -35,6 +42,8 @@ const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
     state.userWeatherForecast = weatherData;
   } else if (action.type === SET_RANDOM_QUOTATION) {
     state.quotation = action.payload as IQuotationData;
+  } else if (action.type === SET_FORECAST_DAY_INDEX) {
+    state.weatherForecast && (state.weatherForecast.current.currentDayIndex = action.payload as number);
   }
 
   return state;

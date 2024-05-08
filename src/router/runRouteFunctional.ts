@@ -10,7 +10,7 @@ import { TPageClass, TBulletPointType } from "../interfaces/ITodoList";
 
 //Modules and controllers for MainPage
 import setGreeting from "../modules/mainPage/setGreeting";
-import setQuotationAndWeatherForecast from "../controllers/mainPage/setQuotationAndWeatherForecast";
+// import setQuotationAndWeatherForecast from "../controllers/mainPage/setQuotationAndWeatherForecast";
 
 //Modules and controllers for TodoApp
 import addBulletPoint from "../controllers/todoPage/addBulletPoint";
@@ -20,7 +20,7 @@ import updateBulletPoint from "../modules/todoApp/updateBulletPoint";
 import setTodoListName from "../modules/todoApp/setTodoListName";
 
 //Modules and controllers for Forecast App
-import showForecast from "../controllers/forecastPage/showForecast";
+import { showForecast } from "../controllers/forecastPage/showForecast";
 
 const runRouterFunctional = (path: TPath): void => {
   document.body.innerHTML += UserNameInputWindow();
