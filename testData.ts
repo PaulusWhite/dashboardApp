@@ -51,6 +51,7 @@ const pseudoData: IWeatherForecastData = {
   current: {
     location: "Minsk, Belarus",
     time: "10:00:00",
+    date: "Wednesday, 8 May",
     temp: 14,
     windspeed: 2,
     currentDayIndex: 0,

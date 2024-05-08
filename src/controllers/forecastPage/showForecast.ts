@@ -6,7 +6,7 @@ import DayBasicInfo from "../../view/components/forecastPage/DayBasicInfo";
 import ForecastNav from "../../view/components/forecastPage/ForecastNav";
 import DetailedInfo from "../../view/components/forecastPage/DetailedInfo";
 import HourInfo from "../../view/components/forecastPage/HourInfo";
-// import RelevantTime from "../../view/components/forecastPage/RelevantTime";
+import RelevantTime from "../../view/components/forecastPage/RelevantTime";
 
 //Interfaces
 import { IDayForecastData, IWeatherForecastData, IDetailedInfoData, IHourData } from "../../interfaces/IWeatherForecast";
@@ -47,6 +47,14 @@ const setDetailedInfo = (): void => {
   detailedInfoField.innerHTML = DetailedInfo(detailedInfoData);
 };
 
+const setRelevantTime = () => {
+  const weatherForecast = store.getState().weatherForecast!;
+  const { time, date } = weatherForecast.current; //relevant time
+  const relevainTimeField: HTMLParagraphElement = document.querySelector(".main-interface__time")!;
+
+  relevainTimeField.innerHTML = RelevantTime({ date, time });
+};
+
 const setHoursInfo = (): void => {
   const weatherForecast = store.getState().weatherForecast!;
   const relevantTime: string = weatherForecast.current.time;
@@ -56,10 +64,13 @@ const setHoursInfo = (): void => {
   weatherForecast.days[1].hoursData.forEach((hourData: IDetailedInfoData, index: number) => {
     const { time, temp, icon } = hourData;
     const isChecked = relevantTime === hourData.time ? true : false;
+
     const componentHourData: IHourData = { id: index, time, temp, icon, isChecked };
 
     hoursList.innerHTML += HourInfo(componentHourData);
   });
+
+  setRelevantTime();
 };
 
 const showForecast = () => {

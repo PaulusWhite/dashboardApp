@@ -51,6 +51,7 @@ interface IDetailedInfoData {
 interface ICurrentForecastData {
   location: string;
   time: string;
+  date: string;
   temp: number;
   windspeed: number;
   currentDayIndex: number;
