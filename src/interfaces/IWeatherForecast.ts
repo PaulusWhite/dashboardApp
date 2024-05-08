@@ -65,5 +65,10 @@ interface IWeatherForecastData {
   days: IDayForecastData[];
 }
 
+interface IRelevantIme {
+  time: string;
+  date: string;
+}
+
 export { IUserWeatherData, IUserWeatherForecastData };
-export { IPeriodDayData, IHourData, IDetailedInfoData, IWeatherForecastData };
+export { IPeriodDayData, IHourData, ICurrentForecastData, IDetailedInfoData, IWeatherForecastData, IDayForecastData, IRelevantIme };

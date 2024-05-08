@@ -9,10 +9,6 @@ button {
   cursor: pointer;
 }
 
-ul {
-  padding-left: 0;
-}
-
 //Components styles
 @import "./mainPage.scss";
 @import "./userNameInputWindow.scss";
@@ -22,6 +18,9 @@ ul {
 * {
   outline: none;
   box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
 }
 
 html {

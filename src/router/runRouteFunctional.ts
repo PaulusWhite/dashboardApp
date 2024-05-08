@@ -19,6 +19,9 @@ import displayTaskOptionsMenu from "../modules/todoApp/displayTaskOptionsMenu";
 import updateBulletPoint from "../modules/todoApp/updateBulletPoint";
 import setTodoListName from "../modules/todoApp/setTodoListName";
 
+//Modules and controllers for Forecast App
+import showForecast from "../controllers/forecastPage/showForecast";
+
 const runRouterFunctional = (path: TPath): void => {
   document.body.innerHTML += UserNameInputWindow();
 
@@ -45,6 +48,9 @@ const runRouterFunctional = (path: TPath): void => {
     addBulletPoint(todoListPageClass);
     updateBulletPoint(todoListPageClass);
     displayTaskOptionsMenu();
+  }
+  if (path === "/forecast") {
+    showForecast();
   }
 };
 

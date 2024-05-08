@@ -13,6 +13,9 @@ import { INIT } from "./actionTypes";
 //Controllers
 import { getTodoListsData } from "../API/accessTodoListsData";
 
+//Pseudo
+import pseudoData from "../../testData";
+
 const createStore = (): IStore => {
   const initState: TState = {
     userName: getUserNameData(),
@@ -20,7 +23,7 @@ const createStore = (): IStore => {
     quotation: null,
     userWeatherForecast: null,
     isPreloader: false,
-    weatherForecast: null,
+    weatherForecast: pseudoData,
   };
 
   let state = rootReducer(initState, { type: INIT });
