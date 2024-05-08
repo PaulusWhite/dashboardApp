@@ -39,6 +39,7 @@
 
       //DetailedInfo component
       .detailed-info {
+        flex-grow: 1;
         display: flex;
         flex-wrap: wrap;
 
@@ -49,6 +50,8 @@
 
         .detailed-info__conditions {
           margin-top: auto;
+          margin-left: auto;
+          font-size: 4rem;
         }
       }
 
