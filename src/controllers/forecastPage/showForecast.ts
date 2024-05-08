@@ -9,26 +9,39 @@ import HourInfo from "../../view/components/forecastPage/HourInfo";
 // import RelevantTime from "../../view/components/forecastPage/RelevantTime";
 
 //Interfaces
-import { IDayForecastData, IDetailedInfoData, IHourData } from "../../interfaces/IWeatherForecast";
+import { IDayForecastData, IWeatherForecastData, IDetailedInfoData, IHourData } from "../../interfaces/IWeatherForecast";
 
 //Modules
 import showPeriodDaysList from "../../modules/forecastApp/showPeriodDaysList";
-import getRandomID from "../../utils/getRandomID";
 
-const setPeriod = () => {
-  const weatherForecast = store.getState().weatherForecast!;
+const setPeriodDaysList = () => {
+  const weatherForecast: IWeatherForecastData = store.getState().weatherForecast!;
+  const currentDayIndex: number = weatherForecast.current.currentDayIndex;
   const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll(".forecast-nav__periods-list input")!;
 
   const checkedInput: HTMLInputElement = [].find.call(inputs, (input: HTMLInputElement) => input.checked)!;
   const periodValue: number = +checkedInput.value;
   const periodDaysList: IDayForecastData[] = weatherForecast.days.slice(0, periodValue);
 
-  showPeriodDaysList(periodDaysList);
+  showPeriodDaysList(periodDaysList, currentDayIndex);
+};
+
+const getCheckedHourDataIndex = (): number => {
+  const hourItems: NodeListOf<Element> = document.querySelectorAll(".hour ")!;
+
+  const checkedHourItem: HTMLLIElement = [].find.call(hourItems, (hourItem: HTMLLIElement) =>
+    hourItem.classList.contains("checked-point"),
+  )!;
+
+  const hourDataIndex: number = +checkedHourItem.id;
+
+  return hourDataIndex;
 };
 
 const setDetailedInfo = (): void => {
   const weatherForecast = store.getState().weatherForecast!;
-  const detailedInfoData: IDetailedInfoData = weatherForecast.days[1].hoursData[1]; //TEST
+  const checkedHourData: number = getCheckedHourDataIndex();
+  const detailedInfoData: IDetailedInfoData = weatherForecast.days[1].hoursData[checkedHourData]; //TEST
 
   const detailedInfoField: HTMLDivElement = document.querySelector(".detailed-info")!;
   detailedInfoField.innerHTML = DetailedInfo(detailedInfoData);
@@ -36,11 +49,14 @@ const setDetailedInfo = (): void => {
 
 const setHoursInfo = (): void => {
   const weatherForecast = store.getState().weatherForecast!;
+  const relevantTime: string = weatherForecast.current.time;
+
   const hoursList: HTMLUListElement = document.querySelector(".hours-list")!;
 
-  weatherForecast.days[1].hoursData.forEach((hourData: IDetailedInfoData) => {
+  weatherForecast.days[1].hoursData.forEach((hourData: IDetailedInfoData, index: number) => {
     const { time, temp, icon } = hourData;
-    const componentHourData: IHourData = { id: getRandomID(), time, temp, icon };
+    const isChecked = relevantTime === hourData.time ? true : false;
+    const componentHourData: IHourData = { id: index, time, temp, icon, isChecked };
 
     hoursList.innerHTML += HourInfo(componentHourData);
   });
@@ -57,7 +73,7 @@ const showForecast = () => {
   basicInfoField.innerHTML = DayBasicInfo(weatherForecast.current);
   forecastNavField.innerHTML = ForecastNav();
 
-  setPeriod();
+  setPeriodDaysList();
 
   setHoursInfo();
   setDetailedInfo();

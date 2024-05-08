@@ -4,11 +4,12 @@ import PeriodDay from "../../view/components/forecastPage/PeriodDay";
 //Interfaces
 import { IDayForecastData } from "../../interfaces/IWeatherForecast";
 
-const showPeriodDaysList = (periodDaysList: IDayForecastData[]): void => {
+const showPeriodDaysList = (periodDaysList: IDayForecastData[], currentDayIndex: number): void => {
   const periodList: HTMLUListElement = document.querySelector(".forecast-nav__period-days-list")!;
 
-  periodDaysList.forEach((dayData: IDayForecastData) => {
-    periodList.innerHTML += PeriodDay(dayData.basicData);
+  periodDaysList.forEach((dayData: IDayForecastData, index: number) => {
+    const isChecked = currentDayIndex === index ? true : false;
+    periodList.innerHTML += PeriodDay(dayData.basicData, index, isChecked);
   });
 };
 

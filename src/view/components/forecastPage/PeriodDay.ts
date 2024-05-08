@@ -1,9 +1,11 @@
 //Interfaces
 import { IPeriodDayData } from "../../../interfaces/IWeatherForecast";
 
-const PeriodDay = (data: IPeriodDayData): string => {
+const CHECKED_CLASS: string = "checked-point";
+
+const PeriodDay = (data: IPeriodDayData, id: number, isChecked: boolean): string => {
   const view = `
-    <li class="period-day" id="${data.id}">
+    <li class="period-day ${isChecked ? CHECKED_CLASS : ""}" id="${id}">
       <img src="${data.icon}" class="period-day__icon" alt="weather-icon">
 
       <div class="period-day__info">

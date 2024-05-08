@@ -1,12 +1,11 @@
 import { IWeatherForecastData, IDayForecastData, IDetailedInfoData } from "./src/interfaces/IWeatherForecast";
-import getRandomID from "./src/utils/getRandomID";
 
 const getHours = () => {
   const arr: IDetailedInfoData[] = [];
 
   for (let i = 0; i < 24; i++) {
     const hour: IDetailedInfoData = {
-      time: `20: ${i}`,
+      time: `${i}:00:00`,
       temp: 2 + i,
       humidity: 1 + i,
       precip: 0 + i / 10,
@@ -34,7 +33,6 @@ const getDays = (): IDayForecastData[] => {
   for (let i = 0; i < 14; i++) {
     const day: IDayForecastData = {
       basicData: {
-        id: getRandomID(),
         icon: "https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/2nd%20Set%20-%20Color/showers-day.png",
         date: "Thusday, May 7",
         forecast: "Clear",
@@ -52,9 +50,10 @@ const getDays = (): IDayForecastData[] => {
 const pseudoData: IWeatherForecastData = {
   current: {
     location: "Minsk, Belarus",
-    time: "20.30",
+    time: "10:00:00",
     temp: 14,
     windspeed: 2,
+    currentDayIndex: 0,
   },
   days: getDays(),
 };

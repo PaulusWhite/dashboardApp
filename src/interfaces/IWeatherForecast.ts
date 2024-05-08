@@ -17,7 +17,6 @@ interface IUserWeatherForecastData {
 
 //Interfaces for Weather Foreast on Forecast APP Page
 interface IPeriodDayData {
-  id: string;
   icon: string;
   date: string;
   forecast: string;
@@ -25,10 +24,11 @@ interface IPeriodDayData {
 }
 
 interface IHourData {
-  id: string;
+  id: number;
   time: string;
   icon: string;
   temp: number;
+  isChecked: boolean;
 }
 
 interface IDetailedInfoData {
@@ -53,6 +53,7 @@ interface ICurrentForecastData {
   time: string;
   temp: number;
   windspeed: number;
+  currentDayIndex: number;
 }
 
 interface IDayForecastData {
