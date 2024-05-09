@@ -43,7 +43,12 @@ const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
   } else if (action.type === SET_RANDOM_QUOTATION) {
     state.quotation = action.payload as IQuotationData;
   } else if (action.type === SET_FORECAST_DAY_INDEX) {
-    state.weatherForecast && (state.weatherForecast.current.currentDayIndex = action.payload as number);
+    if (!state.weatherForecast) return state;
+
+    const relevantDayIndex: number = action.payload as number;
+
+    state.weatherForecast.current.currentDayIndex = relevantDayIndex;
+    state.weatherForecast.current.date = state.weatherForecast.days[relevantDayIndex].basicData.date;
   }
 
   return state;
