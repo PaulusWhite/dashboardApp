@@ -6,6 +6,8 @@ import { createSetForecastDayIndexAction } from "../../model/actionCreators";
 
 //Controllers
 import setDetailedInfo from "./setDetailedInfo";
+import setPeriodDaysList from "./setPeriodDaysList";
+import setHoursInfoList from "./setHoursInfoList";
 
 const changeDayInfo = () => {
   const periodDaysList: HTMLUListElement = document.querySelector(".forecast-nav__period-days-list")!;
@@ -25,6 +27,8 @@ const changeDayInfo = () => {
 
       store.dispatch(createSetForecastDayIndexAction(dayIndex));
 
+      setPeriodDaysList();
+      setHoursInfoList();
       setDetailedInfo();
     }
   });
