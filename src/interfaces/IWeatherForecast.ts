@@ -55,6 +55,7 @@ interface ICurrentForecastData {
   temp: number;
   windspeed: number;
   currentDayIndex: number;
+  currentHourIndex: number;
 }
 
 interface IDayForecastData {

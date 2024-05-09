@@ -2,7 +2,7 @@
 import store from "../../model/store";
 
 //Actions
-import { createSetForecastDayIndex } from "../../model/actionCreators";
+import { createSetForecastDayIndexAction } from "../../model/actionCreators";
 
 //Controllers
 import { setHoursInfo, setDetailedInfo } from "./showForecast";
@@ -23,7 +23,7 @@ const setDayInfo = () => {
 
       const dayIndex: number = +closest.id;
 
-      store.dispatch(createSetForecastDayIndex(dayIndex));
+      store.dispatch(createSetForecastDayIndexAction(dayIndex));
 
       setHoursInfo();
       setDetailedInfo();

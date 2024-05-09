@@ -14,6 +14,7 @@ import {
   SET_USER_WEATHER_FORECAST,
   SET_RANDOM_QUOTATION,
   SET_FORECAST_DAY_INDEX,
+  SET_FORECAST_HOUR_INDEX,
 } from "./actionTypes";
 
 const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
@@ -49,6 +50,10 @@ const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
 
     state.weatherForecast.current.currentDayIndex = relevantDayIndex;
     state.weatherForecast.current.date = state.weatherForecast.days[relevantDayIndex].basicData.date;
+  } else if (action.type === SET_FORECAST_HOUR_INDEX) {
+    if (!state.weatherForecast) return state;
+
+    state.weatherForecast.current.currentHourIndex = action.payload as number;
   }
 
   return state;

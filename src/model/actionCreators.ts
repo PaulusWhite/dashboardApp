@@ -13,6 +13,7 @@ import {
   SET_RANDOM_QUOTATION,
   SET_USER_WEATHER_FORECAST,
   SET_FORECAST_DAY_INDEX,
+  SET_FORECAST_HOUR_INDEX,
 } from "./actionTypes";
 
 //API
@@ -71,12 +72,24 @@ const createSetUserWeatherForecastAction = <T>(userWeatherForecastData: IUserWea
   };
 };
 
-const createSetForecastDayIndex = <T>(index: number): IAction<T> => {
+const createSetForecastDayIndexAction = <T>(index: number): IAction<T> => {
   return {
     type: SET_FORECAST_DAY_INDEX,
     payload: index as T,
   };
 };
 
+const createSetForecastCurrentIndexAction = <T>(index: number): IAction<T> => {
+  return {
+    type: SET_FORECAST_HOUR_INDEX,
+    payload: index as T,
+  };
+};
+
 export { createSetUserNameAction, createAddTodoListAction, createUpdTodoListAction, createUpdTodoListsAction };
-export { createSetRandomQuotationAction, createSetUserWeatherForecastAction, createSetForecastDayIndex };
+export {
+  createSetRandomQuotationAction,
+  createSetUserWeatherForecastAction,
+  createSetForecastDayIndexAction,
+  createSetForecastCurrentIndexAction,
+};

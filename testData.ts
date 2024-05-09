@@ -55,6 +55,7 @@ const pseudoData: IWeatherForecastData = {
     temp: 14,
     windspeed: 2,
     currentDayIndex: 0,
+    currentHourIndex: 0,
   },
   days: getDays(),
 };

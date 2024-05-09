@@ -17,6 +17,7 @@ import showPeriodDaysList from "../../modules/forecastApp/showPeriodDaysList";
 //Controllers
 import changeDayInfo from "./changeDayInfo";
 import changePeriodList from "./changePeriodList";
+import changeHourInfo from "./changeHourInfo";
 
 const setPeriodDaysList = () => {
   const weatherForecast: IWeatherForecastData = store.getState().weatherForecast!;
@@ -63,14 +64,14 @@ const setRelevantTime = () => {
 const setHoursInfo = (): void => {
   const weatherForecast = store.getState().weatherForecast!;
   const currentDayIndex: number = weatherForecast.current.currentDayIndex;
-  const relevantTime: string = weatherForecast.current.time;
+  const currentHourIndex: number = weatherForecast.current.currentHourIndex;
 
   const hoursList: HTMLUListElement = document.querySelector(".hours-list")!;
   hoursList.innerHTML = "";
 
   weatherForecast.days[currentDayIndex].hoursData.forEach((hourData: IDetailedInfoData, index: number) => {
     const { time, temp, icon } = hourData;
-    const isChecked = relevantTime === hourData.time ? true : false;
+    const isChecked = currentHourIndex === index ? true : false;
 
     const componentHourData: IHourData = { id: index, time, temp, icon, isChecked };
 
@@ -99,6 +100,7 @@ const showForecast = () => {
   //
   changeDayInfo();
   changePeriodList();
+  changeHourInfo();
 };
 
 export { setHoursInfo, setDetailedInfo, showForecast };
