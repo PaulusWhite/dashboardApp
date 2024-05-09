@@ -21,6 +21,7 @@ import setTodoListName from "../modules/todoApp/setTodoListName";
 
 //Modules and controllers for Forecast App
 import { showForecast } from "../controllers/forecastPage/showForecast";
+import searchForecast from "../controllers/forecastPage/searchForecast";
 
 const runRouterFunctional = (path: TPath): void => {
   document.body.innerHTML += UserNameInputWindow();
@@ -51,6 +52,7 @@ const runRouterFunctional = (path: TPath): void => {
   }
   if (path === "/forecast") {
     showForecast();
+    searchForecast();
   }
 };
 

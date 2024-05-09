@@ -3,6 +3,7 @@ import { IAction, IUpdTodoListsData } from "../interfaces/IModel";
 import { ITodoListData } from "../interfaces/ITodoList";
 import { IQuotationData } from "../interfaces/IAPI";
 import { IUserWeatherForecastData } from "../interfaces/IModel";
+import { IWeatherForecastData } from "../interfaces/IWeatherForecast";
 
 //Actions Types
 import {
@@ -14,6 +15,7 @@ import {
   SET_USER_WEATHER_FORECAST,
   SET_FORECAST_DAY_INDEX,
   SET_FORECAST_HOUR_INDEX,
+  SET_FORECAST_DATA,
 } from "./actionTypes";
 
 //API
@@ -86,10 +88,21 @@ const createSetForecastCurrentIndexAction = <T>(index: number): IAction<T> => {
   };
 };
 
-export { createSetUserNameAction, createAddTodoListAction, createUpdTodoListAction, createUpdTodoListsAction };
+const createSetForecastData = <T>(forecastData: IWeatherForecastData): IAction<T> => {
+  return {
+    type: SET_FORECAST_DATA,
+    payload: forecastData as T,
+  };
+};
+
 export {
+  createSetUserNameAction,
+  createAddTodoListAction,
+  createUpdTodoListAction,
+  createUpdTodoListsAction,
   createSetRandomQuotationAction,
   createSetUserWeatherForecastAction,
   createSetForecastDayIndexAction,
   createSetForecastCurrentIndexAction,
+  createSetForecastData,
 };

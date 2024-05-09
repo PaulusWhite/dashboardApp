@@ -48,14 +48,19 @@ interface IDetailedInfoData {
   icon: string;
 }
 
-interface ICurrentForecastData {
+interface ICurrentBasicInfo {
   location: string;
   time: string;
   date: string;
   temp: number;
   windspeed: number;
   currentDayIndex: number;
-  currentHourIndex: number;
+  currentHourIndex: number | null;
+}
+
+interface ICurrentForecastData {
+  basicInfo: ICurrentBasicInfo;
+  currentDetailedData: IDetailedInfoData;
 }
 
 interface IDayForecastData {
@@ -64,6 +69,7 @@ interface IDayForecastData {
 }
 
 interface IWeatherForecastData {
+  tzoffset: number;
   current: ICurrentForecastData;
   days: IDayForecastData[];
 }
@@ -74,4 +80,13 @@ interface IRelevantIme {
 }
 
 export { IUserWeatherData, IUserWeatherForecastData };
-export { IPeriodDayData, IHourData, ICurrentForecastData, IDetailedInfoData, IWeatherForecastData, IDayForecastData, IRelevantIme };
+export {
+  IPeriodDayData,
+  IHourData,
+  ICurrentForecastData,
+  ICurrentBasicInfo,
+  IDetailedInfoData,
+  IWeatherForecastData,
+  IDayForecastData,
+  IRelevantIme,
+};

@@ -1,10 +1,10 @@
 //Interfaces
-import { ICurrentForecastData } from "../../../interfaces/IWeatherForecast";
+import { ICurrentBasicInfo } from "../../../interfaces/IWeatherForecast";
 
 //Icons
 import LocationIcon from "../../../assets/icons/location";
 
-const DayBasicInfo = (data: ICurrentForecastData): string => {
+const DayBasicInfo = (data: ICurrentBasicInfo): string => {
   const view = `
     <div class="day-basic-info__location">
       ${LocationIcon()}

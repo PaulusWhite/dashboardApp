@@ -15,7 +15,7 @@ const changePeriodList = (): void => {
       const periodDaysValue: number = +input.value;
 
       const weatherForecast: IWeatherForecastData = store.getState().weatherForecast!;
-      const currentDayIndex: number = weatherForecast.current.currentDayIndex;
+      const currentDayIndex: number = weatherForecast.current.basicInfo.currentDayIndex;
       const periodDaysList: IDayForecastData[] = weatherForecast.days.slice(0, periodDaysValue);
 
       showPeriodDaysList(periodDaysList, currentDayIndex);

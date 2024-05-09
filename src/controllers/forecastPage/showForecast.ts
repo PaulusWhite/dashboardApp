@@ -13,6 +13,7 @@ import { IDayForecastData, IWeatherForecastData, IDetailedInfoData, IHourData } 
 
 //Modules
 import showPeriodDaysList from "../../modules/forecastApp/showPeriodDaysList";
+import transformCurrenTime from "../../modules/forecastApp/transformCurrenTime";
 
 //Controllers
 import changeDayInfo from "./changeDayInfo";
@@ -21,7 +22,7 @@ import changeHourInfo from "./changeHourInfo";
 
 const setPeriodDaysList = () => {
   const weatherForecast: IWeatherForecastData = store.getState().weatherForecast!;
-  const currentDayIndex: number = weatherForecast.current.currentDayIndex;
+  const currentDayIndex: number = weatherForecast.current.basicInfo.currentDayIndex;
   const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll(".forecast-nav__periods-list input")!;
 
   const checkedInput: HTMLInputElement = [].find.call(inputs, (input: HTMLInputElement) => input.checked)!;
@@ -31,23 +32,23 @@ const setPeriodDaysList = () => {
   showPeriodDaysList(periodDaysList, currentDayIndex);
 };
 
-const getCheckedHourDataIndex = (): number => {
-  const hourItems: NodeListOf<Element> = document.querySelectorAll(".hour ")!;
+const getCheckedHourDataIndex = (): number | undefined => {
+  const checkedHour: HTMLLIElement | null = document.querySelector(".hours-list .checked-point");
 
-  const checkedHourItem: HTMLLIElement = [].find.call(hourItems, (hourItem: HTMLLIElement) =>
-    hourItem.classList.contains("checked-point"),
-  )!;
-
-  const hourDataIndex: number = +checkedHourItem.id;
-
-  return hourDataIndex;
+  return checkedHour ? +checkedHour.id : undefined;
 };
 
 const setDetailedInfo = (): void => {
   const weatherForecast = store.getState().weatherForecast!;
-  const currentDayIndex: number = weatherForecast.current.currentDayIndex;
-  const checkedHourData: number = getCheckedHourDataIndex();
-  const detailedInfoData: IDetailedInfoData = weatherForecast.days[currentDayIndex].hoursData[checkedHourData];
+
+  const currentDayIndex: number = weatherForecast.current.basicInfo.currentDayIndex;
+  const checkedHourIndex: number | undefined = getCheckedHourDataIndex();
+
+  let detailedInfoData: IDetailedInfoData = {} as IDetailedInfoData;
+
+  if (checkedHourIndex) {
+    detailedInfoData = weatherForecast.days[currentDayIndex].hoursData[checkedHourIndex];
+  } else detailedInfoData = weatherForecast.current.currentDetailedData;
 
   const detailedInfoField: HTMLDivElement = document.querySelector(".detailed-info")!;
   detailedInfoField.innerHTML = DetailedInfo(detailedInfoData);
@@ -55,16 +56,17 @@ const setDetailedInfo = (): void => {
 
 const setRelevantTime = () => {
   const weatherForecast = store.getState().weatherForecast!;
-  const { time, date } = weatherForecast.current; //relevant time
+  const { time, date } = weatherForecast.current.basicInfo; //relevant time
+  const corrnetTime = transformCurrenTime(time);
   const relevainTimeField: HTMLParagraphElement = document.querySelector(".main-interface__time")!;
 
-  relevainTimeField.innerHTML = RelevantTime({ date, time });
+  relevainTimeField.innerHTML = RelevantTime({ date, time: corrnetTime });
 };
 
 const setHoursInfo = (): void => {
   const weatherForecast = store.getState().weatherForecast!;
-  const currentDayIndex: number = weatherForecast.current.currentDayIndex;
-  const currentHourIndex: number = weatherForecast.current.currentHourIndex;
+  const currentDayIndex: number = weatherForecast.current.basicInfo.currentDayIndex;
+  const currentHourIndex: number | null = weatherForecast.current.basicInfo.currentHourIndex;
 
   const hoursList: HTMLUListElement = document.querySelector(".hours-list")!;
   hoursList.innerHTML = "";
@@ -89,7 +91,7 @@ const showForecast = () => {
   const basicInfoField: HTMLDivElement = document.querySelector(".day-basic-info")!;
   const forecastNavField: HTMLElement = document.querySelector(".forecast-nav")!;
 
-  basicInfoField.innerHTML = DayBasicInfo(weatherForecast.current);
+  basicInfoField.innerHTML = DayBasicInfo(weatherForecast.current.basicInfo);
   forecastNavField.innerHTML = ForecastNav();
 
   setPeriodDaysList();

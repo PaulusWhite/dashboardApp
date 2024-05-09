@@ -15,9 +15,8 @@ import IPromiseValue from "../../interfaces/IPromise";
 //Modules
 import getErrorData from "../../modules/common/getErrorData";
 
-const convertTempCelsius = (initValue: number): number => {
-  return Math.ceil((Math.ceil(initValue) - 32) / 1.8);
-};
+//Utils
+import convertTempCelsius from "../../utils/convertTempCelsius";
 
 const getUserWeatherForecastDataByIP = async <T extends IUserWeatherData>(): Promise<IPromiseValue> => {
   try {

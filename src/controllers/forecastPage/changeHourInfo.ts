@@ -17,8 +17,10 @@ const changeHourInfo = () => {
     const closest: HTMLLIElement | null = target.closest(".hour");
 
     if (closest && !closest.classList.contains("checked-point")) {
-      const prevCheckedHour: HTMLLIElement = document.querySelector(".hours-list .checked-point")!;
-      prevCheckedHour.classList.remove("checked-point");
+      const prevCheckedHour: HTMLLIElement | null = document.querySelector(".hours-list .checked-point");
+
+      if (prevCheckedHour) prevCheckedHour.classList.remove("checked-point");
+
       closest.classList.add("checked-point");
 
       const hourIndex: number = +closest.id;

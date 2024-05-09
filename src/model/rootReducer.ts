@@ -1,7 +1,7 @@
 //interfaces
 import { TState, IAction, IUpdTodoListsData } from "../interfaces/IModel";
 import { ITodoListData } from "../interfaces/ITodoList";
-import { IUserWeatherForecastData } from "../interfaces/IWeatherForecast";
+import { IUserWeatherForecastData, IWeatherForecastData } from "../interfaces/IWeatherForecast";
 import { IQuotationData } from "../interfaces/IAPI";
 
 //action types
@@ -15,6 +15,7 @@ import {
   SET_RANDOM_QUOTATION,
   SET_FORECAST_DAY_INDEX,
   SET_FORECAST_HOUR_INDEX,
+  SET_FORECAST_DATA,
 } from "./actionTypes";
 
 const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
@@ -48,16 +49,19 @@ const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
 
     const relevantDayIndex: number = action.payload as number;
 
-    state.weatherForecast.current.currentDayIndex = relevantDayIndex;
-    state.weatherForecast.current.date = state.weatherForecast.days[relevantDayIndex].basicData.date;
+    state.weatherForecast.current.basicInfo.currentDayIndex = relevantDayIndex;
+    state.weatherForecast.current.basicInfo.date = state.weatherForecast.days[relevantDayIndex].basicData.date;
+    state.weatherForecast.current.basicInfo.currentHourIndex = null;
   } else if (action.type === SET_FORECAST_HOUR_INDEX) {
     if (!state.weatherForecast) return state;
 
-    const currentDayIndex: number = state.weatherForecast.current.currentDayIndex;
+    const currentDayIndex: number = state.weatherForecast.current.basicInfo.currentDayIndex;
     const newHourIndex: number = action.payload as number;
 
-    state.weatherForecast.current.time = state.weatherForecast.days[currentDayIndex].hoursData[newHourIndex].time;
-    state.weatherForecast.current.currentHourIndex = newHourIndex;
+    state.weatherForecast.current.basicInfo.time = state.weatherForecast.days[currentDayIndex].hoursData[newHourIndex].time;
+    state.weatherForecast.current.basicInfo.currentHourIndex = newHourIndex;
+  } else if (action.type === SET_FORECAST_DATA) {
+    state.weatherForecast = action.payload as IWeatherForecastData;
   }
 
   return state;
