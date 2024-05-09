@@ -6,6 +6,7 @@ import { IDayForecastData } from "../../interfaces/IWeatherForecast";
 
 const showPeriodDaysList = (periodDaysList: IDayForecastData[], currentDayIndex: number): void => {
   const periodList: HTMLUListElement = document.querySelector(".forecast-nav__period-days-list")!;
+  periodList.innerHTML = "";
 
   periodDaysList.forEach((dayData: IDayForecastData, index: number) => {
     const isChecked = currentDayIndex === index ? true : false;

@@ -16,8 +16,9 @@ const setDayInfo = () => {
     const closest: HTMLElement | null = target.closest(".period-day");
 
     if (closest && !closest.classList.contains("checked-point")) {
-      const prevCheckedDay: HTMLLIElement = document.querySelector(".forecast-nav__period-days-list .checked-point")!;
-      prevCheckedDay.classList.remove("checked-point");
+      const prevCheckedDay: HTMLLIElement | null = document.querySelector(".forecast-nav__period-days-list .checked-point");
+
+      if (prevCheckedDay) prevCheckedDay.classList.remove("checked-point");
       closest.classList.add("checked-point");
 
       const dayIndex: number = +closest.id;

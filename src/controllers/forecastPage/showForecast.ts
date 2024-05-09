@@ -16,6 +16,7 @@ import showPeriodDaysList from "../../modules/forecastApp/showPeriodDaysList";
 
 //Controllers
 import changeDayInfo from "./changeDayInfo";
+import changePeriodList from "./changePeriodList";
 
 const setPeriodDaysList = () => {
   const weatherForecast: IWeatherForecastData = store.getState().weatherForecast!;
@@ -97,6 +98,7 @@ const showForecast = () => {
 
   //
   changeDayInfo();
+  changePeriodList();
 };
 
 export { setHoursInfo, setDetailedInfo, showForecast };

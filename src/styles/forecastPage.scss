@@ -174,12 +174,17 @@
         }
 
         .forecast-nav__period-days-list {
+          height: calc(5 * 5.5rem);
+          overflow: auto;
+
           //PeriodDay component
           .period-day {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 1rem 0;
+            height: 5rem;
+            padding: 0.5rem;
             cursor: pointer;
             transition: 0.1s;
 
