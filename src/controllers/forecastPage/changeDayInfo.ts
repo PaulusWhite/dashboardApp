@@ -5,9 +5,9 @@ import store from "../../model/store";
 import { createSetForecastDayIndexAction } from "../../model/actionCreators";
 
 //Controllers
-import { setDetailedInfo } from "./showForecast";
+import setDetailedInfo from "./setDetailedInfo";
 
-const setDayInfo = () => {
+const changeDayInfo = () => {
   const periodDaysList: HTMLUListElement = document.querySelector(".forecast-nav__period-days-list")!;
 
   periodDaysList.addEventListener("click", (event: Event) => {
@@ -30,4 +30,4 @@ const setDayInfo = () => {
   });
 };
 
-export default setDayInfo;
+export default changeDayInfo;

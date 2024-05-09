@@ -24,7 +24,7 @@ import getErrorData from "../../modules/common/getErrorData";
 import convertTempCelsius from "../../utils/convertTempCelsius";
 
 //Controllers
-import { showForecast } from "./showForecast";
+import showForecast from "./showForecast";
 import getReadableDateValue from "../../utils/getReadableDateValue";
 
 const getDataToGetProperDate = (date: string): IGetReadableDateData => {

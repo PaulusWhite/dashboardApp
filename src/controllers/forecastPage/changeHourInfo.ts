@@ -5,8 +5,8 @@ import store from "../../model/store";
 import { createSetForecastCurrentIndexAction } from "../../model/actionCreators";
 
 //controllers
-import { setDetailedInfo } from "./showForecast";
-import { setRelevantTime } from "./showForecast";
+import setDetailedInfo from "./setDetailedInfo";
+import setRelevantTime from "./setRelevantTime";
 
 const changeHourInfo = () => {
   const hoursList: HTMLUListElement = document.querySelector(".hours-list")!;
@@ -26,6 +26,7 @@ const changeHourInfo = () => {
       const hourIndex: number = +closest.id;
 
       store.dispatch(createSetForecastCurrentIndexAction(hourIndex));
+
       setDetailedInfo();
       setRelevantTime();
     }

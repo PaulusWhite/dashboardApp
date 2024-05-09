@@ -20,7 +20,7 @@ import updateBulletPoint from "../modules/todoApp/updateBulletPoint";
 import setTodoListName from "../modules/todoApp/setTodoListName";
 
 //Modules and controllers for Forecast App
-import { showForecast } from "../controllers/forecastPage/showForecast";
+import showForecast from "../controllers/forecastPage/showForecast";
 import searchForecast from "../controllers/forecastPage/searchForecast";
 
 const runRouterFunctional = (path: TPath): void => {
