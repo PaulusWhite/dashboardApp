@@ -1,5 +1,5 @@
 //interfaces
-import { IError } from "../../interfaces/IError";
+import { IError } from "../../interfaces/Icommon";
 
 const getErrorData = (error: Error, description: string): IError => {
   return {

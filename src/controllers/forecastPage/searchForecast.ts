@@ -8,13 +8,14 @@ import getWeatherForecast from "../../API/getWeatherForecast";
 import { createSetForecastData } from "../../model/actionCreators";
 
 //Interfaces
-import { IError } from "../../interfaces/IError";
+import { IError } from "../../interfaces/Icommon";
 import { IWeatherForecastData, IDayForecastData, IDetailedInfoData, ICurrentForecastData } from "../../interfaces/IWeatherForecast";
 import {
   IWeatherForecastResponseData,
   IWeatherForecastDayResponseData,
   IWeatherForecastHourResponseData,
 } from "../../interfaces/IAPI";
+import { IGetReadableDateData } from "../../interfaces/Icommon";
 
 //modules
 import getErrorData from "../../modules/common/getErrorData";
@@ -24,13 +25,26 @@ import convertTempCelsius from "../../utils/convertTempCelsius";
 
 //Controllers
 import { showForecast } from "./showForecast";
+import getReadableDateValue from "../../utils/getReadableDateValue";
+
+const getDataToGetProperDate = (date: string): IGetReadableDateData => {
+  const forecastDateArr: string[] = date.split("-");
+  const [, month] = forecastDateArr;
+
+  return {
+    monthIndex: +month + 1,
+    dayIndex: new Date(date).getDay(),
+  };
+};
 
 const getCurrentForecastData = (data: IWeatherForecastResponseData): ICurrentForecastData => {
+  const dataToGetProperDate: IGetReadableDateData = getDataToGetProperDate(data.days[0].datetime);
+
   return {
     basicInfo: {
       location: data.address,
       time: data.currentConditions.datetime,
-      date: data.days[0].datetime,
+      date: getReadableDateValue(dataToGetProperDate),
       temp: convertTempCelsius(data.currentConditions.temp),
       windspeed: data.currentConditions.windspeed,
       currentDayIndex: 0,
@@ -46,10 +60,12 @@ const getCurrentForecastData = (data: IWeatherForecastResponseData): ICurrentFor
 
 const getDaysForecastData = (daysData: IWeatherForecastDayResponseData[]) => {
   return daysData.map((dayData: IWeatherForecastDayResponseData) => {
+    const dataToGetProperDate: IGetReadableDateData = getDataToGetProperDate(dayData.datetime);
+
     const dayForecastData: IDayForecastData = {
       basicData: {
         icon: `https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/2nd%20Set%20-%20Color/${dayData.icon}.png`,
-        date: dayData.datetime,
+        date: getReadableDateValue(dataToGetProperDate),
         forecast: dayData.conditions,
         temp: convertTempCelsius(dayData.temp),
       },
@@ -77,8 +93,6 @@ const searchForecast = () => {
 
     try {
       const data: T = await getWeatherForecast({ location: requestValue });
-
-      console.log(data);
 
       const weatherForecastData: IWeatherForecastData = {
         current: getCurrentForecastData(data),

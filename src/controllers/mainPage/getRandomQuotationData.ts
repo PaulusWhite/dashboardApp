@@ -2,8 +2,8 @@
 import getRandomQuotation from "../../API/getRandomQuotation";
 
 //Interfaces
+import { IError } from "../../interfaces/Icommon";
 import { IQuotationData } from "../../interfaces/IAPI";
-import { IError } from "../../interfaces/IError";
 import IPromiseValue from "../../interfaces/IPromise";
 
 //Modules

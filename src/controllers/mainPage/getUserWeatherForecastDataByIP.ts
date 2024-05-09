@@ -9,7 +9,7 @@ import getReadableDateValue from "../../utils/getReadableDateValue";
 //Interfaces
 import { IUserWeatherForecastData, IUserWeatherData } from "../../interfaces/IWeatherForecast";
 import { IUserGeoData } from "../../interfaces/IAPI";
-import { IError } from "../../interfaces/IError";
+import { IError } from "../../interfaces/Icommon";
 import IPromiseValue from "../../interfaces/IPromise";
 
 //Modules
