@@ -27,6 +27,9 @@ import convertTempCelsius from "../../utils/convertTempCelsius";
 import showForecast from "./showForecast";
 import getReadableDateValue from "../../utils/getReadableDateValue";
 
+//Components
+import ErrorRequestMessage from "../../view/components/common/ErrorRequestMessage";
+
 const getDataToGetProperDate = (date: string): IGetReadableDateData => {
   const forecastDateArr: string[] = date.split("-");
   const [, month] = forecastDateArr;
@@ -84,6 +87,15 @@ const getDaysForecastData = (daysData: IWeatherForecastDayResponseData[]) => {
   });
 };
 
+const getErrorMessage = (code: number | undefined): string => {
+  let errorMessage: string = "";
+  if (code === 400) {
+    errorMessage = "You made incorrect request. Please check the location spelling";
+  } else errorMessage = "There occurred a some mistake. Please try later";
+
+  return errorMessage;
+};
+
 const searchForecast = () => {
   const searchBtn: HTMLButtonElement = document.querySelector(".input-field__add-btn")!;
 
@@ -105,9 +117,11 @@ const searchForecast = () => {
       showForecast();
     } catch (err: unknown) {
       const errorDescription: string = `The Weahter Forecast data was not gottent. Reason: ${(err as Error).name}`;
-      const errorData: IError = getErrorData(err as Error, errorDescription);
+      const errorData: IError = getErrorData(err as IError, errorDescription);
+      const errorMessage: string = getErrorMessage(errorData.code);
 
-      throw errorData;
+      const detailedInfoField: HTMLDivElement = document.querySelector(".detailed-info")!;
+      detailedInfoField.innerHTML = ErrorRequestMessage(errorMessage);
     }
 
     seachInput.value = "";

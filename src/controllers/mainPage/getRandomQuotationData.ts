@@ -18,7 +18,7 @@ const getRandomQuotationData = async (): Promise<IPromiseValue> => {
     };
   } catch (err: unknown) {
     const errorDescription: string = `The quotation was not gotten. Reason: ${(err as Error).name}`;
-    const errorData: IError = getErrorData(err as Error, errorDescription);
+    const errorData: IError = getErrorData(err as IError, errorDescription);
 
     throw errorData;
   }

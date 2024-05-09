@@ -42,7 +42,7 @@ const getUserWeatherForecastDataByIP = async <T extends IUserWeatherData>(): Pro
     };
   } catch (err: unknown) {
     const errorDescription: string = `The User Forecast data was not gottent. Reason: ${(err as Error).name}`;
-    const errorData: IError = getErrorData(err as Error, errorDescription);
+    const errorData: IError = getErrorData(err as IError, errorDescription);
 
     throw errorData;
   }
