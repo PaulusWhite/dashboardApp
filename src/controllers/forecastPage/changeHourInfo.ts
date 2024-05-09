@@ -6,6 +6,7 @@ import { createSetForecastCurrentIndexAction } from "../../model/actionCreators"
 
 //controllers
 import { setDetailedInfo } from "./showForecast";
+import { setRelevantTime } from "./showForecast";
 
 const changeHourInfo = () => {
   const hoursList: HTMLUListElement = document.querySelector(".hours-list")!;
@@ -24,6 +25,7 @@ const changeHourInfo = () => {
 
       store.dispatch(createSetForecastCurrentIndexAction(hourIndex));
       setDetailedInfo();
+      setRelevantTime();
     }
   });
 };

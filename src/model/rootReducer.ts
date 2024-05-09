@@ -53,7 +53,11 @@ const rootReducer = <T>(state: TState, action: IAction<T>): TState => {
   } else if (action.type === SET_FORECAST_HOUR_INDEX) {
     if (!state.weatherForecast) return state;
 
-    state.weatherForecast.current.currentHourIndex = action.payload as number;
+    const currentDayIndex: number = state.weatherForecast.current.currentDayIndex;
+    const newHourIndex: number = action.payload as number;
+
+    state.weatherForecast.current.time = state.weatherForecast.days[currentDayIndex].hoursData[newHourIndex].time;
+    state.weatherForecast.current.currentHourIndex = newHourIndex;
   }
 
   return state;

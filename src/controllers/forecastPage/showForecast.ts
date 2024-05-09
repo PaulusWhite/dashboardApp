@@ -103,4 +103,4 @@ const showForecast = () => {
   changeHourInfo();
 };
 
-export { setHoursInfo, setDetailedInfo, showForecast };
+export { setHoursInfo, setRelevantTime, setDetailedInfo, showForecast };
